@@ -9,7 +9,7 @@ class SuratTugas extends Model
 {
     use HasFactory;
 
-      /**
+    /**
      * fillable
      *
      * @var array

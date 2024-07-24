@@ -9,7 +9,7 @@ class BukuTamu extends Model
 {
     use HasFactory;
 
-     /**
+    /**
      * fillable
      *
      * @var array
