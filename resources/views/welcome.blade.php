@@ -57,6 +57,39 @@
             color: #ffffff;
             text-decoration: none;
             font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar nav ul li .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .navbar nav ul li .dropdown a {
+            color: #113F67;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+        }
+
+        .navbar nav ul li .dropdown a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .navbar nav ul li .arrow-down {
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 3px;
+            margin-left: 5px;
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
         }
 
         .hero {
@@ -198,6 +231,59 @@
             margin-top: 10px;
             padding: 8px;
         }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 18px 20px;
+            }
+
+            .navbar .logo {
+                margin-bottom: 20px;
+            }
+
+            .navbar nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar nav ul li {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+
+            .hero, .about {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content div {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 18px 10px;
+            }
+
+            .hero .hero-text h2 {
+                font-size: 28px;
+            }
+
+            .hero .hero-text p, .about p {
+                font-size: 16px;
+            }
+
+            .hero .hero-text .buttons .btn, .navbar nav ul li a {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 
@@ -215,7 +301,13 @@
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Buku Tamu</a></li>
-                    <li><a href="#">SPT</a></li>
+                    <li class="dropdown-container">
+                        <a href="javascript:void(0);" class="dropbtn">SPT <i class="arrow-down"></i></a>
+                        <div class="dropdown">
+                            <a href="#">Buat SPT</a>
+                            <a href="#">Riwayat SPT</a>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -284,5 +376,31 @@
             <p>Dinas Kebudayaan dan Pariwisata Provinsi Jawa Timur</p>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var dropdownBtn = document.querySelector('.dropbtn');
+            var dropdownContent = document.querySelector('.dropdown');
+
+            dropdownBtn.addEventListener('click', function () {
+                dropdownContent.classList.toggle('show');
+            });
+
+            window.addEventListener('click', function (event) {
+                if (!event.target.matches('.dropbtn') && !event.target.closest('.dropdown')) {
+                    var dropdowns = document.querySelectorAll('.dropdown');
+                    dropdowns.forEach(function (dropdown) {
+                        if (dropdown.classList.contains('show')) {
+                            dropdown.classList.remove('show');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <style>
+        .show {
+            display: block !important;
+        }
+    </style>
 </body>
 </html>
