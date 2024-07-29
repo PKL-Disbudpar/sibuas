@@ -12,19 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('surat_tugas', function (Blueprint $table) {
-            $table->increments('id_spt');
-            $table->unsignedInteger('nip_pegawai');
-            $table->unsignedInteger('id_user');
-            $table->unsignedInteger('id_bidang');
-            $table->string('tujuan_spt');
-            $table->string('tgl_spt');
+            $table->id();
+            $table->string('nip_pegawai');
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_bidang');
+            $table->text('tujuan_spt');
+            $table->date('tgl_spt');
             $table->string('nama_spt');
             $table->string('ttd');
             $table->timestamps();
 
             $table->foreign('nip_pegawai')->references('nip_pegawai')->on('master_pegawais')->onDelete('cascade');
-            $table->foreign('id_user')->references('id_user')->on('penggunas')->onDelete('cascade');
-            $table->foreign('id_bidang')->references('id_bidang')->on('bidangs')->onDelete('cascade');
+            $table->foreign('id_user')->references('id')->on('penggunas')->onDelete('cascade');
+            $table->foreign('id_bidang')->references('id')->on('bidangs')->onDelete('cascade');
         });
     }
 
