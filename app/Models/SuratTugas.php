@@ -15,10 +15,7 @@ class SuratTugas extends Model
      * @var array
      */
     protected $fillable = [
-        'id_spt',
         'nip_pegawai',
-        'id_user',
-        'id_bidang',
         'tujuan_spt',
         'tgl_spt',
         'nama_spt',

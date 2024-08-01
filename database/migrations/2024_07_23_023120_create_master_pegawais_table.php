@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('master_pegawais', function (Blueprint $table) {
-            $table->increments('nip_pegawai');
+            $table->string('nip_pegawai')->primary();
             $table->string('nama');
             $table->string('jabatan');
             $table->string('golongan');

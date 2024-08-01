@@ -15,7 +15,6 @@ class Bidang extends Model
      * @var array
      */
     protected $fillable = [
-        'id_bidang',
         'nama_bidang',
         'kode_bidang',
     ];

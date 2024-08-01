@@ -4,17 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIBUAS</title>
-    <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Sistem Informasi Buku Tamu dan SPT</title>
+    <link rel="stylesheet" href="{{asset('css/style_home.css')}}">
 </head>
 
 <body>
     <header>
-        <div class="topnav" id="myTopnav">
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
+        <div class="navbar">
             <div class="logo">
                 <img src="{{ asset('images/logo.png') }}" alt="Logo">
                 <div class="judul">
@@ -22,31 +18,26 @@
                     <span>Dinas Kebudayaan dan Pariwisata Provinsi Jawa Timur</span>
                 </div>
             </div>
-            <div>
-                <a href="#home" class="active">Home</a>
-                <a href="#news">Buku Tamu</a>
-                <div class="dropdown">
-                    <button class="dropbtn">SPT
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="#buat-spt">Buat SPT</a>
-                        <a href="#riwayat-spt">Riwayat SPT</a>
-                    </div>
-                </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
-        </div>
 
-        <script>
-            function myFunction() {
-                var x = document.getElementById("myTopnav");
-                if (x.className === "topnav") {
-                    x.className += " responsive";
-                } else {
-                    x.className = "topnav";
-                }
-            }
-        </script>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#/BukuTamu">Buku Tamu</a></li>
+                    <li class="dropdown-container">
+                        <a href="javascript:void(0);" class="dropbtn">SPT <i class="arrow-down"></i></a>
+                        <div class="dropdown">
+                            <a href="#">Buat SPT</a>
+                            <a href="#">Riwayat SPT</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
@@ -71,14 +62,10 @@
             </div>
             <div class="about-text">
                 <h2>SIBUAS</h2>
-                <p>SIBUAS menyediakan solusi inovatif untuk pencatatan kunjungan tamu dan Surat Perintah Tugas (SPT)
-                    untuk
-                    Dinas Kebudayaan dan Pariwisata Provinsi Jawa Timur. Dengan sistem Buku Tamu, pengelolaan data
-                    kunjungan
-                    dapat dilakukan lebih akurat dan sistematis, serta mempermudah pengelolaan data oleh adminstrasi.
-                    Sistem
-                    SPT memungkinkan pengelolaan serta pelacakan tugas secara efisien, memberikan kemudahan akses,
-                    validitas
+                <p>SIBUAS menyediakan solusi inovatif untuk pencatatan kunjungan tamu dan Surat Perintah Tugas (SPT) untuk
+                    Dinas Kebudayaan dan Pariwisata Provinsi Jawa Timur. Dengan sistem Buku Tamu, pengelolaan data kunjungan
+                    dapat dilakukan lebih akurat dan sistematis, serta mempermudah pengelolaan data oleh adminstrasi. Sistem
+                    SPT memungkinkan pengelolaan serta pelacakan tugas secara efisien, memberikan kemudahan akses, validitas
                     data, dan komparasi data untuk analisis yang lebih baik.</p>
                 <p>Kami berkomitmen untuk memberikan layanan terbaik melalui teknologi terkini, mendukung Anda dalam
                     menciptakan lingkungan yang lebih teratur, aman, dan efisien.</p>
@@ -116,32 +103,7 @@
             <p>Dinas Kebudayaan dan Pariwisata Provinsi Jawa Timur</p>
         </div>
     </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var dropdownBtn = document.querySelector('.dropbtn');
-            var dropdownContent = document.querySelector('.dropdown');
-
-            dropdownBtn.addEventListener('click', function() {
-                dropdownContent.classList.toggle('show');
-            });
-
-            window.addEventListener('click', function(event) {
-                if (!event.target.matches('.dropbtn') && !event.target.closest('.dropdown')) {
-                    var dropdowns = document.querySelectorAll('.dropdown');
-                    dropdowns.forEach(function(dropdown) {
-                        if (dropdown.classList.contains('show')) {
-                            dropdown.classList.remove('show');
-                        }
-                    });
-                }
-            });
-        });
-    </script>
-    <style>
-        .show {
-            display: block !important;
-        }
-    </style>
+    <script src="{{asset('js/main.js')}}"></script>
 </body>
 
 </html>
