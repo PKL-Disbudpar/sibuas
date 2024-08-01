@@ -26,6 +26,7 @@ header {
 }
 
 .navbar .logo img {
+    display: flex;
     width: 50px;
     height: auto;
     margin-right: 10px;
@@ -76,6 +77,11 @@ header {
     min-width: 160px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    right: 0;
+}
+
+.nav-list li .dropdown.active {
+    display: block;
 }
 
 .nav-list li .dropdown a {
@@ -102,6 +108,7 @@ header {
 
 .card {
     padding: 18px 72px;
+    z-index: -1;
 }
 
 footer {
@@ -115,7 +122,7 @@ footer {
 
 @media (max-width: 768px) {
     .navbar {
-        padding: 10px 20px;
+        padding: 18px 20px;
     }
 
     .menu-toggle {
@@ -130,10 +137,9 @@ footer {
         display: block;
         position: absolute;
         top: 100%;
-        left: 0;
         right: 0;
         background-color: #226597;
-        padding: 10px 0;
+        padding: 10px;
         text-align: center;
     }
 
@@ -147,5 +153,9 @@ footer {
 
     .nav-list li .dropdown {
         position: static;
+    }
+
+    .card {
+        padding: 0;
     }
 }
