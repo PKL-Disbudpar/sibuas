@@ -70,10 +70,9 @@
             </tbody>
           </table>
         </div>
-
-      </div>
+    </div>
       
-    <footer>
+    <footer class="fixed-bottom">
       <p>Copyright ©SIBUAS 2024</p>
     </footer>
 
