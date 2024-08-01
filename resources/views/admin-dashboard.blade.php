@@ -18,7 +18,7 @@
 <body>
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
+        <a href="{{url('/admin-dashboard')}}" class="brand-link">
           <img src="{{asset('images/logoJatim.svg')}}" alt="AdminLTE Logo" class="brand-image elevation-3">
           <span class="brand-text font-weight-bold ml-2">SIBUAS</span>
         </a>
@@ -27,33 +27,29 @@
     
         <!-- Sidebar -->
         <div class="sidebar">
-          <!-- SidebarSearch Form -->
-          <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-              <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-sidebar">
-                  <i class="fas fa-search fa-fw"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-    
           <!-- Sidebar Menu -->
           <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
               <!-- Add icons to the links using the .nav-icon class
                    with font-awesome or any other icon font library -->
               <li class="nav-item">
-                <a href="pages/widgets.html" class="nav-link">
-                  <i class="nav-icon fa-circle fa-th"></i>
+                <a href="{{url('/admin-dashboard')}}" class="nav-link">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                      Dashboard
+                    </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('/admin-bukuTamu')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
                   <p>
                     Buku Tamu
                   </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/widgets.html" class="nav-link">
+                <a href="{{url('/admin-suratTugas')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     Surat Perintah Tugas
@@ -77,7 +73,7 @@
               </div><!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item"><a href="{{url('/admin-dashboard')}}">Home</a></li>
                   <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
               </div><!-- /.col -->
@@ -97,7 +93,7 @@
                   <div class="icon">
                     <i class="ion ion-person"></i>
                   </div>
-                  <a href="{{url('/admin-bukuTamu')}}" class="small-box-footer">Info Lebih Lanjut<i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="{{url('/admin-bukuTamu')}}" class="small-box-footer">Info Lebih Lanjut <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-6">
@@ -110,7 +106,7 @@
                   <div class="icon">
                     <i class="ion ion-document-text"></i>
                   </div>
-                  <a href="#" class="small-box-footer">Info Lebih Lanjut<i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="{{url('/admin-suratTugas')}}" class="small-box-footer">Info Lebih Lanjut <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>
