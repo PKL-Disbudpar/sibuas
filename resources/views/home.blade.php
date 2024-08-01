@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistem Informasi Buku Tamu dan SPT</title>
     <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Poppins", sans-serif;
             margin: 0;
             padding: 0;
         }
@@ -22,6 +24,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 18px 72px;
+            position: relative;
         }
 
         .navbar .logo {
@@ -42,18 +45,32 @@
             flex-direction: column;
         }
 
-        .navbar nav ul {
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle .bar {
+            height: 3px;
+            width: 25px;
+            background-color: #ffffff;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        .nav-list {
             list-style: none;
             display: flex;
             margin: 0;
             padding: 0;
         }
 
-        .navbar nav ul li {
+        .nav-list li {
             margin-left: 20px;
         }
 
-        .navbar nav ul li a {
+        .nav-list li a {
             color: #ffffff;
             text-decoration: none;
             font-size: 16px;
@@ -61,28 +78,32 @@
             align-items: center;
         }
 
-        .navbar nav ul li .dropdown {
+        .nav-list li .dropdown {
             display: none;
             position: absolute;
             background-color: #ffffff;
             min-width: 160px;
-            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
             z-index: 1;
         }
 
-        .navbar nav ul li .dropdown a {
-            color: #113F67;
+        .nav-list li .dropdown.active {
+            display: block;
+        }
+
+        .nav-list li .dropdown a {
+            color: #113f67;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
             font-size: 16px;
         }
 
-        .navbar nav ul li .dropdown a:hover {
+        .nav-list li .dropdown a:hover {
             background-color: #f1f1f1;
         }
 
-        .navbar nav ul li .arrow-down {
+        .nav-list li .arrow-down {
             border: solid white;
             border-width: 0 2px 2px 0;
             display: inline-block;
@@ -105,6 +126,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
         }
 
         .hero .hero-text h1 {
@@ -137,6 +159,12 @@
             font-size: 16px;
         }
 
+        .hero.hero-image {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
         .hero .hero-image img {
             width: 100%;
             max-width: 500px;
@@ -156,6 +184,7 @@
             flex-direction: column;
             align-items: center;
             margin-left: 20px;
+            width: 100%;
         }
 
         .about h2 {
@@ -170,8 +199,14 @@
             margin-bottom: 20px;
         }
 
+        .about .about-image {
+            width: 100%; 
+            display: flex; 
+            justify-content: center; 
+        }
+
         .about .about-image img {
-            width: 12cm;
+            width: 7cm;
         }
 
         footer {
@@ -234,22 +269,37 @@
 
         @media (max-width: 768px) {
             .navbar {
-                flex-direction: column;
                 padding: 18px 20px;
             }
 
-            .navbar .logo {
-                margin-bottom: 20px;
+            .menu-toggle {
+                display: flex;
             }
 
-            .navbar nav ul {
+            nav {
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: #226597;
+                padding: 10px;
+                text-align: center;
+            }
+
+            .nav-list {
                 flex-direction: column;
-                align-items: center;
             }
 
-            .navbar nav ul li {
-                margin-left: 0;
-                margin-bottom: 10px;
+            .nav-list li {
+                margin: 10px 0;
+            }
+
+            .nav-list li .dropdown {
+                position: static;
             }
 
             .hero, .about {
@@ -266,24 +316,6 @@
                 margin-bottom: 20px;
             }
         }
-
-        @media (max-width: 480px) {
-            .navbar {
-                padding: 18px 10px;
-            }
-
-            .hero .hero-text h2 {
-                font-size: 28px;
-            }
-
-            .hero .hero-text p, .about p {
-                font-size: 16px;
-            }
-
-            .hero .hero-text .buttons .btn, .navbar nav ul li a {
-                font-size: 14px;
-            }
-        }
     </style>
 </head>
 
@@ -297,10 +329,16 @@
                     <span>Dinas Kebudayaan dan Pariwisata Provinsi Jawa Timur</span>
                 </div>
             </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
             <nav>
-                <ul>
+                <ul class="nav-list">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Buku Tamu</a></li>
+                    <li><a href="#/BukuTamu">Buku Tamu</a></li>
                     <li class="dropdown-container">
                         <a href="javascript:void(0);" class="dropbtn">SPT <i class="arrow-down"></i></a>
                         <div class="dropdown">
@@ -377,30 +415,28 @@
         </div>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var dropdownBtn = document.querySelector('.dropbtn');
-            var dropdownContent = document.querySelector('.dropdown');
+        document.addEventListener("DOMContentLoaded", function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const nav = document.querySelector('nav');
+            const dropdownBtn = document.querySelector('.dropbtn');
+            const dropdownMenu = document.querySelector('.dropdown');
 
-            dropdownBtn.addEventListener('click', function () {
-                dropdownContent.classList.toggle('show');
+            mobileMenu.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+
+            dropdownBtn.addEventListener('click', function(event) {
+                event.preventDefault();
+                dropdownMenu.classList.toggle('active');
             });
 
-            window.addEventListener('click', function (event) {
-                if (!event.target.matches('.dropbtn') && !event.target.closest('.dropdown')) {
-                    var dropdowns = document.querySelectorAll('.dropdown');
-                    dropdowns.forEach(function (dropdown) {
-                        if (dropdown.classList.contains('show')) {
-                            dropdown.classList.remove('show');
-                        }
-                    });
-                }
-            });
+            document.addEventListener('click', function(event) {
+                if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                    dropdownMenu.classList.remove('active');
+                }
+            });
         });
     </script>
-    <style>
-        .show {
-            display: block !important;
-        }
-    </style>
 </body>
+
 </html>
