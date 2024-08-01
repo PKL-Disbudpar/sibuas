@@ -52,3 +52,11 @@ Route::get('/bidang-dashboard', function () {
 Route::get('/bidang-suratTugas', function () {
     return view('Bidang.bidang-suratTugas');
 });
+
+Route::get('/Login', function () {
+    return view('Login');
+});
+
+Route::get('/BukuTamu', function () {
+    return view('bukutamu');
+});

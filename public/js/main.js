@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
         nav.classList.toggle("active");
     });
 
-    dropdownBtn.addEventListener("click", function (event) {
-        event.preventDefault();
+    dropdownBtn.addEventListener("click", function () {
         dropdownMenu.classList.toggle("active");
     });
 
+    // Close dropdown on click outside
     document.addEventListener("click", function (event) {
         if (
             !dropdownBtn.contains(event.target) &&
