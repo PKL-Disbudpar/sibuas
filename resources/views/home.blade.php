@@ -23,7 +23,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 72px;
+            padding: 18px 90px;
             position: relative;
         }
 
@@ -85,6 +85,7 @@
             min-width: 160px;
             box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
             z-index: 1;
+            right: 0
         }
 
         .nav-list li .dropdown.active {

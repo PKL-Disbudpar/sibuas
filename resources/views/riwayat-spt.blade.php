@@ -12,24 +12,36 @@
     <link rel="stylesheet" href="{{asset('css/style_riwayat-spt.css')}}">
 </head>
 <body>
-    <header>
-        <div id="navbar">
-            <div class="logo">
-                <img src="{{ asset('images/logoJatim.svg')}}" alt="Logo">
-                <div class="logo-text">
-                    <span>Sistem Informasi Buku Tamu dan SPT</span>
-                    <span>Dinas Kebudayaan dan Pariwisata Provinsi Jawa Timur</span>
-                </div>
+  <header>
+    <div class="navbar">
+        <div class="logo">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo">
+            <div class="judul">
+                <span>Sistem Informasi Buku Tamu dan SPT</span>
+                <span>Dinas Kebudayaan dan Pariwisata Provinsi Jawa Timur</span>
             </div>
-            <nav> 
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Buku Tamu</a></li>
-                    <li><a href="#">SPT</a></li>
-                </ul>
-            </nav>
         </div>
-    </header>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="{{url('/')}}">Home</a></li>
+                <li><a href="{{url('/')}}">Buku Tamu</a></li>
+                <li class="dropdown-container">
+                    <a href="javascript:void(0);" class="dropbtn">SPT <i class="arrow-down"></i></a>
+                    <div class="dropdown">
+                        <a href="#">Buat SPT</a>
+                        <a href="#">Riwayat SPT</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+  </header>
+
 
     <div class="card">
         <div class="card-header">
@@ -76,10 +88,9 @@
       <p>Copyright ©SIBUAS 2024</p>
     </footer>
 
-
-
-<!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
+    
+    <!-- jQuery -->
+    <script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables  & Plugins -->
@@ -100,22 +111,29 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
+<script src="{{ asset('js/main.js')}}"></script>
 <script>
   $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+    $("#example1")
+        .DataTable({
+            responsive: true,
+            lengthChange: false,
+            autoWidth: false,
+            buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+        })
+        .buttons()
+        .container()
+        .appendTo("#example1_wrapper .col-md-6:eq(0)");
+    $("#example2").DataTable({
+        paging: true,
+        lengthChange: false,
+        searching: false,
+        ordering: true,
+        info: true,
+        autoWidth: false,
+        responsive: true,
     });
-  });
+});
 </script>
 </body>
 </html>
