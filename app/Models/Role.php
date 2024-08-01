@@ -16,7 +16,6 @@ class Role extends Model
      */
 
     protected $fillable = [
-        'id_role',
         'nama_role',
     ];
 
