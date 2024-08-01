@@ -18,3 +18,4 @@ yarn-error.log
 /.vscode
 app/Models/
 database/migrations/
+routes/web.php
