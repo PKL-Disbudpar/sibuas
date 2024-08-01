@@ -183,4 +183,14 @@ footer p {
     .nav-list li .dropdown {
         position: static;
     }
+
+    .card {
+        padding: 0;
+        margin: 0 24px 36px 24px;
+    }
+
+    #subTitle p {
+        text-align: center;
+        margin: 0;
+    }
 }
