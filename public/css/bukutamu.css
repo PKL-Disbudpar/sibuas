@@ -152,6 +152,17 @@ footer p {
         padding: 18px 20px;
     }
 
+    .navbar .logo {
+        display: flex;
+        flex-direction: row;
+        width: 80%;
+    }
+
+    .judul {
+        font-size: 10pt;
+        width: 80%;
+    }
+
     .menu-toggle {
         display: flex;
     }
