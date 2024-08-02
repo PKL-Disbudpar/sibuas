@@ -10,19 +10,30 @@
 
 <body>
     <header>
-        <div id="navbar">
+        <div class="navbar">
             <div class="logo">
                 <img src="{{ asset('images/logo.png') }}" alt="Logo">
-                <div class="logo-text">
+                <div class="judul">
                     <span>Sistem Informasi Buku Tamu dan SPT</span>
                     <span>Dinas Kebudayaan dan Pariwisata Provinsi Jawa Timur</span>
                 </div>
             </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
             <nav>
-                <ul>
+                <ul class="nav-list">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Buku Tamu</a></li>
-                    <li><a href="#">SPT</a></li>
+                    <li class="dropdown-container">
+                        <a href="javascript:void(0);" class="dropbtn">SPT <i class="arrow-down"></i></a>
+                        <div class="dropdown">
+                            <a href="#">Buat SPT</a>
+                            <a href="#">Riwayat SPT</a>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -49,6 +60,7 @@
     <footer>
         <p>Copyright ©SIBUAS 2024</p>
     </footer>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 
 </html>
