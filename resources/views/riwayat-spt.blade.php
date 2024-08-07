@@ -29,12 +29,12 @@
         <nav>
             <ul class="nav-list">
                 <li><a href="{{url('/')}}">Home</a></li>
-                <li><a href="{{url('/')}}">Buku Tamu</a></li>
+                <li><a href="{{url('/BukuTamu')}}">Buku Tamu</a></li>
                 <li class="dropdown-container">
                     <a href="javascript:void(0);" class="dropbtn">SPT <i class="arrow-down"></i></a>
                     <div class="dropdown">
-                        <a href="#">Buat SPT</a>
-                        <a href="#">Riwayat SPT</a>
+                        <a href="{{url('/form-spt')}}">Buat SPT</a>
+                        <a href="{{url('/riwayat-spt')}}">Riwayat SPT</a>
                     </div>
                 </li>
             </ul>
