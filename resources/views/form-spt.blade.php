@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="{{asset('css/style_form-spt.css')}}">
 </head>
 <body>
@@ -31,12 +32,12 @@
         <nav>
             <ul class="nav-list">
                 <li><a href="{{url('/')}}">Home</a></li>
-                <li><a href="{{url('/')}}">Buku Tamu</a></li>
+                <li><a href="{{url('/BukuTamu')}}">Buku Tamu</a></li>
                 <li class="dropdown-container">
                     <a href="javascript:void(0);" class="dropbtn">SPT <i class="arrow-down"></i></a>
                     <div class="dropdown">
-                        <a href="#">Buat SPT</a>
-                        <a href="#">Riwayat SPT</a>
+                        <a href="{{url('/form-spt')}}">Buat SPT</a>
+                        <a href="{{url('/riwayat-spt')}}">Riwayat SPT</a>
                     </div>
                 </li>
             </ul>
@@ -62,17 +63,15 @@
               <input type="date" class="form-control" id="InputTanggalSPT" placeholder="Masukkan Tanggal SPT">
             </div>
             <div class="form-group">
-              <label>Nama</label>
-              <select class="select2bs4 form-control" multiple="multiple" data-placeholder="Select a State"
-                      style="width: 100%;">
-                <option>Kartika Sari</option>
-                <option>Ananda Ayu Puspitaningrum</option>
-                <option>Raissa Atha Febrianti</option>
-                <option>Delaware</option>
-                <option>Tennessee</option>
-                <option>Texas</option>
-                <option>Washington</option>
-              </select>
+              <div class="row">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <th class="col md-6">Nama</th>
+                    <th><button type="button" class="btn btn-primary ml-3" id="add-nama"><i class="fas fa-plus"></i></button></th>
+                  </thead>
+                  <tbody id="dataNama"></tbody>
+                </table>
+              </div>
             </div>
             <div class="form-group">
               <label for="InputTujuanSPT">Tujuan SPT</label>
@@ -101,8 +100,7 @@
       <p>Copyright ©SIBUAS 2024</p>
     </footer>
 
-    <script src="{{asset('js/main.js')}}"></script>
-
+    
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
@@ -202,10 +200,10 @@
     //Colorpicker
     $('.my-colorpicker1').colorpicker()
     //color picker with addon
-    $('.my-colorpicker2').colorpicker()
-
     $('.my-colorpicker2').on('colorpickerChange', function(event) {
+    $('.my-colorpicker2').colorpicker()
       $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+
     })
 
     $("input[data-bootstrap-switch]").each(function(){
@@ -214,5 +212,28 @@
 
   })
 </script>
+<script>
+  let dataRowDetail = 0;
+  $("#add-nama").click(() => {
+    dataRowDetail++;
+    inputRowDetail(dataRowDetail);
+  });
+  
+  inputRowDetail = (i) => {
+  
+    let tr = `<tr id="input-tr-${i}">
+                <td><input type="text" value="{{ old('namaDetail') }}" name="namaDetail[]" class="form-control form-control-sm" required></td>
+                <td><a class="btn btn-sm btn-danger delete-obyek float-right" data-ido="${i}">Hapus</a></td>
+              </tr>`;
+  
+    $("#dataNama").append(tr);
+  };
+
+  $("#dataNama").on("click", ".delete-obyek", function () {
+        let id = $(this).attr("data-ido");
+        $("#input-tr-" + id).remove();
+      });
+</script>
+{{-- <script src="{{asset('js/main.js')}}"></script> --}}
 </body>
 </html>
