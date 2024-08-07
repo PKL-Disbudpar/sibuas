@@ -105,36 +105,6 @@ header {
     -webkit-transform: rotate(45deg);
 }
 
-/* .dropdown-container:hover .dropdown {
-    display: block;
-}
-
-.dropbtn {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.arrow-down {
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 3px;
-    margin-left: 5px;
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-} */
-
-/* .nav-list li .arrow-down {
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 3px;
-    margin-left: 5px;
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-} */
-
 main {
     font-family: "Poppins", sans-serif;
     display: flex;
@@ -222,6 +192,11 @@ footer p {
         display: flex;
     }
 
+    .judul {
+        font-size: 10pt;
+        width: 80%;
+    }
+
     nav {
         display: none;
     }
@@ -234,6 +209,7 @@ footer p {
         background-color: #226597;
         padding: 10px;
         text-align: center;
+        z-index: 1000;
     }
 
     .nav-list {
