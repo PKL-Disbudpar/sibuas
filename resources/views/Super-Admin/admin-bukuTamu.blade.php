@@ -118,6 +118,7 @@
                                 <th>No.HP</th>
                                 <th>Tgl Pengunjung</th>
                                 <th>Keperluan</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -130,6 +131,13 @@
                                 <td>08787655677</td>
                                 <td>07-08-2024</td>
                                 <td>PKL</td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-danger btn-sm" href="#">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
+                                </td>
                             </tr>
 
                             <tr>
@@ -141,8 +149,14 @@
                                 <td>08787655677</td>
                                 <td>07-08-2024</td>
                                 <td>PKL</td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-danger btn-sm" href="#">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
+                                </td>
                             </tr>
-
                         </tbody>
 
                     </table>
