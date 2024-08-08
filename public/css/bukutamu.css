@@ -140,7 +140,7 @@ footer {
 footer p {
     color: #ffffff;
     margin: 0;
-    font-weight: 500;
+    font-weight: bold;
     font-size: 12px;
     text-align: center;
 }
@@ -178,6 +178,7 @@ footer p {
         background-color: #226597;
         padding: 10px;
         text-align: center;
+        z-index: 1000;
     }
 
     .nav-list {
@@ -194,6 +195,7 @@ footer p {
 
     .card {
         padding: 10px;
+        z-index: 1;
     }
 
     #subTitle p {
