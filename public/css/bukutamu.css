@@ -116,7 +116,6 @@ header {
 .card {
     padding: 18px 240px;
     margin-bottom: 0;
-    z-index: -1;
 }
 
 #buttons {
