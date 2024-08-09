@@ -55,16 +55,9 @@
         <div class="card-header">
             <h3 class="card-title">Form Buku Tamu</h3>
         </div>
-        <!-- /.card-header -->
-        <!-- form start -->
+
         <form>
             <div class="card-body">
-                <!--
-                <div class="form-group">
-                    <label for="InputTanggalSPT">Tanggal SPT</label>
-                    <input type="date" class="form-control" id="InputTanggalSPT" placeholder="Masukkan Tanggal SPT">
-                </div>
-                -->
                 <div class="form-group">
                     <label for="InputNamaPengunjung">Nama</label>
                     <input type="text" class="form-control" id="InputNamaPengunjung"
@@ -102,13 +95,13 @@
                     <button type="submit" class="btn btn-danger">Batal</button>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-success">Proses</button>
+                    <button type="submit" class="btn btn-success">Simpan</button>
                 </div>
             </div>
         </form>
     </section>
 
-    <footer>
+    <footer class>
         <p>Copyright ©SIBUAS 2024</p>
     </footer>
 
@@ -129,8 +122,8 @@
     <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE App
+    <script src="../../dist/js/adminlte.min.js"></script> -->
     <!-- AdminLTE for demo purposes
     <script src="../../dist/js/demo.js"></script> -->
     <script src="{{ asset('js/main.js') }}"></script>
