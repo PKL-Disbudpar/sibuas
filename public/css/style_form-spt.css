@@ -140,6 +140,15 @@ header {
     background-color: white;
 }
 
+.table thead th {
+    vertical-align: middle;
+}
+
+.table td,
+.table th {
+    border: none;
+}
+
 footer {
     background-color: #226597;
     padding: 18px;
@@ -158,6 +167,17 @@ footer p {
         padding: 10px 20px;
     }
 
+    .navbar .logo {
+        display: flex;
+        flex-direction: row;
+        width: 80%;
+    }
+
+    .judul {
+        font-size: 10pt;
+        width: 80%;
+    }
+
     .menu-toggle {
         display: flex;
     }
@@ -174,7 +194,7 @@ footer p {
         background-color: #226597;
         padding: 10px;
         text-align: center;
-        z-index: 1000;
+        z-index: 1;
     }
 
     .nav-list {

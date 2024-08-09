@@ -27,13 +27,13 @@
 
             <nav>
                 <ul class="nav-list">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#/BukuTamu">Buku Tamu</a></li>
+                    <li><a href="{{url('/')}}">Home</a></li>
+                    <li><a href="{{url('/BukuTamu')}}">Buku Tamu</a></li>
                     <li class="dropdown-container">
                         <a href="javascript:void(0);" class="dropbtn">SPT <i class="arrow-down"></i></a>
                         <div class="dropdown">
-                            <a href="#">Buat SPT</a>
-                            <a href="#">Riwayat SPT</a>
+                            <a href="{{url('/form-spt')}}">Buat SPT</a>
+                            <a href="{{url('/riwayat-spt')}}">Riwayat SPT</a>
                         </div>
                     </li>
                 </ul>
@@ -48,8 +48,8 @@
                 <h2>SISTEM INFORMASI BUKU TAMU DAN SPT (SIBUAS)</h2>
                 <p>Dinas Kebudayaan dan Pariwisata Provinsi Jawa Timur</p>
                 <div class="buttons">
-                    <a href="#" class="btn">Buku Tamu</a>
-                    <a href="#" class="btn">SPT</a>
+                    <a href="{{url('/BukuTamu')}}" class="btn">Buku Tamu</a>
+                    <a href="{{url('/form-spt')}}" class="btn">SPT</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -95,8 +95,8 @@
             </div>
             <div class="services">
                 <h3>Layanan</h3>
-                <a href="#">Buku Tamu</a>
-                <a href="#">SPT</a>
+                <a href="{{url('/BukuTamu')}}">Buku Tamu</a>
+                <a href="{{url('/form-spt')}}">SPT</a>
             </div>
         </div>
         <div class="footer-bottom">
