@@ -115,7 +115,6 @@ header {
 .card {
     padding: 18px 240px;
     margin-bottom: 0;
-    z-index: -1;
 }
 
 .card .card-header {
@@ -175,6 +174,7 @@ footer p {
         background-color: #226597;
         padding: 10px;
         text-align: center;
+        z-index: 1000;
     }
 
     .nav-list {
