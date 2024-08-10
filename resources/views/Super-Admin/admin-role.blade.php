@@ -81,15 +81,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/admin-role') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>
-                                Master Role
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ url('/') }}" class="nav-link">
+                        <a href="{{ url('/admin-bidang') }}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>
                                 Master Bidang
@@ -101,6 +93,14 @@
                             <i class="far fa-circle nav-icon"></i>
                             <p>
                                 Master Pengguna
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/admin-role') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>
+                                Master Role
                             </p>
                         </a>
                     </li>
@@ -131,12 +131,20 @@
         <!-- /.content-header -->
 
         <section class="content">
-
-
+            
+            
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Daftar Role</h3>
+                    <div class="row">
+                        <div class="col-12">
+                            <a class="btn btn-primary float-right" href="{{ url('/role-form') }}">
+                                <i class="fas fa-pencil-alt"></i>
+                                Tambah Role
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -145,24 +153,43 @@
                             <tr>
                                 <th style="width: 10%">No</th>
                                 <th>Nama Role</th>
+                                <th style="width: 10%"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1.</td>
                                 <td>Super Admin</td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-info btn-sm" href="#">
+                                        <i class="fas fa-pencil-alt"></i>
+                                        Edit
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>2.</td>
                                 <td>Admin Bidang</td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-info btn-sm" href="#">
+                                        <i class="fas fa-pencil-alt"></i>
+                                        Edit
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
-                                <td>2.</td>
+                                <td>3.</td>
                                 <td>Admin Resepsionis</td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-info btn-sm" href="#">
+                                        <i class="fas fa-pencil-alt"></i>
+                                        Edit
+                                    </a>
+                                </td>
                             </tr>
                         </tbody>
-
                     </table>
+
                 </div>
                 <!-- /.card-body -->
             </div>
