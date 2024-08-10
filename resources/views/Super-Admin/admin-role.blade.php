@@ -139,7 +139,7 @@
                     <h3 class="card-title">Daftar Role</h3>
                     <div class="row">
                         <div class="col-12">
-                            <a class="btn btn-primary float-right" href="{{ url('/role-form') }}">
+                            <a class="btn btn-primary float-right" href="{{ url('/form-role') }}">
                                 <i class="fas fa-pencil-alt"></i>
                                 Tambah Role
                             </a>
