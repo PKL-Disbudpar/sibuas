@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BukuTamuController;
+use App\Http\Controllers\PenggunaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,13 +55,9 @@ Route::get('/bidang-suratTugas', function () {
     return view('Bidang.bidang-suratTugas');
 });
 
-Route::get('/Login', function () {
-    return view('Login');
-});
+Route::get('/login', [PenggunaController::class, 'login']);
 
-Route::get('/BukuTamu', function () {
-    return view('bukutamu');
-});
+Route::resource('bukutamu', BukuTamuController::class);
 
 Route::get('/admin-role', function () {
     return view('Super-Admin.admin-role');
@@ -67,4 +65,16 @@ Route::get('/admin-role', function () {
 
 Route::get('/admin-masterPegawai', function () {
     return view('Super-Admin.admin-masterPegawai');
+});
+
+Route::get('/admin-bidang', function () {
+    return view('Super-Admin.admin-bidang');
+});
+
+Route::get('/form-role', function () {
+    return view('Forms.form-role');
+});
+
+Route::get('/form-bidang', function () {
+    return view('Forms.form-bidang');
 });
