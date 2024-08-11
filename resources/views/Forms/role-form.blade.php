@@ -123,6 +123,7 @@
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('/admin-dashboard') }}">Home</a></li>
                             <li class="breadcrumb-item active">Role</li>
+                            <li class="breadcrumb-item active">Input Data Role</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -136,60 +137,33 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Daftar Role</h3>
-                    <div class="row">
-                        <div class="col-12">
-                            <a class="btn btn-primary float-right" href="{{ url('/form-role') }}">
-                                <i class="fas fa-pencil-alt"></i>
-                                Tambah Role
-                            </a>
-                        </div>
-                    </div>
+                    <h3 class="card-title">Input Data Role</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="example1" class="table table-bordered table-striped dataTable dtr-inline">
-                        <thead>
-                            <tr>
-                                <th style="width: 10%">No</th>
-                                <th>Nama Role</th>
-                                <th style="width: 10%"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1.</td>
-                                <td>Super Admin</td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt"></i>
-                                        Edit
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2.</td>
-                                <td>Admin Bidang</td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt"></i>
-                                        Edit
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3.</td>
-                                <td>Admin Resepsionis</td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt"></i>
-                                        Edit
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
+                    <div class="card card-primary">
+                        <div class="card-header">
+                          <h3 class="card-title">Data Role</h3>
+                          <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                              <i class="fas fa-minus"></i>
+                            </button>
+                          </div>
+                        </div>
+                        <div class="card-body">
+                          <div class="form-group">
+                            <label for="inputName">Nama Role</label>
+                            <input type="text" id="inputName" class="form-control">
+                          </div>
+                        </div>
+                        <!-- /.card-body -->
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <a href="{{ url('/admin-role') }}" class="btn btn-secondary">Cancel</a>
+                          <input type="submit" value="Simpan" class="btn btn-success float-right">
+                        </div>
+                      </div>
                 </div>
                 <!-- /.card-body -->
             </div>

@@ -60,3 +60,11 @@ Route::get('/Login', function () {
 Route::get('/BukuTamu', function () {
     return view('bukutamu');
 });
+
+Route::get('/admin-role', function () {
+    return view('Super-Admin.admin-role');
+});
+
+Route::get('/admin-masterPegawai', function () {
+    return view('Super-Admin.admin-masterPegawai');
+});

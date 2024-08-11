@@ -122,7 +122,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('/admin-dashboard') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Role</li>
+                            <li class="breadcrumb-item active">Bidang</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -131,15 +131,15 @@
         <!-- /.content-header -->
 
         <section class="content">
-            
-            
+
+
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Daftar Role</h3>
+                    <h3 class="card-title">Daftar Bidang</h3>
                     <div class="row">
                         <div class="col-12">
-                            <a class="btn btn-primary float-right" href="{{ url('/form-role') }}">
+                            <a class="btn btn-primary float-right" href="{{ url('/form-bidang') }}">
                                 <i class="fas fa-pencil-alt"></i>
                                 Tambah Role
                             </a>
@@ -152,14 +152,16 @@
                         <thead>
                             <tr>
                                 <th style="width: 10%">No</th>
-                                <th>Nama Role</th>
+                                <th>Nama Bidang</th>
+                                <th>Kode Bidang</th>
                                 <th style="width: 10%"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1.</td>
-                                <td>Super Admin</td>
+                                <td>Sekretariat</td>
+                                <td>118.1</td>
                                 <td class="project-actions text-right">
                                     <a class="btn btn-info btn-sm" href="#">
                                         <i class="fas fa-pencil-alt"></i>
@@ -169,17 +171,8 @@
                             </tr>
                             <tr>
                                 <td>2.</td>
-                                <td>Admin Bidang</td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt"></i>
-                                        Edit
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3.</td>
-                                <td>Admin Resepsionis</td>
+                                <td>Sekretaris</td>
+                                <td>118.11</td>
                                 <td class="project-actions text-right">
                                     <a class="btn btn-info btn-sm" href="#">
                                         <i class="fas fa-pencil-alt"></i>
@@ -188,8 +181,8 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
 
+                    </table>
                 </div>
                 <!-- /.card-body -->
             </div>
