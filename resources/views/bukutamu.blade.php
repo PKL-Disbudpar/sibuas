@@ -56,7 +56,7 @@
             <h3 class="card-title">Form Buku Tamu</h3>
         </div>
 
-        <form action="{{ route('bukutamu.store') }}" method="POST">
+        <form action="{{ route('buku-tamu.store') }}" method="POST">
             @csrf
             <div class="card-body">
                 <div class="form-group">
