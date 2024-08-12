@@ -73,10 +73,26 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/') }}" class="nav-link">
+                        <a href="{{ url('/admin-masterPegawai') }}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>
                                 Master Pegawai
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/admin-bidang') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>
+                                Master Bidang
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/admin-pengguna') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>
+                                Master Pengguna
                             </p>
                         </a>
                     </li>
@@ -85,22 +101,6 @@
                             <i class="far fa-circle nav-icon"></i>
                             <p>
                                 Master Role
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ url('/') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>
-                                Master Bidang
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ url('/') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>
-                                Master Pengguna
                             </p>
                         </a>
                     </li>
@@ -137,6 +137,14 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Daftar Master Pegawai</h3>
+                    <div class="row">
+                        <div class="col-12">
+                            <a class="btn btn-primary float-right" href="{{ url('/form-masterPegawai') }}">
+                                <i class="fas fa-pencil-alt"></i>
+                                Tambah Pegawai
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">

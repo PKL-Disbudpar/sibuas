@@ -32,13 +32,13 @@
 
             <nav>
                 <ul class="nav-list">
-                    <li><a href="{{url('/')}}">Home</a></li>
-                    <li><a href="{{url('/BukuTamu')}}">Buku Tamu</a></li>
+                    <li><a href="{{ url('/') }}">Home</a></li>
+                    <li><a href="{{ url('/BukuTamu') }}">Buku Tamu</a></li>
                     <li class="dropdown-container">
                         <a href="javascript:void(0);" class="dropbtn">SPT <i class="arrow-down"></i></a>
                         <div class="dropdown">
-                            <a href="{{url('/form-spt')}}">Buat SPT</a>
-                            <a href="{{url('/riwayat-spt')}}">Riwayat SPT</a>
+                            <a href="{{ url('/form-spt') }}">Buat SPT</a>
+                            <a href="{{ url('/riwayat-spt') }}">Riwayat SPT</a>
                         </div>
                     </li>
                 </ul>
@@ -57,9 +57,7 @@
         </div>
 
         <form action="{{ route('bukutamu.store') }}" method="POST">
-
             @csrf
-
             <div class="card-body">
                 <div class="form-group">
                     <label for="InputNamaPengunjung">Nama</label>
@@ -81,7 +79,8 @@
                 </div>
                 <div class="form-group">
                     <label for="InputNoHp">No.Hp</label>
-                    <input type="text" class="form-control" id="InputNoHp" name="no_hp" placeholder="Masukkan No.Hp">
+                    <input type="text" class="form-control" id="InputNoHp" name="no_hp"
+                        placeholder="Masukkan No.Hp">
                 </div>
                 <div class="form-group">
                     <label for="InputTanggalPengunjung">Tanggal Pengunjung</label>

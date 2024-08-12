@@ -73,7 +73,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/admin-masterPegawai') }}" class="nav-link">
+                        <a href="{{ url('/') }}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>
                                 Master Pegawai
@@ -89,7 +89,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/admin-pengguna') }}" class="nav-link">
+                        <a href="{{ url('/') }}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>
                                 Master Pengguna
@@ -122,7 +122,8 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('/admin-dashboard') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Buku Tamu</li>
+                            <li class="breadcrumb-item active">Pengguna</li>
+                            <li class="breadcrumb-item active">Input Data Pengguna</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -136,62 +137,42 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Daftar Buku Tamu</h3>
+                    <h3 class="card-title">Input Data Pengguna</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="example1" class="table table-bordered table-striped dataTable dtr-inline">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>Asal Instansi</th>
-                                <th>Jenis Kelamin</th>
-                                <th>No.HP</th>
-                                <th>Tgl Pengunjung</th>
-                                <th>Keperluan</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1.</td>
-                                <td>Kartika Sari
-                                </td>
-                                <td>UPN JATIM</td>
-                                <td>Perempuan</td>
-                                <td>08787655677</td>
-                                <td>07-08-2024</td>
-                                <td>PKL</td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>2.</td>
-                                <td>Ananda Ayu
-                                </td>
-                                <td>UPN JATIM</td>
-                                <td>Perempuan</td>
-                                <td>08787655677</td>
-                                <td>07-08-2024</td>
-                                <td>PKL</td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-
-                    </table>
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Data Pengguna</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                    title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="inputName">Nama</label>
+                                <input type="text" id="inputName" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName">Usernama</label>
+                                <input type="text" id="inputName" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputKode">Password</label>
+                                <input type="number" id="inputPassword" class="form-control">
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="{{ url('/admin-bidang') }}" class="btn btn-secondary">Cancel</a>
+                            <input type="submit" value="Simpan" class="btn btn-success float-right">
+                        </div>
+                    </div>
                 </div>
                 <!-- /.card-body -->
             </div>

@@ -122,7 +122,8 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('/admin-dashboard') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Buku Tamu</li>
+                            <li class="breadcrumb-item active">Bidang</li>
+                            <li class="breadcrumb-item active">Input Data Bidang</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -131,67 +132,69 @@
         <!-- /.content-header -->
 
         <section class="content">
-
-
+            
+            
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Daftar Buku Tamu</h3>
+                    <h3 class="card-title">Input Data Pegawai</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="example1" class="table table-bordered table-striped dataTable dtr-inline">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>Asal Instansi</th>
-                                <th>Jenis Kelamin</th>
-                                <th>No.HP</th>
-                                <th>Tgl Pengunjung</th>
-                                <th>Keperluan</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1.</td>
-                                <td>Kartika Sari
-                                </td>
-                                <td>UPN JATIM</td>
-                                <td>Perempuan</td>
-                                <td>08787655677</td>
-                                <td>07-08-2024</td>
-                                <td>PKL</td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>2.</td>
-                                <td>Ananda Ayu
-                                </td>
-                                <td>UPN JATIM</td>
-                                <td>Perempuan</td>
-                                <td>08787655677</td>
-                                <td>07-08-2024</td>
-                                <td>PKL</td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-
-                    </table>
+                    <div class="card card-primary">
+                        <div class="card-header">
+                          <h3 class="card-title">Data Pegawai</h3>
+                          <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                              <i class="fas fa-minus"></i>
+                            </button>
+                          </div>
+                        </div>
+                        <div class="card-body">
+                          <div class="form-group">
+                            <label for="inputNip">NIP</label>
+                            <input type="number" id="inputNip" class="form-control">
+                          </div>
+                          <div class="form-group">
+                            <label for="inputName">Nama Pegawai</label>
+                            <input type="text" id="inputName" class="form-control">
+                          </div>
+                          <div class="form-group">
+                            <label for="inputJabatan">Jabatan</label>
+                            <input type="text" id="inputJabatan" class="form-control">
+                          </div>
+                          <div class="form-group">
+                            <label for="inputGolongan">Nama Pegawai</label>
+                            {{-- <input type="text" id="inputGolongan" class="form-control"> --}}
+                            <select class="form-control select2" style="width: 100%;">
+                                <option selected="selected">Ia</option>
+                                <option>Ib</option>
+                                <option>Ic</option>
+                                <option>Id</option>
+                                <option>IIa</option>
+                                <option>IIb</option>
+                                <option>IIc</option>
+                                <option>IId</option>
+                                <option>IIIa</option>
+                                <option>IIIb</option>
+                                <option>IIIc</option>
+                                <option>IIId</option>
+                                <option>IVa</option>
+                                <option>IVb</option>
+                                <option>IVc</option>
+                                <option>IVd</option>
+                                <option>IVe</option>
+                            </select>
+                          </div>
+                        </div>
+                        <!-- /.card-body -->
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <a href="{{ url('/admin-masterPegawai') }}" class="btn btn-secondary">Cancel</a>
+                          <input type="submit" value="Simpan" class="btn btn-success float-right">
+                        </div>
+                      </div>
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -206,7 +209,7 @@
         <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <footer class="main-footer fixed-bottom">
+        <footer class="main-footer m-0">
             <strong>Copyright &copy; 2024 <a href="https://adminlte.io">Disbudpar</a>.</strong>
             All rights reserved.
         </footer>

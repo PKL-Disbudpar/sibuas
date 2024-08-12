@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+// Main
 Route::get('/', function () {
     return view('home');
 });
@@ -27,6 +29,12 @@ Route::get('/form-spt', function () {
     return view('form-spt');
 });
 
+Route::resource('/login', PenggunaController::class);
+
+Route::resource('/buku-tamu', BukuTamuController::class);
+
+
+// Super Admin
 Route::get('/admin-dashboard', function () {
     return view('Super-Admin.admin-dashboard');
 });
@@ -39,32 +47,9 @@ Route::get('/admin-suratTugas', function () {
     return view('Super-Admin.admin-suratTugas');
 });
 
-Route::get('/resepsionis-dashboard', function () {
-    return view('Resepsionis.resepsionis-dashboard');
+Route::get('/admin-pengguna', function () {
+    return view('Super-Admin.admin-pengguna');
 });
-
-Route::get('/resepsionis-bukuTamu', function () {
-    return view('Resepsionis.resepsionis-bukuTamu');
-});
-
-Route::get('/bidang-dashboard', function () {
-    return view('Bidang.bidang-dashboard');
-});
-
-Route::get('/bidang-suratTugas', function () {
-    return view('Bidang.bidang-suratTugas');
-});
-
-// Route::get('/login', [PenggunaController::class, 'login']);
-Route::get('/login', function () {
-    return view('login');
-});
-
-
-// Route::resource('/bukutamu', BukuTamuController::class);
-Route::get('/bukutamu', [BukuTamuController::class, 'index']);
-Route::post('/bukutamu/create', [BukuTamuController::class, 'store'])->name('bukutamu.store');
-Route::get('/bukutamu/:id', [BukuTamuController::class, 'show']);
 
 Route::get('/admin-role', function () {
     return view('Super-Admin.admin-role');
@@ -78,10 +63,39 @@ Route::get('/admin-bidang', function () {
     return view('Super-Admin.admin-bidang');
 });
 
+
+// Resepsionis
+Route::get('/resepsionis-dashboard', function () {
+    return view('Resepsionis.resepsionis-dashboard');
+});
+
+Route::get('/resepsionis-bukuTamu', function () {
+    return view('Resepsionis.resepsionis-bukuTamu');
+});
+
+
+// Bidang
+Route::get('/bidang-dashboard', function () {
+    return view('Bidang.bidang-dashboard');
+});
+
+Route::get('/bidang-suratTugas', function () {
+    return view('Bidang.bidang-suratTugas');
+});
+
+
+// Forms
+Route::get('/form-pengguna', function () {
+    return view('Forms.form-pengguna');
+});
 Route::get('/form-role', function () {
     return view('Forms.form-role');
 });
 
 Route::get('/form-bidang', function () {
     return view('Forms.form-bidang');
+});
+
+Route::get('/form-masterPegawai', function () {
+    return view('Forms.form-masterPegawai');
 });

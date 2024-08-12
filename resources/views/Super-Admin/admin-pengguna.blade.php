@@ -122,7 +122,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('/admin-dashboard') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Buku Tamu</li>
+                            <li class="breadcrumb-item active">Pengguna</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -136,62 +136,64 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Daftar Buku Tamu</h3>
+                    <h3 class="card-title">Daftar Pengguna</h3>
+                    <div class="row">
+                        <div class="col-12">
+                            <a class="btn btn-primary float-right" href="{{ url('/form-role') }}">
+                                <i class="fas fa-pencil-alt"></i>
+                                Tambah Pengguna
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
                     <table id="example1" class="table table-bordered table-striped dataTable dtr-inline">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                <th style="width: 10%">No</th>
                                 <th>Nama</th>
-                                <th>Asal Instansi</th>
-                                <th>Jenis Kelamin</th>
-                                <th>No.HP</th>
-                                <th>Tgl Pengunjung</th>
-                                <th>Keperluan</th>
+                                <th>Username</th>
+                                <th>Password</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1.</td>
-                                <td>Kartika Sari
-                                </td>
-                                <td>UPN JATIM</td>
-                                <td>Perempuan</td>
-                                <td>08787655677</td>
-                                <td>07-08-2024</td>
-                                <td>PKL</td>
+                                <td>Kartika</td>
+                                <td>karka_</td>
+                                <td>293838</td>
                                 <td class="project-actions text-right">
+                                    <a class="btn btn-info btn-sm" href="#">
+                                        <i class="fas fa-pencil-alt"></i>
+                                        Edit
+                                    </a>
                                     <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
+                                        <i class="fas fa-trash-alt"></i>
                                         Delete
                                     </a>
                                 </td>
                             </tr>
-
                             <tr>
                                 <td>2.</td>
-                                <td>Ananda Ayu
-                                </td>
-                                <td>UPN JATIM</td>
-                                <td>Perempuan</td>
-                                <td>08787655677</td>
-                                <td>07-08-2024</td>
-                                <td>PKL</td>
+                                <td>Ananda</td>
+                                <td>ananda.app</td>
+                                <td>293838</td>
                                 <td class="project-actions text-right">
+                                    <a class="btn btn-info btn-sm" href="#">
+                                        <i class="fas fa-pencil-alt"></i>
+                                        Edit
+                                    </a>
                                     <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
+                                        <i class="fas fa-trash-alt"></i>
                                         Delete
                                     </a>
                                 </td>
                             </tr>
                         </tbody>
-
                     </table>
+
                 </div>
                 <!-- /.card-body -->
             </div>
