@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BukuTamuController;
+use App\Http\Controllers\PenggunaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -88,4 +90,11 @@ Route::get('/bidang-suratTugas', function () {
 // Forms
 Route::get('/form-pengguna', function () {
     return view('Forms.form-pengguna');
+});
+Route::get('/form-role', function () {
+    return view('Forms.form-role');
+});
+
+Route::get('/form-bidang', function () {
+    return view('Forms.form-bidang');
 });

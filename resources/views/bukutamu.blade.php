@@ -61,17 +61,17 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="InputNamaPengunjung">Nama</label>
-                    <input type="text" class="form-control" id="InputNamaPengunjung"
+                    <input type="text" class="form-control" id="InputNamaPengunjung" name="nama_tamu"
                         placeholder="Masukkan Nama Pengunjung">
                 </div>
                 <div class="form-group">
                     <label for="InputAsalInstansi">Asal Instansi</label>
-                    <input type="text" class="form-control" id="InputAsalInstansi"
+                    <input type="text" class="form-control" id="InputAsalInstansi" name="asal_instansi"
                         placeholder="Masukkan Asal Instansi">
                 </div>
                 <div class="form-group">
                     <label>Jenis Kelamin</label>
-                    <select class="form-control select2" style="width: 100%;">
+                    <select class="form-control select2" style="width: 100%;" name="jenis_kelamin">
                         <option selected="selected"></option>
                         <option>Perempuan</option>
                         <option>Laki-laki</option>
@@ -79,16 +79,17 @@
                 </div>
                 <div class="form-group">
                     <label for="InputNoHp">No.Hp</label>
-                    <input type="text" class="form-control" id="InputNoHp" placeholder="Masukkan No.Hp">
+                    <input type="text" class="form-control" id="InputNoHp" name="no_hp"
+                        placeholder="Masukkan No.Hp">
                 </div>
                 <div class="form-group">
                     <label for="InputTanggalPengunjung">Tanggal Pengunjung</label>
-                    <input type="date" class="form-control" id="InputTanggalPengunjung"
+                    <input type="date" class="form-control" id="InputTanggalPengunjung" name="tgl_pengunjung"
                         placeholder="Masukkan Tanggal Pengunjung" value="{{ date('Y-m-d') }}">
                 </div>
                 <div class="form-group">
                     <label for="InputKeperluan">Keperluan</label>
-                    <textarea class="form-control" id="InputKeperluan" placeholder="Masukkan Keperluan" rows="5"></textarea>
+                    <textarea class="form-control" id="InputKeperluan" name="keperluan" placeholder="Masukkan Keperluan" rows="5"></textarea>
                 </div>
             </div>
             <div id="buttons">
