@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BukuTamuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,11 +29,10 @@ Route::get('/Login', function () {
     return view('Login');
 });
 
-
 Route::get('/BukuTamu', function () {
     return view('BukuTamu');
 });
-Route::post('/bukutamu/store', [BukuTamuController::class, 'store'])->name('bukutamu.store');
+
 
 
 // Super Admin
