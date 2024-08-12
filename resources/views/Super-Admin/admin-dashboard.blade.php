@@ -71,6 +71,38 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/admin-masterPegawai') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>
+                                Master Pegawai
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/admin-bidang') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>
+                                Master Bidang
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/admin-pengguna') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>
+                                Master Pengguna
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/admin-role') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>
+                                Master Role
+                            </p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
