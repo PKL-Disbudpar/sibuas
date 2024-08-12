@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_bidang');
             $table->unsignedBigInteger('id_role');
-            $table->string('nama');
             $table->string('username');
             $table->string('password');
             $table->timestamps();
