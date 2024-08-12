@@ -15,7 +15,7 @@ class BukuTamu extends Model
      * @var array
      */
     protected $fillable = [
-        'nama',
+        'nama_tamu',
         'asal_instansi',
         'jenis_kelamin',
         'no_hp',
