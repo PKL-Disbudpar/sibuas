@@ -100,7 +100,7 @@
                     <div class="icon">
                         <i class="ion ion-person"></i>
                     </div>
-                    <a href="{{ url('/admin-bukuTamu') }}" class="small-box-footer">Info Lebih Lanjut <i
+                    <a href="{{ url('/resepsionis-bukuTamu') }}" class="small-box-footer">Info Lebih Lanjut <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
