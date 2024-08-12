@@ -15,7 +15,6 @@ class Pengguna extends Model
      * @var array
      */
     protected $fillable = [
-        'nama',
         'username',
         'password',
     ];
