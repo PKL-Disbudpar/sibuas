@@ -22,4 +22,6 @@ class BukuTamu extends Model
         'tgl_pengunjung',
         'keperluan',
     ];
+
+    protected $table = 'buku_tamus';
 }
