@@ -98,3 +98,7 @@ Route::get('/form-role', function () {
 Route::get('/form-bidang', function () {
     return view('Forms.form-bidang');
 });
+
+Route::get('/form-masterPegawai', function () {
+    return view('Forms.form-masterPegawai');
+});
