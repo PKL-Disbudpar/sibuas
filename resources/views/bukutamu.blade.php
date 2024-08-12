@@ -32,13 +32,13 @@
 
             <nav>
                 <ul class="nav-list">
-                    <li><a href="{{url('/')}}">Home</a></li>
-                    <li><a href="{{url('/BukuTamu')}}">Buku Tamu</a></li>
+                    <li><a href="{{ url('/') }}">Home</a></li>
+                    <li><a href="{{ url('/BukuTamu') }}">Buku Tamu</a></li>
                     <li class="dropdown-container">
                         <a href="javascript:void(0);" class="dropbtn">SPT <i class="arrow-down"></i></a>
                         <div class="dropdown">
-                            <a href="{{url('/form-spt')}}">Buat SPT</a>
-                            <a href="{{url('/riwayat-spt')}}">Riwayat SPT</a>
+                            <a href="{{ url('/form-spt') }}">Buat SPT</a>
+                            <a href="{{ url('/riwayat-spt') }}">Riwayat SPT</a>
                         </div>
                     </li>
                 </ul>
@@ -56,7 +56,8 @@
             <h3 class="card-title">Form Buku Tamu</h3>
         </div>
 
-        <form>
+        <form action="{{ route('bukutamu.store') }}" method="POST">
+            @csrf
             <div class="card-body">
                 <div class="form-group">
                     <label for="InputNamaPengunjung">Nama</label>
