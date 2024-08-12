@@ -55,9 +55,16 @@ Route::get('/bidang-suratTugas', function () {
     return view('Bidang.bidang-suratTugas');
 });
 
-Route::get('/login', [PenggunaController::class, 'login']);
+// Route::get('/login', [PenggunaController::class, 'login']);
+Route::get('/login', function () {
+    return view('login');
+});
 
-Route::resource('bukutamu', BukuTamuController::class);
+
+// Route::resource('/bukutamu', BukuTamuController::class);
+Route::get('/bukutamu', [BukuTamuController::class, 'index']);
+Route::post('/bukutamu/create', [BukuTamuController::class, 'store'])->name('bukutamu.store');
+Route::get('/bukutamu/:id', [BukuTamuController::class, 'show']);
 
 Route::get('/admin-role', function () {
     return view('Super-Admin.admin-role');
