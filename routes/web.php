@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\BukuTamuController;
-use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\FormPenggunaController;
+// use App\Http\Controllers\PenggunaController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,8 +30,6 @@ Route::get('/riwayat-spt', function () {
 Route::get('/form-spt', function () {
     return view('form-spt');
 });
-
-Route::resource('/login', PenggunaController::class);
 
 Route::resource('/buku-tamu', BukuTamuController::class);
 
@@ -99,3 +99,5 @@ Route::get('/form-bidang', function () {
 Route::get('/form-masterPegawai', function () {
     return view('Forms.form-masterPegawai');
 });
+
+Route::resource('/form-pengguna', FormPenggunaController::class);
