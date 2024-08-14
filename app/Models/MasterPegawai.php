@@ -25,4 +25,6 @@ class MasterPegawai extends Model
     {
         return $this->hasMany(SuratTugas::class);
     }
+
+    protected $table = "master_pegawais";
 }
