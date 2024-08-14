@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BukuTamuController;
+use App\Http\Controllers\FormPenggunaController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\SuratTugasController;
 use App\Http\Controllers\FormBidangController;
@@ -30,8 +31,6 @@ Route::get('/riwayat-spt', function () {
 });
 
 Route::resource('/form-spt', SuratTugasController::class);
-
-Route::resource('/login', PenggunaController::class);
 
 Route::resource('/buku-tamu', BukuTamuController::class);
 
@@ -87,11 +86,10 @@ Route::get('/bidang-suratTugas', function () {
 
 
 // Forms
-Route::get('/form-pengguna', function () {
-    return view('Forms.form-pengguna');
-});
 Route::resource('/form-role', FormRoleController::class);
 
 Route::resource('/form-bidang', FormBidangController::class);
+
+Route::resource('/form-pengguna', FormPenggunaController::class);
 
 Route::resource('/form-masterPegawai', FormPegawaiController::class);

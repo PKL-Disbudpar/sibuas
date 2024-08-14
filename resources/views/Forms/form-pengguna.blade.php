@@ -139,42 +139,59 @@
                 <div class="card-header">
                     <h3 class="card-title">Input Data Pengguna</h3>
                 </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Data Pengguna</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"
-                                    title="Collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
+                <form action="{{ route('form-pengguna.store') }}" method="POST">
+                    @csrf
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Data Pengguna</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                        title="Collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="inputName">Username</label>
+                                    <input type="string" id="inputName" class="form-control" name="username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputKode">Password</label>
+                                    <input type="string" id="inputPassword" class="form-control" name="password">
+                                </div>
+                                {{-- <div class="form-group">
+                                    <label for="role">Role</label>
+                                    <select id="role" class="form-control" name="id_role">
+                                        <!-- Pilihan role -->
+                                        <option value="1">Admin</option>
+                                        <option value="2">User</option>
+                                        <!-- Tambahkan pilihan lainnya -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bidang">Bidang</label>
+                                    <select id="bidang" class="form-control" name="id_bidang">
+                                        <!-- Pilihan bidang -->
+                                        <option value="1">Bidang A</option>
+                                        <option value="2">Bidang B</option>
+                                        <!-- Tambahkan pilihan lainnya -->
+                                    </select>
+                                </div> --}}
+
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="{{ url('/admin-bidang') }}" class="btn btn-secondary">Cancel</a>
+                                <input type="submit" value="Simpan" class="btn btn-success float-right">
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="inputName">Nama</label>
-                                <input type="text" id="inputName" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputName">Usernama</label>
-                                <input type="text" id="inputName" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputKode">Password</label>
-                                <input type="number" id="inputPassword" class="form-control">
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <a href="{{ url('/admin-bidang') }}" class="btn btn-secondary">Cancel</a>
-                            <input type="submit" value="Simpan" class="btn btn-success float-right">
-                        </div>
-                    </div>
-                </div>
-                <!-- /.card-body -->
+                    <!-- /.card-body -->
             </div>
             <!-- /.card -->
             </div>
@@ -187,6 +204,7 @@
         <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
+        </form>
         <footer class="main-footer fixed-bottom">
             <strong>Copyright &copy; 2024 <a href="https://adminlte.io">Disbudpar</a>.</strong>
             All rights reserved.
