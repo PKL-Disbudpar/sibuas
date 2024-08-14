@@ -5,6 +5,7 @@ use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\SuratTugasController;
 use App\Http\Controllers\FormBidangController;
 use App\Http\Controllers\FormRoleController;
+use App\Http\Controllers\FormPegawaiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -93,6 +94,4 @@ Route::resource('/form-role', FormRoleController::class);
 
 Route::resource('/form-bidang', FormBidangController::class);
 
-Route::get('/form-masterPegawai', function () {
-    return view('Forms.form-masterPegawai');
-});
+Route::resource('/form-masterPegawai', FormPegawaiController::class);
