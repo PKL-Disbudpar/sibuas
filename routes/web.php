@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\BukuTamuController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\SuratTugasController;
+use App\Http\Controllers\FormBidangController;
+use App\Http\Controllers\FormRoleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,9 +28,7 @@ Route::get('/riwayat-spt', function () {
     return view('riwayat-spt');
 });
 
-Route::get('/form-spt', function () {
-    return view('form-spt');
-});
+Route::resource('/form-spt', SuratTugasController::class);
 
 Route::resource('/login', PenggunaController::class);
 
@@ -88,13 +89,9 @@ Route::get('/bidang-suratTugas', function () {
 Route::get('/form-pengguna', function () {
     return view('Forms.form-pengguna');
 });
-Route::get('/form-role', function () {
-    return view('Forms.form-role');
-});
+Route::resource('/form-role', FormRoleController::class);
 
-Route::get('/form-bidang', function () {
-    return view('Forms.form-bidang');
-});
+Route::resource('/form-bidang', FormBidangController::class);
 
 Route::get('/form-masterPegawai', function () {
     return view('Forms.form-masterPegawai');
