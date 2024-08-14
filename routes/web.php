@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BukuTamuController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\FormPegawaiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -96,6 +97,4 @@ Route::get('/form-bidang', function () {
     return view('Forms.form-bidang');
 });
 
-Route::get('/form-masterPegawai', function () {
-    return view('Forms.form-masterPegawai');
-});
+Route::resource('/form-masterPegawai', FormPegawaiController::class);
