@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/style_home.css') }}">
-    
+
     <title>Sistem Informasi Buku Tamu dan SPT</title>
 </head>
 
@@ -27,13 +27,13 @@
 
             <nav>
                 <ul class="nav-list">
-                    <li><a href="{{url('/')}}">Home</a></li>
-                    <li><a href="{{url('/BukuTamu')}}">Buku Tamu</a></li>
+                    <li><a href="{{ url('/') }}">Home</a></li>
+                    <li><a href="{{ url('/buku-tamu') }}">Buku Tamu</a></li>
                     <li class="dropdown-container">
                         <a href="javascript:void(0);" class="dropbtn">SPT <i class="arrow-down"></i></a>
                         <div class="dropdown">
-                            <a href="{{url('/form-spt')}}">Buat SPT</a>
-                            <a href="{{url('/riwayat-spt')}}">Riwayat SPT</a>
+                            <a href="{{ url('/form-spt') }}">Buat SPT</a>
+                            <a href="{{ url('/riwayat-spt') }}">Riwayat SPT</a>
                         </div>
                     </li>
                 </ul>
@@ -48,8 +48,8 @@
                 <h2>SISTEM INFORMASI BUKU TAMU DAN SPT (SIBUAS)</h2>
                 <p>Dinas Kebudayaan dan Pariwisata Provinsi Jawa Timur</p>
                 <div class="buttons">
-                    <a href="{{url('/BukuTamu')}}" class="btn">Buku Tamu</a>
-                    <a href="{{url('/form-spt')}}" class="btn">SPT</a>
+                    <a href="{{ url('/BukuTamu') }}" class="btn">Buku Tamu</a>
+                    <a href="{{ url('/form-spt') }}" class="btn">SPT</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -63,10 +63,14 @@
             </div>
             <div class="about-text">
                 <h2>SIBUAS</h2>
-                <p>SIBUAS menyediakan solusi inovatif untuk pencatatan kunjungan tamu dan Surat Perintah Tugas (SPT) untuk
-                    Dinas Kebudayaan dan Pariwisata Provinsi Jawa Timur. Dengan sistem Buku Tamu, pengelolaan data kunjungan
-                    dapat dilakukan lebih akurat dan sistematis, serta mempermudah pengelolaan data oleh adminstrasi. Sistem
-                    SPT memungkinkan pengelolaan serta pelacakan tugas secara efisien, memberikan kemudahan akses, validitas
+                <p>SIBUAS menyediakan solusi inovatif untuk pencatatan kunjungan tamu dan Surat Perintah Tugas (SPT)
+                    untuk
+                    Dinas Kebudayaan dan Pariwisata Provinsi Jawa Timur. Dengan sistem Buku Tamu, pengelolaan data
+                    kunjungan
+                    dapat dilakukan lebih akurat dan sistematis, serta mempermudah pengelolaan data oleh adminstrasi.
+                    Sistem
+                    SPT memungkinkan pengelolaan serta pelacakan tugas secara efisien, memberikan kemudahan akses,
+                    validitas
                     data, dan komparasi data untuk analisis yang lebih baik.</p>
                 <p>Kami berkomitmen untuk memberikan layanan terbaik melalui teknologi terkini, mendukung Anda dalam
                     menciptakan lingkungan yang lebih teratur, aman, dan efisien.</p>
@@ -95,8 +99,8 @@
             </div>
             <div class="services">
                 <h3>Layanan</h3>
-                <a href="{{url('/BukuTamu')}}">Buku Tamu</a>
-                <a href="{{url('/form-spt')}}">SPT</a>
+                <a href="{{ url('/BukuTamu') }}">Buku Tamu</a>
+                <a href="{{ url('/form-spt') }}">SPT</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -104,7 +108,7 @@
             <p>Dinas Kebudayaan dan Pariwisata Provinsi Jawa Timur</p>
         </div>
     </footer>
-    <script src="{{asset('js/main.js')}}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 
 </html>
