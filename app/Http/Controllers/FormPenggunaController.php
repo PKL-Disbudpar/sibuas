@@ -28,8 +28,6 @@ class FormPenggunaController extends Controller
     // menyimpan data
     public function store(Request $request, Pengguna $pengguna)
     {
-        // Log::info('Memulai proses penyimpanan data pengguna.');
-
         $request->validate([
             'username' => 'required|string|max:30',
             'password' => 'required|string|max:6',
@@ -39,8 +37,8 @@ class FormPenggunaController extends Controller
             DB::beginTransaction();
             $pengguna->username = $request->username;
             $pengguna->password = $request->password;
-            $pengguna->id_role = 2;
-            $pengguna->id_bidang = 2;
+            $pengguna->id_role = 1;
+            $pengguna->id_bidang = 1;
             $pengguna->save();
             DB::commit();
 
