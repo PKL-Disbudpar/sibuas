@@ -140,31 +140,34 @@
                     <h3 class="card-title">Input Data Role</h3>
                 </div>
                 <!-- /.card-header -->
+                <form action="{{ route('form-role.store') }}" method="POST">
                 <div class="card-body">
                     <div class="card card-primary">
                         <div class="card-header">
                           <h3 class="card-title">Data Role</h3>
                           <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                              <i class="fas fa-minus"></i>
-                            </button>
-                          </div>
+                              <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                  <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div class="card-body">
-                          <div class="form-group">
-                            <label for="inputName">Nama Role</label>
-                            <input type="text" id="inputName" class="form-control">
-                          </div>
+                            @csrf
+                            <div class="card-body">
+                              <div class="form-group">
+                                <label for="inputName">Nama Role</label>
+                                <input type="text" id="inputName" name="nama_role" class="form-control">
+                              </div>
+                            </div>
+                            <!-- /.card-body -->
                         </div>
-                        <!-- /.card-body -->
-                      </div>
-                      <div class="row">
-                        <div class="col-12">
-                          <a href="{{ url('/admin-role') }}" class="btn btn-secondary">Cancel</a>
-                          <input type="submit" value="Simpan" class="btn btn-success float-right">
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="{{ url('/admin-role') }}" class="btn btn-secondary">Cancel</a>
+                                <input type="submit" value="Simpan" class="btn btn-success float-right">
+                            </div>
                         </div>
-                      </div>
-                </div>
+                    </div>
+                </form>
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
