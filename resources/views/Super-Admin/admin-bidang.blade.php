@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <link rel="stylesheet" href="{{ asset('css/style_admin-dashboard.css') }}">
 </head>
@@ -158,6 +159,30 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {{-- @forelse ($form-bidang as $bidang)
+                                <tr>
+                                    <td>1.</td>
+                                    <td>{{ $bidang->nama_bidang }}</td>
+                                    <td>{{ $bidang->kode_bidang }}</td>
+                                    <td class="project-actions text-right">
+                                        <form action="">
+                                            @csrf
+                                            <a class="btn btn-info btn-sm" href="#">
+                                                <i class="fas fa-pencil-alt"></i>
+                                                Edit
+                                            </a>
+                                            <a class="btn btn-danger btn-sm" href="#">
+                                                <i class="fas fa-trash-alt"></i>
+                                                Delete
+                                            </a>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @empty
+                                <div class="alert alert-danger">
+                                    Data Bidang Belum Tersedia.
+                                </div>
+                            @endforelse --}}
                             <tr>
                                 <td>1.</td>
                                 <td>Sekretariat</td>
@@ -181,8 +206,7 @@
                                 </td>
                             </tr>
                         </tbody>
-
-                    </table>
+                    </table>                  
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -226,6 +250,7 @@
         <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
         <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
         <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         <!-- AdminLTE App -->
         <script src="../../dist/js/adminlte.min.js"></script>
         <!-- Page specific script -->
@@ -240,6 +265,14 @@
 
             });
         </script>
+
+        {{-- <script>
+            @if(session() -> has('success'))
+                toastr.success('{{ session('success') }}', 'BERHASIL');
+            @elseif(session() -> has('error'))
+                toastr.error('{{ session('error') }}', 'GAGAL!');
+            @endif
+        </script> --}}
 </body>
 
 </html>
