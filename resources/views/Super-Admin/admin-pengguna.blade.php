@@ -152,7 +152,6 @@
                         <thead>
                             <tr>
                                 <th style="width: 10%">No</th>
-                                <th>Nama</th>
                                 <th>Username</th>
                                 <th>Password</th>
                                 <th></th>
@@ -161,7 +160,6 @@
                         <tbody>
                             <tr>
                                 <td>1.</td>
-                                <td>Kartika</td>
                                 <td>karka_</td>
                                 <td>293838</td>
                                 <td class="project-actions text-right">
@@ -177,7 +175,6 @@
                             </tr>
                             <tr>
                                 <td>2.</td>
-                                <td>Ananda</td>
                                 <td>ananda.app</td>
                                 <td>293838</td>
                                 <td class="project-actions text-right">
