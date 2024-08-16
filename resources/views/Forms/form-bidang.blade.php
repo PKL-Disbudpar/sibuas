@@ -140,7 +140,9 @@
                     <h3 class="card-title">Input Data Bidang</h3>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body">
+                <form action="{{ route('form-bidang.store') }}" method="POST">
+                    @csrf
+                    <div class="card-body">
                     <div class="card card-primary">
                         <div class="card-header">
                           <h3 class="card-title">Data Bidang</h3>
@@ -150,28 +152,29 @@
                             </button>
                           </div>
                         </div>
-                        <div class="card-body">
-                          <div class="form-group">
-                            <label for="inputName">Nama Bidang</label>
-                            <input type="text" id="inputName" class="form-control">
-                          </div>
-                          <div class="form-group">
-                            <label for="inputKode">Kode Bidang</label>
-                            <input type="number" id="inputKode" class="form-control">
-                          </div>
+                            <div class="card-body">
+                              <div class="form-group">
+                                <label for="inputName">Nama Bidang</label>
+                                <input type="text" id="inputName" name="nama_bidang" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                <label for="inputKode">Kode Bidang</label>
+                                <input type="number" id="inputKode" name="kode_bidang" class="form-control">
+                              </div>
+                            </div>
+                            <!-- /.card-body -->
                         </div>
-                        <!-- /.card-body -->
-                      </div>
-                      <div class="row">
-                        <div class="col-12">
-                          <a href="{{ url('/admin-bidang') }}" class="btn btn-secondary">Cancel</a>
-                          <input type="submit" value="Simpan" class="btn btn-success float-right">
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="{{ url('/admin-bidang') }}" class="btn btn-secondary">Cancel</a>
+                                <input type="submit" value="Simpan" class="btn btn-success float-right">
+                            </div>
                         </div>
-                      </div>
+                    </div>
+                    <!-- /.card-body -->
+                </form>
                 </div>
-                <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
+                <!-- /.card -->
             </div>
             <!-- /.col -->
             </div>
