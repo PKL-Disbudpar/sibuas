@@ -28,4 +28,6 @@ class Bidang extends Model
     {
         return $this->hasOne(SuratTugas::class);
     }
+
+    protected $table = 'bidangs';
 }
