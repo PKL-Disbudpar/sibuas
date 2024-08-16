@@ -162,25 +162,6 @@
                                     <label for="inputKode">Password</label>
                                     <input type="string" id="inputPassword" class="form-control" name="password">
                                 </div>
-                                {{-- <div class="form-group">
-                                    <label for="role">Role</label>
-                                    <select id="role" class="form-control" name="id_role">
-                                        <!-- Pilihan role -->
-                                        <option value="1">Admin</option>
-                                        <option value="2">User</option>
-                                        <!-- Tambahkan pilihan lainnya -->
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="bidang">Bidang</label>
-                                    <select id="bidang" class="form-control" name="id_bidang">
-                                        <!-- Pilihan bidang -->
-                                        <option value="1">Bidang A</option>
-                                        <option value="2">Bidang B</option>
-                                        <!-- Tambahkan pilihan lainnya -->
-                                    </select>
-                                </div> --}}
-
                             </div>
                             <!-- /.card-body -->
                         </div>
