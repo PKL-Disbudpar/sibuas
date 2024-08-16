@@ -23,4 +23,6 @@ class Role extends Model
     {
         return $this->hasOne(Pengguna::class);
     }
+
+    protected $table = 'roles';
 }
