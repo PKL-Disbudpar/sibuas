@@ -139,7 +139,7 @@
                     <h3 class="card-title">Daftar Pengguna</h3>
                     <div class="row">
                         <div class="col-12">
-                            <a class="btn btn-primary float-right" href="{{ url('/form-role') }}">
+                            <a class="btn btn-primary float-right" href="{{ url('/form-pengguna') }}">
                                 <i class="fas fa-pencil-alt"></i>
                                 Tambah Pengguna
                             </a>
