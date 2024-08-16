@@ -28,7 +28,7 @@
             <nav>
                 <ul class="nav-list">
                     <li><a href="{{url('/')}}">Home</a></li>
-                    <li><a href="{{url('/BukuTamu')}}">Buku Tamu</a></li>
+                    <li><a href="{{url('/buku-tamu')}}">Buku Tamu</a></li>
                     <li class="dropdown-container">
                         <a href="javascript:void(0);" class="dropbtn">SPT <i class="arrow-down"></i></a>
                         <div class="dropdown">
@@ -48,7 +48,7 @@
                 <h2>SISTEM INFORMASI BUKU TAMU DAN SPT (SIBUAS)</h2>
                 <p>Dinas Kebudayaan dan Pariwisata Provinsi Jawa Timur</p>
                 <div class="buttons">
-                    <a href="{{url('/BukuTamu')}}" class="btn">Buku Tamu</a>
+                    <a href="{{url('/buku-tamu')}}" class="btn">Buku Tamu</a>
                     <a href="{{url('/form-spt')}}" class="btn">SPT</a>
                 </div>
             </div>
@@ -95,7 +95,7 @@
             </div>
             <div class="services">
                 <h3>Layanan</h3>
-                <a href="{{url('/BukuTamu')}}">Buku Tamu</a>
+                <a href="{{url('/buku-tamu')}}">Buku Tamu</a>
                 <a href="{{url('/form-spt')}}">SPT</a>
             </div>
         </div>
