@@ -54,14 +54,14 @@ class FormPenggunaController extends Controller
             echo "Gagal nih";
         }
     }
-// Log::info('Data pengguna berhasil disimpan.');
-//         return redirect()->back()->with('success', 'Data berhasil dimasukkan');
-//     } catch (Exception $e) {
-//         DB::rollBack();
-//         // Log::error('Gagal menyimpan data pengguna: ' . $e->getMessage());
-//         return redirect()->back()->with('error', 'Gagal memasukkan data');
-//     }
-//     }
+    // Log::info('Data pengguna berhasil disimpan.');
+    //         return redirect()->back()->with('success', 'Data berhasil dimasukkan');
+    //     } catch (Exception $e) {
+    //         DB::rollBack();
+    //         // Log::error('Gagal menyimpan data pengguna: ' . $e->getMessage());
+    //         return redirect()->back()->with('error', 'Gagal memasukkan data');
+    //     }
+    //     }
 
     // menampilkan data dari id
     public function show($id)
