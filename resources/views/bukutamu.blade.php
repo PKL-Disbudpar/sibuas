@@ -33,7 +33,7 @@
             <nav>
                 <ul class="nav-list">
                     <li><a href="{{ url('/') }}">Home</a></li>
-                    <li><a href="{{ url('/BukuTamu') }}">Buku Tamu</a></li>
+                    <li><a href="{{ url('/bukutamu') }}">Buku Tamu</a></li>
                     <li class="dropdown-container">
                         <a href="javascript:void(0);" class="dropbtn">SPT <i class="arrow-down"></i></a>
                         <div class="dropdown">
