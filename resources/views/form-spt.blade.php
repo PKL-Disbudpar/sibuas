@@ -224,7 +224,22 @@
     inputRowDetail = (i) => {
     
       let tr = `<tr id="input-tr-${i}">
-                  <td><input type="string" value="{{ old('namaDetail') }}" name="nama_spt" class="form-control form-control-sm" required></td>
+                  <td class="form-group">
+                      <select
+                        class="form-control select2bs4"
+                        style="width: 100%"
+                        name="nama_spt"
+                        required
+                      >
+                        <option selected="selected">Alabama</option>
+                        <option>Alaska</option>
+                        <option>California</option>
+                        <option>Delaware</option>
+                        <option>Tennessee</option>
+                        <option>Texas</option>
+                        <option>Washington</option>
+                      </select>
+                    </td>
                   <td><a class="btn btn-sm btn-danger delete-obyek float-right" data-ido="${i}">Hapus</a></td>
                 </tr>`;
     
