@@ -60,10 +60,11 @@ Route::get('/admin-masterPegawai', function () {
     return view('Super-Admin.admin-masterPegawai');
 });
 
-Route::get('/admin-bidang', function () {
-    return view('Super-Admin.admin-bidang');
-});
+// Route::get('/admin-bidang', function () {
+//     return view('Super-Admin.admin-bidang');
+// });
 
+Route::resource('/admin-bidang', FormBidangController::class);
 
 // Resepsionis
 Route::get('/resepsionis-dashboard', function () {
@@ -88,7 +89,11 @@ Route::get('/bidang-suratTugas', function () {
 // Forms
 Route::resource('/form-role', FormRoleController::class);
 
-Route::resource('/form-bidang', FormBidangController::class);
+// Route::resource('/form-bidang', FormBidangController::class);
+
+Route::get('/form-bidang', [FormBidangController::class, 'create'])->name('form-bidang.create');
+
+Route::resource('/form-bidang', FormBidangController::class)->except(['index']);
 
 Route::resource('/form-pengguna', FormPenggunaController::class);
 

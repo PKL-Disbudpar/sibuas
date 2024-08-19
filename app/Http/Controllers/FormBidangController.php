@@ -11,6 +11,13 @@ class FormBidangController extends Controller
 {
     public function index()
     {
+        $bidangs = Bidang::all();
+
+        return view('Super-Admin.admin-bidang', compact('bidangs'));
+    }
+
+    public function create()
+    {
         return view('Forms.form-bidang');
     }
 

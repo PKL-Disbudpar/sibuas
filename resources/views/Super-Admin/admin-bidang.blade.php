@@ -159,12 +159,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @forelse ($form-bidang as $bidang)
+                            @forelse ($bidangs as $item)
                                 <tr>
-                                    <td>1.</td>
-                                    <td>{{ $bidang->nama_bidang }}</td>
-                                    <td>{{ $bidang->kode_bidang }}</td>
-                                    <td class="project-actions text-right">
+                                    <td style="width: 10%">1.</td>
+                                    <td>{{ $item->nama_bidang }}</td>
+                                    <td>{{ $item->kode_bidang }}</td>
+                                    <td class="project-actions text-right" style="width: 20%">
                                         <form action="">
                                             @csrf
                                             <a class="btn btn-info btn-sm" href="#">
@@ -181,9 +181,10 @@
                             @empty
                                 <div class="alert alert-danger">
                                     Data Bidang Belum Tersedia.
-                                </div>
-                            @endforelse --}}
-                            <tr>
+                                </div>    
+                            @endforelse
+                          
+                            {{-- <tr>
                                 <td>1.</td>
                                 <td>Sekretariat</td>
                                 <td>118.1</td>
@@ -204,7 +205,7 @@
                                         Edit
                                     </a>
                                 </td>
-                            </tr>
+                            </tr> --}}
                         </tbody>
                     </table>                  
                 </div>
