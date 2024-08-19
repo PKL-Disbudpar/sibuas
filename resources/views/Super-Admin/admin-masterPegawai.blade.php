@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <link rel="stylesheet" href="{{ asset('css/style_admin-dashboard.css') }}">
 </head>
@@ -160,63 +161,34 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @forelse ($master_pegawais as $item)
                             <tr>
-                                <td>1.</td>
-                                <td>21081010242</td>
-                                <td>Ananda Ayu Puspitaningrum</td>
-                                <td>Mahasiswa</td>
-                                <td>3</td>
+                                <td style="width: 10%">{{$loop->iteration}}</td>
+                                <td>{{$item->nip_pegawai}}</td>
+                                <td>{{$item->nama}}</td>
+                                <td>{{$item->jabatan}}</td>
+                                <td>{{$item->golongan}}</td>
                                 <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-edit">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
+                                    <form action="">
+                                        @csrf
+                                        <a class="btn btn-info btn-sm" href="#">
+                                            <i class="fas fa-edit">
+                                            </i>
+                                            Edit
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="#">
+                                            <i class="fas fa-trash">
+                                            </i>
+                                            Delete
+                                        </a>
+                                    </form>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>2.</td>
-                                <td>21081010244</td>
-                                <td>Raissa Atha Febrianti</td>
-                                <td>Mahasiswa</td>
-                                <td>3</td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-edit">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2.</td>
-                                <td>21081010287</td>
-                                <td>Kartika Sari</td>
-                                <td>Mahasiswa</td>
-                                <td>3</td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-edit">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
+                            @empty
+                            <div class="alert alert-danger">
+                                Data Pegawai Belum Tersedia
+                            </div>
+                            @endforelse
                         </tbody>
 
                     </table>

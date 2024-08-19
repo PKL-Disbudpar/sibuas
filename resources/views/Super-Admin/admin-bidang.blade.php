@@ -161,7 +161,7 @@
                         <tbody>
                             @forelse ($bidangs as $item)
                                 <tr>
-                                    <td style="width: 10%">1.</td>
+                                    <td style="width: 10%">{{$loop->iteration}}</td>
                                     <td>{{ $item->nama_bidang }}</td>
                                     <td>{{ $item->kode_bidang }}</td>
                                     <td class="project-actions text-right" style="width: 20%">

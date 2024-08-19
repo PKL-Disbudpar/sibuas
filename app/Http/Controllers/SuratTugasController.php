@@ -29,7 +29,7 @@ class SuratTugasController extends Controller
 
         try {
             DB::beginTransaction();
-            $surattugas->nip_pegawai = 2456256;
+            $surattugas->nip_pegawai = 21081010244;
             $surattugas->id_bidang = 1;
             $surattugas->id_user = 2;
             $surattugas->tujuan_spt = $request->tujuan_spt;
