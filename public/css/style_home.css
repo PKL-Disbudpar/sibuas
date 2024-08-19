@@ -108,7 +108,7 @@ header {
 
 .hero {
     text-align: center;
-    padding: 50px 20px;
+    padding: 120px 60px;
     background-color: #f8f9fa;
     display: flex;
     flex-direction: row;
@@ -128,7 +128,7 @@ header {
 }
 
 .hero .hero-text h2 {
-    color: #113F67;
+    color: #113f67;
     font-size: 36px;
     margin: 10px 0px;
 }
@@ -159,24 +159,23 @@ header {
 }
 
 .hero .hero-image img {
-    width: 15cm;
-    margin-top: 30px;
+    width: 10cm;
 }
 
 .about {
-    padding: 50px 20px;
+    padding: 60px 60px;
     text-align: center;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
 }
 
 .about .about-text {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 20px;
-    width: 100%;
+    width: 60%;
 }
 
 .about h2 {
@@ -189,12 +188,6 @@ header {
     color: #666666;
     font-size: 18px;
     margin-bottom: 20px;
-}
-
-.about .about-image {
-    width: 100%; 
-    display: flex; 
-    justify-content: center; 
 }
 
 .about .about-image img {
@@ -211,26 +204,27 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: start;
-    padding: 0 20px;
-    background-color: #065FAD;
+    background-color: #065fad;
+    padding: 60px 160px 60px 120px;
 }
 
 .footer-content .address {
     text-align: left;
-}
-
-.footer-content div {
-    width: 30%;
+    width: 35%;
 }
 
 .footer-content .address p:first-child {
     margin: 18px 0;
-    font-size: 18px;
+    font-size: 21px;
     font-weight: bold;
 }
 
 .footer-content p {
     margin: 5px 0;
+}
+
+.footer-content .social-media {
+    text-align: left;
 }
 
 .footer-content .social-media a {
@@ -246,6 +240,7 @@ footer {
 .footer-content .services {
     display: flex;
     flex-direction: column;
+    text-align: left;
 }
 
 .footer-content .services a {
@@ -294,13 +289,19 @@ footer {
         position: static;
     }
 
-    .hero, .about {
+    .hero,
+    .about {
         flex-direction: column;
+        padding: 24px 12px;
     }
 
     .hero .hero-image img {
-        width: 100%;
+        width: 70%;
         margin-top: 30px;
+    }
+
+    .about .about-text p {
+        width: 100%;
     }
 
     .about .about-image img {
@@ -310,9 +311,12 @@ footer {
     .footer-content {
         flex-direction: column;
         align-items: center;
+        padding: 24px 12px;
     }
 
-    .footer-content div {
+    .footer-content .address,
+    .footer-content .social-media,
+    .footer-content .services {
         width: 100%;
         margin-bottom: 20px;
     }
