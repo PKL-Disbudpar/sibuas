@@ -16,12 +16,25 @@ class BukuTamuController extends Controller
     // menampilkan semua data
     public function index()
     {
-        // $bukuTamus = BukuTamu::all();
-        // return response()->json([
-        //     'message' => "Success Get All Data Buku Tamu",
-        //     'data' => $bukuTamus
-        // ]);
+        $bukuTamus = BukuTamu::all();
+        // $user = Auth::user(); // Mendapatkan pengguna yang sedang login
 
+    // if ($user->role->name === 'admin') {
+    //     // Jika pengguna adalah admin, kembalikan view admin
+    //     return view('Admin.admin-bukuTamu', compact('bukuTamus'));
+    // } elseif ($user->role->name === 'resepsionis') {
+    //     // Jika pengguna adalah resepsionis, kembalikan view resepsionis
+    //     return view('Resepsionis.resepsionis-bukuTamu', compact('bukuTamus'));
+    // } else {
+    //     // Jika role tidak sesuai, redirect atau tampilkan pesan error
+    //     return redirect('/')->withErrors('Anda tidak memiliki akses ke halaman ini.');
+    // }
+
+        return view('Resepsionis.resepsionis-bukuTamu', compact('bukuTamus'));
+    }
+
+    public function create()
+    {
         return view('bukutamu');
     }
 
@@ -79,18 +92,14 @@ class BukuTamuController extends Controller
     // hapus data dari id
     public function destroy($id)
     {
-        $bukuTamu = BukuTamu::find($id);
+        $bukuTamus = BukuTamu::find($id);
 
-        if (is_null($bukuTamu)) {
-            return response()->json([
-                'message' => 'Buku Tamu Not Found'
-            ], 404);
+        if (is_null($bukuTamus)) {
+            return redirect()->back()->withErrors(['Data tidak ditemukan']);
         }
 
-        $bukuTamu->delete();
+        $bukuTamus->delete();
 
-        return response()->json([
-            'message' => 'Buku Tamu Deleted Successfully'
-        ], 200);
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
 }

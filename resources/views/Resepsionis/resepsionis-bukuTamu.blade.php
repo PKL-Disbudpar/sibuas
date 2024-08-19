@@ -115,41 +115,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1.</td>
-                                <td>Kartika Sari
-                                </td>
-                                <td>UPN JATIM</td>
-                                <td>Perempuan</td>
-                                <td>08787655677</td>
-                                <td>07-08-2024</td>
-                                <td>PKL</td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>2.</td>
-                                <td>Ananda Ayu
-                                </td>
-                                <td>UPN JATIM</td>
-                                <td>Perempuan</td>
-                                <td>08787655677</td>
-                                <td>07-08-2024</td>
-                                <td>PKL</td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
+                            @forelse ($bukuTamus as $item)
+                                <tr>
+                                    <td style="width: 10%">{{ $loop->iteration }}</td>
+                                    <td>{{ $item->nama_tamu }}</td>
+                                    <td>{{ $item->asal_instansi }}</td>
+                                    <td>{{ $item->jenis_kelamin }}</td>
+                                    <td>{{ $item->no_hp }}</td>
+                                    <td>{{ $item->tgl_pengunjung }}</td>
+                                    <td>{{ $item->keperluan }}</td>
+                                    <td class="project-actions text-right" style="width: 20%">
+                                        <form action="{{ route('bukutamu.destroy', $item->id) }}" method="POST"
+                                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="fas fa-trash-alt"></i>
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @empty
+                                <div class="alert alert-danger">
+                                    Data Bidang Belum Tersedia.
+                                </div>
+                            @endforelse
                         </tbody>
 
                     </table>

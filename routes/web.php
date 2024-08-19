@@ -32,7 +32,7 @@ Route::get('/riwayat-spt', function () {
 
 Route::resource('/form-spt', SuratTugasController::class);
 
-Route::resource('/buku-tamu', BukuTamuController::class);
+// Route::resource('/buku-tamu', BukuTamuController::class);
 
 
 // Super Admin
@@ -75,6 +75,7 @@ Route::get('/resepsionis-bukuTamu', function () {
     return view('Resepsionis.resepsionis-bukuTamu');
 });
 
+Route::resource('/resepsionis-bukuTamu', BukuTamuController::class);
 
 // Bidang
 Route::get('/bidang-dashboard', function () {
@@ -98,3 +99,9 @@ Route::resource('/form-bidang', FormBidangController::class)->except(['index']);
 Route::resource('/form-pengguna', FormPenggunaController::class);
 
 Route::resource('/form-masterPegawai', FormPegawaiController::class);
+
+Route::get('/buku-tamu', [BukuTamuController::class, 'create'])->name('bukutamu.create');
+
+Route::resource('/buku-tamu', BukuTamuController::class)->except(['index']);
+
+Route::delete('/buku-tamu/{id}', [BukuTamuController::class, 'destroy'])->name('bukutamu.destroy');
