@@ -159,7 +159,7 @@
                               </div>
                               <div class="form-group">
                                 <label for="inputKode">Kode Bidang</label>
-                                <input type="number" id="inputKode" name="kode_bidang" class="form-control">
+                                <input type="string" id="inputKode" name="kode_bidang" class="form-control">
                               </div>
                             </div>
                             <!-- /.card-body -->
