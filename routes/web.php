@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\BukuTamuController;
-use App\Http\Controllers\FormPenggunaController;
-use App\Http\Controllers\PenggunaController;
-use App\Http\Controllers\SuratTugasController;
-use App\Http\Controllers\FormBidangController;
-use App\Http\Controllers\FormRoleController;
-use App\Http\Controllers\FormPegawaiController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BukuTamuController;
+use App\Http\Controllers\FormRoleController;
+use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\FormBidangController;
+use App\Http\Controllers\SuratTugasController;
+use App\Http\Controllers\FormPegawaiController;
+use App\Http\Controllers\FormPenggunaController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,8 @@ Route::get('/', function () {
 Route::get('/riwayat-spt', function () {
     return view('riwayat-spt');
 });
+
+Route::resource('/login', LoginController::class);
 
 Route::resource('/form-spt', SuratTugasController::class);
 
@@ -65,6 +68,7 @@ Route::get('/admin-masterPegawai', function () {
 // });
 
 Route::resource('/admin-bidang', FormBidangController::class);
+
 
 // Resepsionis
 Route::get('/resepsionis-dashboard', function () {
