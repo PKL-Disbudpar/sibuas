@@ -104,4 +104,5 @@ Route::get('/buku-tamu', [BukuTamuController::class, 'create'])->name('bukutamu.
 
 Route::resource('/buku-tamu', BukuTamuController::class)->except(['index']);
 
-Route::delete('/buku-tamu/{id}', [BukuTamuController::class, 'destroy'])->name('bukutamu.destroy');
+Route::delete('/bukuTamu/{id}', [BukuTamuController::class, 'destroy'])->name('bukuTamu.destroy');
+

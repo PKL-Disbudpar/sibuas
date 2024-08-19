@@ -125,22 +125,36 @@
                                     <td>{{ $item->tgl_pengunjung }}</td>
                                     <td>{{ $item->keperluan }}</td>
                                     <td class="project-actions text-right" style="width: 20%">
-                                        <form action="{{ route('bukutamu.destroy', $item->id) }}" method="POST"
+                                        <form action="{{ route('bukuTamu.destroy', $item->id) }}" method="POST"
                                             onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm">
-                                                <i class="fas fa-trash-alt"></i>
-                                                Delete
+                                                <i class="fas fa-trash-alt"></i> Delete
                                             </button>
                                         </form>
                                     </td>
                                 </tr>
                             @empty
                                 <div class="alert alert-danger">
-                                    Data Bidang Belum Tersedia.
+                                    Data Belum Tersedia.
                                 </div>
                             @endforelse
+
+                            @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
+
+                            {{-- @if (session('success'))
+                                <script>
+                                    alert("{{ session('success') }}");
+                                </script>
+                            @endif --}}
                         </tbody>
 
                     </table>
@@ -187,6 +201,10 @@
         <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
         <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
         <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
         <!-- AdminLTE App -->
         <script src="../../dist/js/adminlte.min.js"></script>
         <!-- Page specific script -->

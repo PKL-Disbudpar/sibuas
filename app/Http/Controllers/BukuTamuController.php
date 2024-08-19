@@ -102,4 +102,15 @@ class BukuTamuController extends Controller
 
         return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
+    // public function destroy($id)
+    // {
+    //     //get post by ID
+    //     $bukuTamus = BukuTamu::findOrFail($id);
+
+    //     //delete post
+    //     $bukuTamus->delete();
+
+    //     //redirect to index
+    //     return redirect()->route('Super-Admin.admin-bukuTamu.index')->with(['success' => 'Data Berhasil Dihapus!']);
+    // }
 }
