@@ -16,12 +16,13 @@ class FormPegawaiController extends Controller
     // menampilkan semua data
     public function index()
     {
-        // $bukuTamus = BukuTamu::all();
-        // return response()->json([
-        //     'message' => "Success Get All Data Buku Tamu",
-        //     'data' => $bukuTamus
-        // ]);
+        $pegawais = MasterPegawai::all();
 
+        return view('form-spt');
+    }
+
+    public function create()
+    {
         return view('Forms.form-masterPegawai');
     }
 
