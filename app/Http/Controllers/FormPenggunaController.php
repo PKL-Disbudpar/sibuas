@@ -17,12 +17,12 @@ class FormPenggunaController extends Controller
     // menampilkan semua data
     public function index()
     {
-        // $bukuTamus = BukuTamu::all();
-        // return response()->json([
-        //     'message' => "Success Get All Data Buku Tamu",
-        //     'data' => $bukuTamus
-        // ]);
+        $penggunas = Pengguna::all();
+        return view('Super-Admin.admin-pengguna', compact('penggunas'));
+    }
 
+    public function create()
+    {
         return view('Forms.form-pengguna');
     }
 
@@ -52,40 +52,5 @@ class FormPenggunaController extends Controller
             DB::rollBack();
             echo "Gagal nih";
         }
-    }
-
-    // menampilkan data dari id
-    public function show($id)
-    {
-        $pengguna = Pengguna::find($id);
-
-        if (is_null($pengguna)) {
-            return response()->json([
-                'message' => 'Pengguna Not Found'
-            ], 404);
-        }
-
-        return response()->json([
-            'message' => 'Success Get Data Pengguna by ID',
-            'data' => $pengguna
-        ], 200);
-    }
-
-    // hapus data dari id
-    public function destroy($id)
-    {
-        $pengguna = Pengguna::find($id);
-
-        if (is_null($pengguna)) {
-            return response()->json([
-                'message' => 'Pengguna Not Found'
-            ], 404);
-        }
-
-        $pengguna->delete();
-
-        return response()->json([
-            'message' => 'Pengguna Deleted Successfully'
-        ], 200);
     }
 }

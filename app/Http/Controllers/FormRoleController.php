@@ -6,10 +6,17 @@ use App\Models\Role;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class FormRoleController extends Controller
 {
     public function index()
+    {
+        $roles = Role::all();
+        return view('Super-Admin.admin-role', compact('roles'));
+    }
+
+    public function create()
     {
         return view('Forms.form-role');
     }

@@ -2,23 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Exception;
 use App\Models\MasterPegawai;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use Illuminate\Console\View\Components\Alert;
-
-use function Laravel\Prompts\alert;
 
 class FormPegawaiController extends Controller
 {
     // menampilkan semua data
     public function index()
     {
-        $pegawais = MasterPegawai::all();
-
-        return view('form-spt');
+        $master_pegawais = MasterPegawai::all();
+        return view('Super-Admin.admin-masterPegawai', compact('master_pegawais'));
     }
 
     public function create()
@@ -30,10 +25,10 @@ class FormPegawaiController extends Controller
     public function store(Request $request, MasterPegawai $pegawai)
     {
         $request->validate([
-            'nip_pegawai' => 'required|string|max:255',
-            'nama' => 'required|string|max:255',
-            'jabatan' => 'required|string|max:255',
-            'golongan' => 'required|string|max:255',
+            'nip_pegawai' => 'required|string',
+            'nama' => 'required|string',
+            'jabatan' => 'required|string',
+            'golongan' => 'required|string',
         ]);
 
         try {
@@ -54,40 +49,5 @@ class FormPegawaiController extends Controller
             DB::rollBack();
             echo "Gagal nih";
         }
-    }
-
-    // menampilkan data dari id
-    public function show($id)
-    {
-        $pegawai = MasterPegawai::find($id);
-
-        if (is_null($pegawai)) {
-            return response()->json([
-                'message' => 'Pegawai Not Found'
-            ], 404);
-        }
-
-        return response()->json([
-            'message' => 'Success Get Data Pegawai by ID',
-            'data' => $pegawai
-        ], 200);
-    }
-
-    // hapus data dari id
-    public function destroy($id)
-    {
-        $pegawai = MasterPegawai::find($id);
-
-        if (is_null($pegawai)) {
-            return response()->json([
-                'message' => 'Pegawai Not Found'
-            ], 404);
-        }
-
-        $pegawai->delete();
-
-        return response()->json([
-            'message' => 'Pegawai Deleted Successfully'
-        ], 200);
     }
 }

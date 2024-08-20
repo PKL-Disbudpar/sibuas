@@ -73,7 +73,8 @@
                                 <th><button type="button" class="btn btn-primary ml-3" id="add-nama"><i
                                             class="fas fa-plus"></i></button></th>
                             </thead>
-                            <tbody id="dataNama"></tbody>
+                            <tbody id="dataNama">
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -214,7 +215,7 @@
 
       })
     </script>
-    <script>
+    <script type="text/javascript">
       let dataRowDetail = 0;
       $("#add-nama").click(() => {
         dataRowDetail++;
@@ -222,6 +223,8 @@
       });
       
       inputRowDetail = (i) => {
+
+        
       
         let tr = `<tr id="input-tr-${i}">
                     <td class="form-group">
@@ -231,13 +234,9 @@
                           name="nama_spt"
                           required
                         >
-                          <option selected="selected">Alabama</option>
-                          <option>Alaska</option>
-                          <option>California</option>
-                          <option>Delaware</option>
-                          <option>Tennessee</option>
-                          <option>Texas</option>
-                          <option>Washington</option>
+                        @foreach ($data as $item)
+                          <option value="{{ $item->nip_pegawai }}">{{ $item->nama_spt }}</option>
+                        @endforeach
                         </select>
                       </td>
                     <td><a class="btn btn-sm btn-danger delete-obyek float-right" data-ido="${i}">Hapus</a></td>

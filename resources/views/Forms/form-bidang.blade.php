@@ -158,7 +158,7 @@
                                 <input type="text" id="inputName" name="nama_bidang" class="form-control">
                               </div>
                               <div class="form-group">
-                                <label for="inputKode">Kode Bidang</label>
+                                <label for="inputKode">Kode Agenda</label>
                                 <input type="string" id="inputKode" name="kode_bidang" class="form-control">
                               </div>
                             </div>
