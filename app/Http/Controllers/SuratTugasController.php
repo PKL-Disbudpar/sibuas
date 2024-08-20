@@ -7,13 +7,16 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\MasterPegawai;
 use Illuminate\Console\View\Components\Alert;
 
 class SuratTugasController extends Controller
 {
     public function index()
     {
-        return view('form-spt');
+        $data = MasterPegawai::all();
+
+        return view('form-spt', compact('data'));
     }
 
     public function store(Request $request, SuratTugas $surattugas)
@@ -36,6 +39,7 @@ class SuratTugasController extends Controller
             $surattugas->tgl_spt = $request->tgl_spt;
             $surattugas->nama_spt = $request->nama_spt;
             $surattugas->ttd = $request->ttd;
+            $surattugas->save();
             DB::commit();
 
             if ($surattugas->save()) {
