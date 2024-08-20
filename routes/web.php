@@ -56,19 +56,13 @@ Route::get('/admin-pengguna', function () {
     return view('Super-Admin.admin-pengguna');
 });
 
-Route::resource('/admin-pengguna', FormPenggunaController::class);
-
 Route::get('/admin-role', function () {
     return view('Super-Admin.admin-role');
 });
 
-Route::resource('/admin-role', FormRoleController::class);
-
 Route::get('/admin-masterPegawai', function () {
     return view('Super-Admin.admin-masterPegawai');
 });
-
-Route::resource('/admin-masterPegawai', FormPegawaiController::class);
 
 // Route::get('/admin-bidang', function () {
 //     return view('Super-Admin.admin-bidang');
@@ -101,21 +95,21 @@ Route::get('/bidang-suratTugas', function () {
 
 
 // Forms
-Route::resource('/form-role', FormRoleController::class)->except(['index']);
+Route::resource('/form-role', FormRoleController::class);
 
-Route::get('/form-role', [FormRoleController::class, 'create'])->name('form-role.create');
-
-Route::resource('/form-bidang', FormBidangController::class)->except(['index']);
+// Route::resource('/form-bidang', FormBidangController::class);
 
 Route::get('/form-bidang', [FormBidangController::class, 'create'])->name('form-bidang.create');
 
-Route::resource('/form-pengguna', FormPenggunaController::class)->except(['index']);
+Route::resource('/form-bidang', FormBidangController::class)->except(['index']);
 
-Route::get('/form-pengguna', [FormPenggunaController::class, 'create'])->name('form-pengguna.create');
+Route::resource('/form-pengguna', FormPenggunaController::class);
+
+Route::resource('/form-masterPegawai', FormPegawaiController::class);
 
 Route::resource('/form-masterPegawai', FormPegawaiController::class)->except(['index']);
 
-Route::get('/form-masterPegawai', [FormPegawaiController::class, 'create'])->name('form-masterPegawai.create');
+Route::resource('/form-masterPegawai', [FormPegawaiController::class, 'create'])->name('form-masterPegawai.create');
 
 Route::get('/buku-tamu', [BukuTamuController::class, 'create'])->name('bukutamu.create');
 
