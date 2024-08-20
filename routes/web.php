@@ -104,13 +104,11 @@ Route::get('/form-bidang', [FormBidangController::class, 'create'])->name('form-
 
 Route::resource('/form-pengguna', FormPenggunaController::class)->except(['index']);
 
-Route::get('/form-ppengguna', [FormPenggunaController::class, 'create'])->name('form-pengguna.create');
+Route::get('/form-pengguna', [FormPenggunaController::class, 'create'])->name('form-pengguna.create');
 
 Route::resource('/form-masterPegawai', FormPegawaiController::class)->except(['index']);
 
 Route::get('/form-masterPegawai', [FormPegawaiController::class, 'create'])->name('form-masterPegawai.create');
-
-Route::resource('/form-masterPegawai', FormPegawaiController::class);
 
 Route::get('/buku-tamu', [BukuTamuController::class, 'create'])->name('bukutamu.create');
 
