@@ -45,12 +45,13 @@
                 <img src="{{ asset('images/login-icon.png') }}" alt="Login Icon">
             </div>
             <h2>Login</h2>
-            <form>
+            <form action="{{ route('login.store') }}" method="POST">
+                @csrf
                 <div class="input-group">
-                    <input type="text" placeholder="Username" required>
+                    <input type="text" name="username" placeholder="Username" required>
                 </div>
                 <div class="input-group">
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" name="password" placeholder="Password" required>
                 </div>
                 <button type="submit" class="login-button">Masuk</button>
             </form>
