@@ -9,6 +9,7 @@ use App\Http\Controllers\SuratTugasController;
 use App\Http\Controllers\FormPegawaiController;
 use App\Http\Controllers\FormPenggunaController;
 use App\Http\Controllers\LoginController;
+use App\Models\SuratTugas;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,8 @@ Route::get('/admin-masterPegawai', function () {
 
 Route::resource('/admin-bidang', FormBidangController::class);
 
+Route::resource('/admin-suratTugas', SuratTugasController::class);
+
 
 // Resepsionis
 Route::get('/resepsionis-dashboard', function () {
@@ -109,4 +112,3 @@ Route::get('/buku-tamu', [BukuTamuController::class, 'create'])->name('bukutamu.
 Route::resource('/buku-tamu', BukuTamuController::class)->except(['index']);
 
 Route::delete('/bukuTamu/{id}', [BukuTamuController::class, 'destroy'])->name('bukuTamu.destroy');
-
