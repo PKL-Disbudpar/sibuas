@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Console\View\Components\Alert;
+use Illuminate\Support\Facades\Hash;
 
 use function Laravel\Prompts\alert;
 
@@ -30,13 +31,13 @@ class FormPenggunaController extends Controller
     {
         $request->validate([
             'username' => 'required|string|max:30',
-            'password' => 'required|string|max:6',
+            'password' => 'required|string|max:8',
         ]);
 
         try {
             DB::beginTransaction();
             $pengguna->username = $request->username;
-            $pengguna->password = $request->password;
+            $pengguna->password = Hash::make($request->password);
             $pengguna->id_role = 1;
             $pengguna->id_bidang = 1;
             $pengguna->save();
@@ -45,7 +46,7 @@ class FormPenggunaController extends Controller
             if ($pengguna->save()) {
                 echo ("Data berhasil dimasukkan");
             } else {
-                echo "gagal";
+                echo "Gagal";
             }
         } catch (Exception $e) {
             DB::rollBack();
