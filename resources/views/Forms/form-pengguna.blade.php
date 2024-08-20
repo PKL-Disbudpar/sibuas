@@ -167,7 +167,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <a href="{{ url('/admin-bidang') }}" class="btn btn-secondary">Cancel</a>
+                                <a href="{{ url('/admin-pengguna') }}" class="btn btn-secondary">Cancel</a>
                                 <input type="submit" value="Simpan" class="btn btn-success float-right">
                             </div>
                         </div>
