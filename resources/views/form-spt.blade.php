@@ -70,6 +70,7 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                                 <th class="col md-6">Nama</th>
+                               
                                 <th><button type="button" class="btn btn-primary ml-3" id="add-nama"><i
                                             class="fas fa-plus"></i></button></th>
                             </thead>
@@ -233,10 +234,19 @@
                           style="width: 100%"
                           name="nama_spt"
                           required
-                        >
-                        @foreach ($data as $item)
-                          <option value="{{ $item->nip_pegawai }}">{{ $item->nama_spt }}</option>
-                        @endforeach
+                        >` + 
+                        
+                        "@foreach($data as $item) <option value='{{ $item->nip_pegawai }}'>{{ $item->nama }} - {{ $item->bidang->nama_bidang ?? 'Bidang tidak ditemukan' }}</option> @endforeach"
+
+                        // `@foreach($data as $item)
+                        //     <option value='{{ $item->nip_pegawai }}' data-nama="{{ $item->nama }}" data-bidang="{{ $item->bidang->nama_bidang ?? '' }}">
+                        //         {{ $item->nama }} - {{ $item->bidang->nama_bidang ?? 'Bidang tidak ditemukan'}}
+                        //     </option>
+                        //   @endforeach`
+                        
+                         + `
+                                             
+                    
                         </select>
                       </td>
                     <td><a class="btn btn-sm btn-danger delete-obyek float-right" data-ido="${i}">Hapus</a></td>
