@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Console\View\Components\Alert;
+use Illuminate\Support\Facades\Auth;
+
 
 use function Laravel\Prompts\alert;
 
@@ -18,7 +20,7 @@ class BukuTamuController extends Controller
     {
         $bukuTamus = BukuTamu::all();
         // $user = Auth::user(); // Mendapatkan pengguna yang sedang login
-
+        
     // if ($user->role->name === 'admin') {
     //     // Jika pengguna adalah admin, kembalikan view admin
     //     return view('Admin.admin-bukuTamu', compact('bukuTamus'));
@@ -30,7 +32,8 @@ class BukuTamuController extends Controller
     //     return redirect('/')->withErrors('Anda tidak memiliki akses ke halaman ini.');
     // }
 
-        return view('Resepsionis.resepsionis-bukuTamu', compact('bukuTamus'));
+        // return view('Resepsionis.resepsionis-bukuTamu', compact('bukuTamus'));
+        return view('Super-Admin.admin-bukuTamu', compact('bukuTamus'));
     }
 
     public function create()

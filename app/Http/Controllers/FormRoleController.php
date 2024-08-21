@@ -43,4 +43,18 @@ class FormRoleController extends Controller
             echo ("Gagal nihh");
         }
     }
+
+    // hapus data dari id
+    public function destroy($id)
+    {
+        $roles = Role::find($id);
+
+        if (is_null($roles)) {
+            return redirect()->back()->withErrors(['Data tidak ditemukan']);
+        }
+
+        $roles->delete();
+
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
+    }
 }

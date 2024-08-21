@@ -163,10 +163,14 @@
                                 <td style="width: 10%">{{$loop->iteration}}</td>
                                 <td>{{$item->nama_role}}</td>
                                 <td class="project-actions text-right">
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash-alt"></i>
-                                        Delete
-                                    </a>
+                                    <form action="{{ route('role.destroy', $item->id) }}" method="POST"
+                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash-alt"></i> Delete
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                             @empty
@@ -174,6 +178,15 @@
                                 Data Role Belum Tersedia
                             </div>
                             @endforelse
+                            
+                            @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
                         </tbody>
                     </table>
 
