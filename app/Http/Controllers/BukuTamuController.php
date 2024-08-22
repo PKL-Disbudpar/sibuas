@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Console\View\Components\Alert;
+use Illuminate\Support\Facades\Auth;
+
 
 use function Laravel\Prompts\alert;
 
@@ -31,7 +33,8 @@ class BukuTamuController extends Controller
         //     return redirect('/')->withErrors('Anda tidak memiliki akses ke halaman ini.');
         // }
 
-        return view('Resepsionis.resepsionis-bukuTamu', compact('bukuTamus'));
+        // return view('Resepsionis.resepsionis-bukuTamu', compact('bukuTamus'));
+        return view('Super-Admin.admin-bukuTamu', compact('bukuTamus'));
     }
 
     public function create()

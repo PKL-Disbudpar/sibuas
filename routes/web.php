@@ -48,6 +48,8 @@ Route::get('/admin-bukuTamu', function () {
     return view('Super-Admin.admin-bukuTamu');
 });
 
+Route::resource('/admin-bukuTamu', BukuTamuController::class);
+
 Route::get('/admin-suratTugas', function () {
     return view('Super-Admin.admin-suratTugas');
 });
@@ -99,7 +101,11 @@ Route::get('/form-role', [FormRoleController::class, 'create'])->name('form-bida
 
 Route::resource('/form-role', FormRoleController::class)->except(['index']);
 
-// Route::resource('/form-bidang', FormBidangController::class);
+Route::get('/form-role', [FormRoleController::class, 'create'])->name('form-role.create');
+
+Route::delete('/role/{id}', [FormRoleController::class, 'destroy'])->name('role.destroy');
+
+Route::resource('/form-bidang', FormBidangController::class)->except(['index']);
 
 Route::get('/form-bidang', [FormBidangController::class, 'create'])->name('form-bidang.create');
 
