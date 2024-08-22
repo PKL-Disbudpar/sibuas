@@ -39,7 +39,7 @@ class FormPenggunaController extends Controller
             $pengguna->username = $request->username;
             $pengguna->password = Hash::make($request->password);
             $pengguna->id_role = 1;
-            $pengguna->id_bidang = 1;
+            $pengguna->id_bidang = 2;
             $pengguna->save();
             DB::commit();
 
