@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SuratTugas;
 use Exception;
+use App\Models\SuratTugas;
 use Illuminate\Http\Request;
+use App\Models\MasterPegawai;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Console\View\Components\Alert;
@@ -13,7 +14,9 @@ class SuratTugasController extends Controller
 {
     public function index()
     {
-        return view('form-spt');
+        $data = MasterPegawai::with('Bidang')->orderBy('nama', 'ASC')->get();
+        // return view('Super-Admin.admin-suratTugas', compact('data'));
+        return view('form-spt', compact('data'));
     }
 
     public function store(Request $request, SuratTugas $surattugas)

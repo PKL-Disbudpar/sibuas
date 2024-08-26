@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <link rel="stylesheet" href="{{ asset('css/style_admin-dashboard.css') }}">
 </head>
@@ -157,36 +158,35 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @forelse ($roles as $item)
                             <tr>
-                                <td>1.</td>
-                                <td>Super Admin</td>
+                                <td style="width: 10%">{{$loop->iteration}}</td>
+                                <td>{{$item->nama_role}}</td>
                                 <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt"></i>
-                                        Edit
-                                    </a>
+                                    <form action="{{ route('role.destroy', $item->id) }}" method="POST"
+                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash-alt"></i> Delete
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>2.</td>
-                                <td>Admin Bidang</td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt"></i>
-                                        Edit
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3.</td>
-                                <td>Admin Resepsionis</td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt"></i>
-                                        Edit
-                                    </a>
-                                </td>
-                            </tr>
+                            @empty
+                            <div class="alert alert-danger">
+                                Data Role Belum Tersedia
+                            </div>
+                            @endforelse
+                            
+                            @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
                         </tbody>
                     </table>
 

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Console\View\Components\Alert;
+use Illuminate\Support\Facades\Hash;
 
 use function Laravel\Prompts\alert;
 
@@ -78,3 +79,20 @@ class FormPenggunaController extends Controller
         }
     }
 }
+//             $pengguna->password = Hash::make($request->password);
+//             $pengguna->id_role = 1;
+//             $pengguna->id_bidang = 2;
+//             $pengguna->save();
+//             DB::commit();
+
+//             if ($pengguna->save()) {
+//                 echo ("Data berhasil dimasukkan");
+//             } else {
+//                 echo "Gagal";
+//             }
+//         } catch (Exception $e) {
+//             DB::rollBack();
+//             echo "Gagal nih";
+//         }
+//     }
+// }

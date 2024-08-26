@@ -14,6 +14,7 @@ class MasterPegawai extends Model
      *
      * @var array
      */
+    protected $primaryKey = 'nip_pegawai';
     protected $fillable = [
         'nip_pegawai',
         'nama',
@@ -24,6 +25,11 @@ class MasterPegawai extends Model
     public function surat_tugas()
     {
         return $this->hasMany(SuratTugas::class);
+    }
+
+    public function bidang()
+    {
+        return $this->belongsTo(Bidang::class);
     }
 
     protected $table = "master_pegawais";

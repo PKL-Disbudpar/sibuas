@@ -29,5 +29,10 @@ class Bidang extends Model
         return $this->hasOne(SuratTugas::class);
     }
 
+    public function masterPegawai()
+    {
+        return $this->hasOne(MasterPegawai::class);
+    }
+
     protected $table = 'bidangs';
 }

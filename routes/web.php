@@ -1,13 +1,15 @@
 <?php
 
-use App\Http\Controllers\BukuTamuController;
-use App\Http\Controllers\FormPenggunaController;
-use App\Http\Controllers\PenggunaController;
-use App\Http\Controllers\SuratTugasController;
-use App\Http\Controllers\FormBidangController;
-use App\Http\Controllers\FormRoleController;
-use App\Http\Controllers\FormPegawaiController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BukuTamuController;
+use App\Http\Controllers\FormRoleController;
+use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\FormBidangController;
+use App\Http\Controllers\SuratTugasController;
+use App\Http\Controllers\FormPegawaiController;
+use App\Http\Controllers\FormPenggunaController;
+use App\Http\Controllers\LoginController;
+use App\Models\SuratTugas;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,8 @@ Route::get('/riwayat-spt', function () {
     return view('riwayat-spt');
 });
 
+Route::resource('/login', LoginController::class);
+
 Route::resource('/form-spt', SuratTugasController::class);
 
 // Route::resource('/admin-bukuTamu', BukuTamuController::class);
@@ -44,25 +48,26 @@ Route::get('/admin-bukuTamu', function () {
     return view('Super-Admin.admin-bukuTamu');
 });
 
+Route::resource('/admin-bukuTamu', BukuTamuController::class);
+
 Route::get('/admin-suratTugas', function () {
     return view('Super-Admin.admin-suratTugas');
 });
 
-Route::get('/admin-pengguna', function () {
-    return view('Super-Admin.admin-pengguna');
-});
+Route::resource('/admin-pengguna', FormPenggunaController::class);
 
 Route::get('/admin-role', function () {
     return view('Super-Admin.admin-role');
 });
 
-Route::get('/admin-masterPegawai', function () {
-    return view('Super-Admin.admin-masterPegawai');
-});
+Route::resource('/admin-masterPegawai', FormPegawaiController::class);
 
 // Route::get('/admin-bidang', function () {
 //     return view('Super-Admin.admin-bidang');
 // });
+
+
+// Route::resource('/admin-suratTugas', SuratTugasController::class);
 
 
 // Resepsionis
@@ -87,9 +92,19 @@ Route::get('/bidang-suratTugas', function () {
 
 
 // Forms
+Route::resource('/admin-role', FormRoleController::class);
+
 Route::resource('/form-role', FormRoleController::class);
 
-// Route::resource('/form-bidang', FormBidangController::class);
+Route::get('/form-role', [FormRoleController::class, 'create'])->name('form-bidang.create');
+
+Route::resource('/form-role', FormRoleController::class)->except(['index']);
+
+Route::get('/form-role', [FormRoleController::class, 'create'])->name('form-role.create');
+
+Route::delete('/role/{id}', [FormRoleController::class, 'destroy'])->name('role.destroy');
+
+Route::resource('/form-bidang', FormBidangController::class)->except(['index']);
 
 
 //bidang

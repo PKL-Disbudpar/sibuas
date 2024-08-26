@@ -71,10 +71,12 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                                 <th class="col md-6">Nama</th>
+
                                 <th><button type="button" class="btn btn-primary ml-3" id="add-nama"><i
                                             class="fas fa-plus"></i></button></th>
                             </thead>
-                            <tbody id="dataNama"></tbody>
+                            <tbody id="dataNama">
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -228,7 +230,7 @@
 
         })
     </script>
-    <script>
+    <script type="text/javascript">
         let dataRowDetail = 0;
         $("#add-nama").click(() => {
             dataRowDetail++;
@@ -237,18 +239,28 @@
 
         inputRowDetail = (i) => {
 
-            let tr = `<tr id="input-tr-${i}">
+
+
+                let tr = `<tr id="input-tr-${i}">
+                    <td class="form-group">
+                        <select
+                          class="form-control select2bs4"
+                          style="width: 100%"
+                          name="nama_spt"
+                          required
+                        >` +
+
+                    "@foreach ($data as $item) <option value='{{ $item->nip_pegawai }}'>{{ $item->nama }} - {{ $item->bidang->nama_bidang ?? 'Bidang tidak ditemukan' }}</option> @endforeach"
+
+                let tr = `<tr id="input-tr-${i}">
                   <td><input type="string" value="{{ old('namaDetail') }}" name="nama_spt" class="form-control form-control-sm" required></td>
                   <td><a class="btn btn-sm btn-danger delete-obyek float-right" data-ido="${i}">Hapus</a></td>
                 </tr>`;
 
-            $("#dataNama").append(tr);
-        };
-
-        $("#dataNama").on("click", ".delete-obyek", function() {
-            let id = $(this).attr("data-ido");
-            $("#input-tr-" + id).remove();
-        });
+                $("#dataNama").on("click", ".delete-obyek", function() {
+                    let id = $(this).attr("data-ido");
+                    $("#input-tr-" + id).remove();
+                });
     </script>
     <script src="{{ asset('js/main.js') }}"></script>
 </body>

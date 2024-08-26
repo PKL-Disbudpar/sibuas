@@ -39,6 +39,7 @@
                             <a href="{{url('/riwayat-spt')}}" class="text-custom">Riwayat SPT</a>
                         </div>
                     </li>
+                    <li><a href="{{url('/login')}}" class="text-custom">Login</a></li>
                 </ul>
             </nav>
         </div>

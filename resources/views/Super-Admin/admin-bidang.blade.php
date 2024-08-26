@@ -154,7 +154,7 @@
                             <tr>
                                 <th style="width: 10%">No</th>
                                 <th>Nama Bidang</th>
-                                <th>Kode Bidang</th>
+                                <th>Kode Agenda</th>
                                 <th style="width: 10%"></th>
                             </tr>
                         </thead>
