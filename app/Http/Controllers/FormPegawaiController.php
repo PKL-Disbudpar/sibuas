@@ -6,6 +6,8 @@ use App\Models\MasterPegawai;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Symfony\Component\Console\Input\Input;
 
 class FormPegawaiController extends Controller
 {
@@ -40,14 +42,59 @@ class FormPegawaiController extends Controller
             $pegawai->save();
             DB::commit();
 
-            if ($pegawai->save()) {
-                echo ("Data berhasil dimasukkan");
-            } else {
-                echo "gagal";
-            }
+            return redirect('/admin-masterPegawai')->with('success', 'Data pegawai berhasil ditambahkan');
         } catch (Exception $e) {
             DB::rollBack();
-            echo "Gagal nih";
+            return redirect('/admin-masterPegawai')->with('error', 'Terjadi kesalahan saat menambahkan data pegawai.');
         }
+    }
+
+    public function edit($nip)
+    {
+        $pegawai = MasterPegawai::where('nip_pegawai','=',$nip)->first();
+        return view('Forms.form-masterPegawai', compact('pegawai'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama' => 'required|string',
+            'jabatan' => 'required|string',
+            'golongan' => 'required|string',
+        ]);
+
+       try {
+        MasterPegawai::findOrFail($id)->update([
+            'nama' => $request->nama,
+            'jabatan' => $request->jabatan,
+            'golongan' => $request->golongan,
+        ]);
+            
+
+           return redirect('/admin-masterPegawai')->with('success', 'Data pegawai berhasil diperbarui');
+        } catch (Exception $e) {
+            DB::rollBack();
+            Log::error('Kesalahan saat memperbarui data pegawai: ', ['error' => $e->getMessage()]);
+
+            return redirect('/admin-masterPegawai')->with('error', 'Terjadi kesalahan saat memperbarui data pegawai.');
+        }
+    }
+
+    // public function show($nip)
+    // {
+    //     $pegawai = MasterPegawai::where('nip_pegawai', $nip)->firstOrFail();
+    //     return view('Forms.form-masterPegawai', compact('pegawai'));
+    // }
+
+    public function destroy($nip)
+    {
+        $master_pegawais = MasterPegawai::where('nip_pegawai','=',$nip);
+
+        if ($master_pegawais) {
+            $master_pegawais->delete();
+            return redirect()->back()->with('success', 'Data berhasil dihapus');
+        } else {
+            return redirect()->back()->withErrors(['Data tidak ditemukan']);
+        }   
     }
 }

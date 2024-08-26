@@ -14,6 +14,7 @@ class MasterPegawai extends Model
      *
      * @var array
      */
+    protected $primaryKey = 'nip_pegawai';
     protected $fillable = [
         'nip_pegawai',
         'nama',
