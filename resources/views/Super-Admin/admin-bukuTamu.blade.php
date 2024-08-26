@@ -153,7 +153,7 @@
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        {{-- <tbody>
                             <tr>
                                 <td>1.</td>
                                 <td>Kartika Sari
@@ -189,7 +189,7 @@
                                     </a>
                                 </td>
                             </tr>
-                        </tbody>
+                        </tbody> --}}
 
                     </table>
                 </div>

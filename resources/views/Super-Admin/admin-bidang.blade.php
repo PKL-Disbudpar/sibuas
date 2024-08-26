@@ -159,55 +159,40 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($bidangs as $item)
+                            @foreach ($bidangs as $item)
                                 <tr>
-                                    <td style="width: 10%">1.</td>
+                                    <td style="width: 10%">{{ $loop->iteration }}</td>
                                     <td>{{ $item->nama_bidang }}</td>
                                     <td>{{ $item->kode_bidang }}</td>
                                     <td class="project-actions text-right" style="width: 20%">
-                                        <form action="">
+                                        <form action="{{ route('bidang.edit', $item->id) }}">
+                                            <button type="submit" class="btn btn-info btn-sm">
+                                                <i class="fas fa-pencil-alt"></i> Edit
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('bidang.destroy', $item->id) }}" method="POST"
+                                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                             @csrf
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="fas fa-pencil-alt"></i>
-                                                Edit
-                                            </a>
-                                            <a class="btn btn-danger btn-sm" href="#">
-                                                <i class="fas fa-trash-alt"></i>
-                                                Delete
-                                            </a>
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="fas fa-trash-alt"></i> Delete
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>
-                            @empty
-                                <div class="alert alert-danger">
-                                    Data Bidang Belum Tersedia.
-                                </div>    
-                            @endforelse
-                          
-                            {{-- <tr>
-                                <td>1.</td>
-                                <td>Sekretariat</td>
-                                <td>118.1</td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt"></i>
-                                        Edit
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2.</td>
-                                <td>Sekretaris</td>
-                                <td>118.11</td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt"></i>
-                                        Edit
-                                    </a>
-                                </td>
-                            </tr> --}}
+                            @endforeach
+
+                            @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
+
                         </tbody>
-                    </table>                  
+                    </table>
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -268,7 +253,7 @@
         </script>
 
         {{-- <script>
-            @if(session() -> has('success'))
+            @if (session()->has('success'))
                 toastr.success('{{ session('success') }}', 'BERHASIL');
             @elseif(session() -> has('error'))
                 toastr.error('{{ session('error') }}', 'GAGAL!');

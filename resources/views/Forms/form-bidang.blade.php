@@ -132,37 +132,61 @@
         <!-- /.content-header -->
 
         <section class="content">
-            
-            
+
+
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Input Data Bidang</h3>
                 </div>
                 <!-- /.card-header -->
-                <form action="{{ route('form-bidang.store') }}" method="POST">
+                <form
+                    action="{{ isset($bidang) ? route('form-bidang.update', $bidang->id) : route('form-bidang.store') }}"
+                    method="POST">
                     @csrf
+                    @if (isset($bidang))
+                        @method('PUT')
+                    @endif
                     <div class="card-body">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                          <h3 class="card-title">Data Bidang</h3>
-                          <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                              <i class="fas fa-minus"></i>
-                            </button>
-                          </div>
-                        </div>
-                            <div class="card-body">
-                              <div class="form-group">
-                                <label for="inputName">Nama Bidang</label>
-                                <input type="text" id="inputName" name="nama_bidang" class="form-control">
-                              </div>
-                              <div class="form-group">
-                                <label for="inputKode">Kode Bidang</label>
-                                <input type="string" id="inputKode" name="kode_bidang" class="form-control">
-                              </div>
+                        <div class="card card-primary">
+                            @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    @foreach ($errors->all() as $error)
+                                        <p>Data sudah ada!!</p>
+                                    @endforeach
+                                </div>
+                            @endif
+                            <div class="card-header">
+                                <h3 class="card-title">Data Bidang</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                        title="Collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
                             </div>
-                            <!-- /.card-body -->
+
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="inputName">Nama Bidang</label>
+                                    <input type="text" id="inputName" name="nama_bidang" class="form-control"
+                                        value="{{ isset($bidang) ? $bidang->nama_bidang : '' }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputKode">Kode Bidang</label>
+                                    <input type="string" id="inputKode" name="kode_bidang" class="form-control"
+                                        value="{{ isset($bidang) ? $bidang->kode_bidang : '' }}"
+                                        oninput="validateKodeBidang(this)">
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
@@ -173,8 +197,10 @@
                     </div>
                     <!-- /.card-body -->
                 </form>
-                </div>
-                <!-- /.card -->
+
+
+            </div>
+            <!-- /.card -->
             </div>
             <!-- /.col -->
             </div>
@@ -227,6 +253,11 @@
                 }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
             });
+
+            function validateKodeBidang(input) {
+                // Hanya mengizinkan angka dan titik
+                input.value = input.value.replace(/[^0-9.]/g, '');
+            }
         </script>
 </body>
 

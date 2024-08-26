@@ -16,12 +16,12 @@ class FormPenggunaController extends Controller
     // menampilkan semua data
     public function index()
     {
-        // $bukuTamus = BukuTamu::all();
-        // return response()->json([
-        //     'message' => "Success Get All Data Buku Tamu",
-        //     'data' => $bukuTamus
-        // ]);
+        $penggunas = Pengguna::all();
+        return view('Super-Admin.admin-pengguna', compact('penggunas'));
+    }
 
+    public function create()
+    {
         return view('Forms.form-pengguna');
     }
 
@@ -30,61 +30,51 @@ class FormPenggunaController extends Controller
     {
         $request->validate([
             'username' => 'required|string|max:30',
-            'password' => 'required|string|max:6',
+            'password' => 'required|string|max:8',
         ]);
 
         try {
             DB::beginTransaction();
             $pengguna->username = $request->username;
             $pengguna->password = $request->password;
-            $pengguna->id_role = 1;
-            $pengguna->id_bidang = 1;
+            $pengguna->id_role = 4;
+            $pengguna->id_bidang = 16;
             $pengguna->save();
             DB::commit();
 
-            if ($pengguna->save()) {
-                echo ("Data berhasil dimasukkan");
-            } else {
-                echo "gagal";
-            }
-        } catch (Exception $e) {
-            DB::rollBack();
-            echo "Gagal nih";
-        }
+            
+        return redirect('/admin-pengguna')->with('success', 'Data pengguna berhasil dimasukkan');
+    } catch (Exception $e) {
+        DB::rollBack();
+        return redirect('/admin-pengguna')->withErrors(['msg' => 'Gagal memasukkan data']);
     }
-
-    // menampilkan data dari id
-    public function show($id)
+    }
+    public function edit($id)
     {
         $pengguna = Pengguna::find($id);
-
-        if (is_null($pengguna)) {
-            return response()->json([
-                'message' => 'Pengguna Not Found'
-            ], 404);
-        }
-
-        return response()->json([
-            'message' => 'Success Get Data Pengguna by ID',
-            'data' => $pengguna
-        ], 200);
+        return view('Forms.form-pengguna', compact('pengguna'));
     }
 
-    // hapus data dari id
+    public function update(Request $request, $id)
+    {
+        $pengguna = Pengguna::find($id);
+        $pengguna->username = $request->username;
+        $pengguna->password = $request->password;
+        $pengguna->save();
+
+        return redirect('/admin-pengguna')->with('success', 'Data pengguna berhasil diperbarui!');
+    }
+
+      // hapus data dari id
     public function destroy($id)
     {
-        $pengguna = Pengguna::find($id);
-
-        if (is_null($pengguna)) {
-            return response()->json([
-                'message' => 'Pengguna Not Found'
-            ], 404);
+        $penggunas = Pengguna::find($id);
+  
+        if ($penggunas) {
+            $penggunas->delete();
+            return redirect()->back()->with('success', 'Data berhasil dihapus');
+        } else {
+            return redirect()->back()->withErrors(['Data tidak ditemukan']);
         }
-
-        $pengguna->delete();
-
-        return response()->json([
-            'message' => 'Pengguna Deleted Successfully'
-        ], 200);
     }
 }
