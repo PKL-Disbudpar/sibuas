@@ -19,18 +19,19 @@ class BukuTamuController extends Controller
     public function index()
     {
         $bukuTamus = BukuTamu::all();
+
         // $user = Auth::user(); // Mendapatkan pengguna yang sedang login
-        
-    // if ($user->role->name === 'admin') {
-    //     // Jika pengguna adalah admin, kembalikan view admin
-    //     return view('Admin.admin-bukuTamu', compact('bukuTamus'));
-    // } elseif ($user->role->name === 'resepsionis') {
-    //     // Jika pengguna adalah resepsionis, kembalikan view resepsionis
-    //     return view('Resepsionis.resepsionis-bukuTamu', compact('bukuTamus'));
-    // } else {
-    //     // Jika role tidak sesuai, redirect atau tampilkan pesan error
-    //     return redirect('/')->withErrors('Anda tidak memiliki akses ke halaman ini.');
-    // }
+
+        // if ($user->role->name === 'admin') {
+        //     // Jika pengguna adalah admin, kembalikan view admin
+        //     return view('Admin.admin-bukuTamu', compact('bukuTamus'));
+        // } elseif ($user->role->name === 'resepsionis') {
+        //     // Jika pengguna adalah resepsionis, kembalikan view resepsionis
+        //     return view('Resepsionis.resepsionis-bukuTamu', compact('bukuTamus'));
+        // } else {
+        //     // Jika role tidak sesuai, redirect atau tampilkan pesan error
+        //     return redirect('/')->withErrors('Anda tidak memiliki akses ke halaman ini.');
+        // }
 
         // return view('Resepsionis.resepsionis-bukuTamu', compact('bukuTamus'));
         return view('Super-Admin.admin-bukuTamu', compact('bukuTamus'));

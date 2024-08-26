@@ -70,10 +70,12 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                                 <th class="col md-6">Nama</th>
+                               
                                 <th><button type="button" class="btn btn-primary ml-3" id="add-nama"><i
                                             class="fas fa-plus"></i></button></th>
                             </thead>
-                            <tbody id="dataNama"></tbody>
+                            <tbody id="dataNama">
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -121,145 +123,142 @@
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <script src="../../plugins/select2/js/select2.full.min.js"></script>
 
-    <script src="../../dist/js/adminlte.min.js"></script>
-    <script src="../../dist/js/demo.js"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
     <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
+      $(function () {
+        $("#example1").DataTable({
+          "responsive": true, "lengthChange": false, "autoWidth": false,
+          "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false,
+          "responsive": true,
+        });
+      });
+
+      $(function () {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+          theme: 'bootstrap4'
+        })
+
+        //Datemask dd/mm/yyyy
+        $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+        //Datemask2 mm/dd/yyyy
+        $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+        //Money Euro
+        $('[data-mask]').inputmask()
+        
+        //Date picker
+        $('#reservationdate').datetimepicker({
+            format: 'L'
         });
 
-        $(function() {
-            //Initialize Select2 Elements
-            $('.select2').select2()
+        //Date and time picker
+        $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
 
-            //Initialize Select2 Elements
-            $('.select2bs4').select2({
-                theme: 'bootstrap4'
-            })
+        //Date range picker
+        $('#reservation').daterangepicker()
+        //Date range picker with time picker
+        $('#reservationtime').daterangepicker({
+          timePicker: true,
+          timePickerIncrement: 30,
+          locale: {
+            format: 'MM/DD/YYYY hh:mm A'
+          }
+        })
+        //Date range as a button
+        $('#daterange-btn').daterangepicker(
+          {
+            ranges   : {
+              'Today'       : [moment(), moment()],
+              'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+              'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+              'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+              'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+              'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            },
+            startDate: moment().subtract(29, 'days'),
+            endDate  : moment()
+          },
+          function (start, end) {
+            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+          }
+        )
 
-            //Datemask dd/mm/yyyy
-            $('#datemask').inputmask('dd/mm/yyyy', {
-                'placeholder': 'dd/mm/yyyy'
-            })
-            //Datemask2 mm/dd/yyyy
-            $('#datemask2').inputmask('mm/dd/yyyy', {
-                'placeholder': 'mm/dd/yyyy'
-            })
-            //Money Euro
-            $('[data-mask]').inputmask()
+        //Timepicker
+        $('#timepicker').datetimepicker({
+          format: 'LT'
+        })
 
-            //Date picker
-            $('#reservationdate').datetimepicker({
-                format: 'L'
-            });
-
-            //Date and time picker
-            $('#reservationdatetime').datetimepicker({
-                icons: {
-                    time: 'far fa-clock'
-                }
-            });
-
-            //Date range picker
-            $('#reservation').daterangepicker()
-            //Date range picker with time picker
-            $('#reservationtime').daterangepicker({
-                timePicker: true,
-                timePickerIncrement: 30,
-                locale: {
-                    format: 'MM/DD/YYYY hh:mm A'
-                }
-            })
-            //Date range as a button
-            $('#daterange-btn').daterangepicker({
-                    ranges: {
-                        'Today': [moment(), moment()],
-                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                        'This Month': [moment().startOf('month'), moment().endOf('month')],
-                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1,
-                            'month').endOf('month')]
-                    },
-                    startDate: moment().subtract(29, 'days'),
-                    endDate: moment()
-                },
-                function(start, end) {
-                    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format(
-                        'MMMM D, YYYY'))
-                }
-            )
-
-            //Timepicker
-            $('#timepicker').datetimepicker({
-                format: 'LT'
-            })
-
-            //Bootstrap Duallistbox
-            $('.duallistbox').bootstrapDualListbox()
-
-            //Colorpicker
-            $('.my-colorpicker1').colorpicker()
-            //color picker with addon
-            $('.my-colorpicker2').on('colorpickerChange', function(event) {
-                $('.my-colorpicker2').colorpicker()
-                $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-
-            })
-
-            $("input[data-bootstrap-switch]").each(function() {
-                $(this).bootstrapSwitch('state', $(this).prop('checked'));
-            })
+        //Bootstrap Duallistbox
+        $('.duallistbox').bootstrapDualListbox()
+        
+        //Colorpicker
+        $('.my-colorpicker1').colorpicker()
+        //color picker with addon
+        $('.my-colorpicker2').on('colorpickerChange', function(event) {
+        $('.my-colorpicker2').colorpicker()
+          $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
 
         })
+
+        $("input[data-bootstrap-switch]").each(function(){
+          $(this).bootstrapSwitch('state', $(this).prop('checked'));
+        })
+
+      })
     </script>
-    <script>
-        let dataRowDetail = 0;
-        $("#add-nama").click(() => {
-            dataRowDetail++;
-            inputRowDetail(dataRowDetail);
-        });
+    <script type="text/javascript">
+      let dataRowDetail = 0;
+      $("#add-nama").click(() => {
+        dataRowDetail++;
+        inputRowDetail(dataRowDetail);
+      });
+      
+      inputRowDetail = (i) => {
 
-        inputRowDetail = (i) => {
+        
+      
+        let tr = `<tr id="input-tr-${i}">
+                    <td class="form-group">
+                        <select
+                          class="form-control select2bs4"
+                          style="width: 100%"
+                          name="nama_spt"
+                          required
+                        >` + 
+                        
+                        "@foreach($data as $item) <option value='{{ $item->nip_pegawai }}'>{{ $item->nama }} - {{ $item->bidang->nama_bidang ?? 'Bidang tidak ditemukan' }}</option> @endforeach"
 
-            let tr = `<tr id="input-tr-${i}">
-                <td><input type="string" value="{{ old('namaDetail') }}" name="namaDetail[]" class="form-control form-control-sm" required></td>
-                <td><a class="btn btn-sm btn-danger delete-obyek float-right" data-ido="${i}">Hapus</a></td>
-              </tr>`;
+                        // `@foreach($data as $item)
+                        //     <option value='{{ $item->nip_pegawai }}' data-nama="{{ $item->nama }}" data-bidang="{{ $item->bidang->nama_bidang ?? '' }}">
+                        //         {{ $item->nama }} - {{ $item->bidang->nama_bidang ?? 'Bidang tidak ditemukan'}}
+                        //     </option>
+                        //   @endforeach`
+                        
+                         + `
+                                             
+                    
+                        </select>
+                      </td>
+                    <td><a class="btn btn-sm btn-danger delete-obyek float-right" data-ido="${i}">Hapus</a></td>
+                  </tr>`;
+      
+        $("#dataNama").append(tr);
+      };
 
-            $("#dataNama").append(tr);
-        };
-
-        $("#dataNama").on("click", ".delete-obyek", function() {
+      $("#dataNama").on("click", ".delete-obyek", function () {
             let id = $(this).attr("data-ido");
             $("#input-tr-" + id).remove();
-        });
-    </script>
-    <script>
-        function redirectToLoginAndFormSPT() {
-            // Mengarahkan ke halaman login
-            window.location.href = '{{ url('/login') }}';
-
-            // Setelah login, tunggu beberapa detik kemudian arahkan ke form SPT
-            setTimeout(function() {
-                window.location.href = '{{ url('/form-spt') }}';
-            }, 2000); // 3000 ms = 3 detik (sesuaikan waktu jika perlu)
-        }
+          });
     </script>
 </body>
 

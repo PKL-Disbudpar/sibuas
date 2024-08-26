@@ -39,6 +39,7 @@ class FormPegawaiController extends Controller
             $pegawai->nama = $request->nama;
             $pegawai->jabatan = $request->jabatan;
             $pegawai->golongan = $request->golongan;
+            $pegawai->id_bidang = 2;
             $pegawai->save();
             DB::commit();
 

@@ -27,5 +27,10 @@ class MasterPegawai extends Model
         return $this->hasMany(SuratTugas::class);
     }
 
+    public function bidang()
+    {
+        return $this->belongsTo(Bidang::class);
+    }
+
     protected $table = "master_pegawais";
 }

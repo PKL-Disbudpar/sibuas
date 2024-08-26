@@ -33,4 +33,6 @@ class Pengguna extends Model
     {
         return $this->hasOne(SuratTugas::class);
     }
+
+    protected $table = 'penggunas';
 }
