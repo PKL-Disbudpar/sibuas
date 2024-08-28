@@ -9,6 +9,7 @@ use App\Http\Controllers\SuratTugasController;
 use App\Http\Controllers\FormPegawaiController;
 use App\Http\Controllers\FormPenggunaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RiwayatSPTController;
 use App\Models\SuratTugas;
 
 /*
@@ -28,9 +29,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/riwayat-spt', function () {
-    return view('riwayat-spt');
-});
+Route::resource('/riwayat-spt', RiwayatSPTController::class);
 
 Route::resource('/login', LoginController::class);
 
@@ -92,7 +91,7 @@ Route::get('/bidang-suratTugas', function () {
 });
 
 
-// Forms
+// Forms role
 Route::resource('/admin-role', FormRoleController::class);
 
 Route::resource('/form-role', FormRoleController::class);
@@ -105,22 +104,30 @@ Route::get('/form-role', [FormRoleController::class, 'create'])->name('form-role
 
 Route::delete('/role/{id}', [FormRoleController::class, 'destroy'])->name('role.destroy');
 
+
+// Forms bidang
 Route::resource('/form-bidang', FormBidangController::class)->except(['index']);
 
 Route::get('/form-bidang', [FormBidangController::class, 'create'])->name('form-bidang.create');
 
 Route::resource('/form-bidang', FormBidangController::class)->except(['index']);
 
+
+// Forms pengguna
 Route::get('/form-pengguna', [FormPenggunaController::class, 'create'])->name('form-pengguna.create');
 
 Route::resource('/form-pengguna', FormPenggunaController::class)->except(['index']);
 
+
+// Forms master pegawai
 Route::resource('/form-masterPegawai', FormPegawaiController::class);
 
 Route::get('/form-masterPegawai', [FormPegawaiController::class, 'create'])->name('form-masterPegawai.create');
 
 Route::resource('/form-masterPegawai', FormPegawaiController::class)->except(['index']);
 
+
+// Forms buku tamu
 Route::get('/buku-tamu', [BukuTamuController::class, 'create'])->name('bukutamu.create');
 
 Route::resource('/buku-tamu', BukuTamuController::class)->except(['index']);
