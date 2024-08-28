@@ -139,11 +139,24 @@
                 <div class="card-header">
                     <h3 class="card-title">Input Data Pengguna</h3>
                 </div>
-                <form action="{{ route('form-pengguna.store') }}" method="POST">
+                <!-- /.card-header -->
+                <form
+                    action="{{ isset($pengguna) ? route('form-pengguna.update', $pengguna->id) : route('form-pengguna.store') }}"
+                    method="POST">
                     @csrf
-                    <!-- /.card-header -->
+                    @if (isset($pengguna))
+                        @method('PUT')
+                    @endif
                     <div class="card-body">
                         <div class="card card-primary">
+                            @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
                             <div class="card-header">
                                 <h3 class="card-title">Data Pengguna</h3>
                                 <div class="card-tools">
@@ -156,14 +169,48 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="inputName">Username</label>
-                                    <input type="string" id="inputName" class="form-control" name="username">
+                                    <input type="string" id="inputName" name="username" class="form-control"
+                                        value="{{ isset($pengguna) ? $pengguna->username : '' }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputKode">Password</label>
-                                    <input type="string" id="inputPassword" class="form-control" name="password">
+                                    <input type="string" id="inputKode" name="password" class="form-control"
+                                        value="{{ isset($pengguna) ? $pengguna->passsword : '' }}">
                                 </div>
+                                {{-- @foreach ($bidang as $item)
+                                <tr>
+                                    <td>{{ $item->nama_bidang }}</td>
+                                    <div class="form-group">
+                                        <label for="inputBidang">Bidang</label>
+                                        <select class="form-control select2" name="bidang" style="width: 100%;">
+                                            <option selected="selected" value="">Pilih Bidang</option>
+                                            @foreach ($bidang as $item)
+                                                <option value="{{ $item->id_bidang }}">{{ $item->nama_bidang }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </tr>
+                                 @endforeach --}}
+
+                                {{-- <div class="form-group">
+                                    <label for="inputBidang">Bidang</label>
+                                    <select class="form-control select2" name="bidang" style="width: 100%;">
+                                        <option selected="selected" value="">Pilih Bidang</option>
+                                        @foreach ($bidang as $item)
+                                            <option value="{{ $item->id_bidang }}">{{ $item->nama_bidang }}</option>
+                                        @endforeach
+                                    </select>
+                                </div> --}}
+
+                                {{-- <div class="form-group">
+                                    <label for="inputRole">Role</label>
+                                    <select class="form-control select2" name="role" style="width: 100%;">
+                                        <option selected="selected"></option>
+                                        <option></option>
+                                    </select>
+                                </div> --}}
                             </div>
-                            <!-- /.card-body -->
                         </div>
                         <div class="row">
                             <div class="col-12">

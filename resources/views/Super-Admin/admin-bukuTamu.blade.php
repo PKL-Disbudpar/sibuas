@@ -149,29 +149,29 @@
                         </thead>
                         <tbody>
                             @forelse ($bukuTamus as $item)
-                            <tr>
-                                <td style="width: 10%">{{ $loop->iteration }}</td>
-                                <td>{{ $item->nama_tamu }}</td>
-                                <td>{{ $item->asal_instansi }}</td>
-                                <td>{{ $item->jenis_kelamin }}</td>
-                                <td>{{ $item->no_hp }}</td>
-                                <td>{{ $item->tgl_pengunjung }}</td>
-                                <td>{{ $item->keperluan }}</td>
-                                <td class="project-actions text-right" style="width: 20%">
-                                    <form action="{{ route('bukuTamu.destroy', $item->id) }}" method="POST"
-                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">
-                                            <i class="fas fa-trash-alt"></i> Delete
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td style="width: 10%">{{ $loop->iteration }}</td>
+                                    <td>{{ $item->nama_tamu }}</td>
+                                    <td>{{ $item->asal_instansi }}</td>
+                                    <td>{{ $item->jenis_kelamin }}</td>
+                                    <td>{{ $item->no_hp }}</td>
+                                    <td>{{ $item->tgl_pengunjung }}</td>
+                                    <td>{{ $item->keperluan }}</td>
+                                    <td class="project-actions text-right" style="width: 20%">
+                                        <form action="{{ route('bukuTamu.destroy', $item->id) }}" method="POST"
+                                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="fas fa-trash-alt"></i> Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
                             @empty
-                            <div class="alert alert-danger">
-                                Data Belum Tersedia.
-                            </div>
+                                <div class="alert alert-danger">
+                                    Data Belum Tersedia.
+                                </div>
                             @endforelse
 
                             @if (session('success'))

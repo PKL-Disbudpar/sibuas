@@ -159,27 +159,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($penggunas as $item)
-                            <tr>
-                                <td style="width: 10%">{{$loop->iteration}}</td>
-                                <td>{{$item->username}}</td>
-                                <td>{{$item->password}}</td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt"></i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash-alt"></i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            @empty
-                            <div class="alert alert-danger">
-                                Data Pengguna Belum Tersedia
-                            </div>
-                            @endforelse
+                            @foreach ($penggunas as $item)
+                                <tr>
+                                    <td style="width: 10%">{{ $loop->iteration }}</td>
+                                    <td>{{ $item->username }}</td>
+                                    <td>{{ $item->password }}</td>
+                                    <td class="project-actions text-right" style="width: 20%">
+                                        <form action="{{ route('pengguna.edit', $item->id) }}">
+                                            <button type="submit" class="btn btn-info btn-sm">
+                                                <i class="fas fa-pencil-alt"></i> Edit
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('pengguna.destroy', $item->id) }}" method="POST"
+                                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="fas fa-trash-alt"></i> Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+
+                            @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
                         </tbody>
                     </table>
 

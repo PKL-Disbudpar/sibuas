@@ -132,71 +132,74 @@
         <!-- /.content-header -->
 
         <section class="content">
-            
-            
+
+
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Input Data Pegawai</h3>
                 </div>
-                <form action="{{ route('form-masterPegawai.store') }}" method="POST">
+
+                <form
+                    action="{{ isset($pegawai) ? route('form-masterPegawai.update', $pegawai->nip_pegawai) : route('form-masterPegawai.store') }}"
+                    enctype="multipart/form-data" method="POST">
+
                     @csrf
+                    @if (isset($pegawai))
+                        @method('PUT')
+                    @else
+                        @method('POST')
+                    @endif
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="card card-primary">
                             <div class="card-header">
-                              <h3 class="card-title">Data Pegawai</h3>
-                              <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                  <i class="fas fa-minus"></i>
-                                </button>
-                              </div>
+                                <h3 class="card-title">Data Pegawai</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                        title="Collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
                             </div>
                             <div class="card-body">
-                              <div class="form-group">
-                                <label for="inputNip">NIP</label>
-                                <input type="string" id="inputNip" name="nip_pegawai" class="form-control">
-                              </div>
-                              <div class="form-group">
-                                <label for="inputName">Nama Pegawai</label>
-                                <input type="string" id="inputName" name="nama" class="form-control">
-                              </div>
-                              <div class="form-group">
-                                <label for="inputJabatan">Jabatan</label>
-                                <input type="string" id="inputJabatan" name="jabatan" class="form-control">
-                              </div>
-                              <div class="form-group">
-                                <label for="inputGolongan">Golongan</label>
-                                {{-- <input type="text" id="inputGolongan" class="form-control"> --}}
-                                <select name="golongan" class="form-control select2" style="width: 100%;">
-                                    <option selected="selected">Ia</option>
-                                    <option>Ib</option>
-                                    <option>Ic</option>
-                                    <option>Id</option>
-                                    <option>IIa</option>
-                                    <option>IIb</option>
-                                    <option>IIc</option>
-                                    <option>IId</option>
-                                    <option>IIIa</option>
-                                    <option>IIIb</option>
-                                    <option>IIIc</option>
-                                    <option>IIId</option>
-                                    <option>IVa</option>
-                                    <option>IVb</option>
-                                    <option>IVc</option>
-                                    <option>IVd</option>
-                                    <option>IVe</option>
-                                </select>
-                              </div>
+                                <div class="form-group">
+                                    <label for="inputNip">NIP</label>
+                                    <input type="string" id="inputNip" name="nip_pegawai"
+                                        {{ isset($pegawai) ? 'disabled' : '' }} class="form-control"
+                                        value="{{ isset($pegawai) ? $pegawai->nip_pegawai : '' }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName">Nama Pegawai</label>
+                                    <input type="string" id="inputName" name="nama" class="form-control"
+                                        value="{{ isset($pegawai) ? $pegawai->nama : '' }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputJabatan">Jabatan</label>
+                                    <input type="string" id="inputJabatan" name="jabatan" class="form-control"
+                                        value="{{ isset($pegawai) ? $pegawai->jabatan : '' }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputGolongan">Golongan</label>
+                                    <select name="golongan" class="form-control select2" style="width: 100%;">
+                                        <option value="" disabled selected>Pilih Golongan</option>
+                                        @foreach (['Ia', 'Ib', 'Ic', 'Id', 'IIa', 'IIb', 'IIc', 'IId', 'IIIa', 'IIIb', 'IIIc', 'IIId', 'IVa', 'IVb', 'IVc', 'IVd', 'IVe'] as $golongan)
+                                            <option value="{{ $golongan }}"
+                                                {{ old('golongan', isset($pegawai) ? $pegawai->golongan : '') == $golongan ? 'selected' : '' }}>
+                                                {{ $golongan }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                             <!-- /.card-body -->
-                          </div>
-                          <div class="row">
+                        </div>
+                        <div class="row">
                             <div class="col-12">
-                              <a href="{{ url('/admin-masterPegawai') }}" class="btn btn-secondary">Cancel</a>
-                              <input type="submit" value="Simpan" class="btn btn-success float-right">
+                                <a href="{{ url('/admin-masterPegawai') }}" class="btn btn-secondary">Cancel</a>
+                                <input type="submit" value="Simpan" class="btn btn-success float-right">
                             </div>
-                          </div>
+                        </div>
                     </div>
                 </form>
                 <!-- /.card-body -->

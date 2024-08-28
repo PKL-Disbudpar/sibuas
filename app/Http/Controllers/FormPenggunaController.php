@@ -37,20 +37,62 @@ class FormPenggunaController extends Controller
         try {
             DB::beginTransaction();
             $pengguna->username = $request->username;
-            $pengguna->password = Hash::make($request->password);
-            $pengguna->id_role = 1;
-            $pengguna->id_bidang = 2;
+            $pengguna->password = $request->password;
+            $pengguna->id_role = 4;
+            $pengguna->id_bidang = 16;
             $pengguna->save();
             DB::commit();
 
-            if ($pengguna->save()) {
-                echo ("Data berhasil dimasukkan");
-            } else {
-                echo "Gagal";
-            }
-        } catch (Exception $e) {
-            DB::rollBack();
-            echo "Gagal nih";
+            
+        return redirect('/admin-pengguna')->with('success', 'Data pengguna berhasil dimasukkan');
+    } catch (Exception $e) {
+        DB::rollBack();
+        return redirect('/admin-pengguna')->withErrors(['msg' => 'Gagal memasukkan data']);
+    }
+    }
+    public function edit($id)
+    {
+        $pengguna = Pengguna::find($id);
+        return view('Forms.form-pengguna', compact('pengguna'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $pengguna = Pengguna::find($id);
+        $pengguna->username = $request->username;
+        $pengguna->password = $request->password;
+        $pengguna->save();
+
+        return redirect('/admin-pengguna')->with('success', 'Data pengguna berhasil diperbarui!');
+    }
+
+      // hapus data dari id
+    public function destroy($id)
+    {
+        $penggunas = Pengguna::find($id);
+  
+        if ($penggunas) {
+            $penggunas->delete();
+            return redirect()->back()->with('success', 'Data berhasil dihapus');
+        } else {
+            return redirect()->back()->withErrors(['Data tidak ditemukan']);
         }
     }
 }
+//             $pengguna->password = Hash::make($request->password);
+//             $pengguna->id_role = 1;
+//             $pengguna->id_bidang = 2;
+//             $pengguna->save();
+//             DB::commit();
+
+//             if ($pengguna->save()) {
+//                 echo ("Data berhasil dimasukkan");
+//             } else {
+//                 echo "Gagal";
+//             }
+//         } catch (Exception $e) {
+//             DB::rollBack();
+//             echo "Gagal nih";
+//         }
+//     }
+// }

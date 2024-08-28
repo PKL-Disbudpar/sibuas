@@ -65,32 +65,20 @@ class BukuTamuController extends Controller
             $bukutamu->save();
             DB::commit();
 
-            if ($bukutamu->save()) {
-                echo ("Data berhasil dimasukkan");
-            } else {
-                echo "gagal";
-            }
-        } catch (Exception $e) {
-            DB::rollBack();
-            echo "Gagal nih";
-        }
+        //     if ($bukutamu->save()) {
+        //         echo ("Data berhasil dimasukkan");
+        //     } else {
+        //         echo "gagal";
+        //     }
+        // } catch (Exception $e) {
+        //     DB::rollBack();
+        //     echo "Gagal nih";
+        // }
+        return redirect()->back()->with('success', 'Data berhasil dimasukkan');
+    } catch (Exception $e) {
+        DB::rollBack();
+        return redirect()->back()->withErrors(['msg' => 'Gagal memasukkan data']);
     }
-
-    // menampilkan data dari id
-    public function show($id)
-    {
-        $bukuTamu = BukuTamu::find($id);
-
-        if (is_null($bukuTamu)) {
-            return response()->json([
-                'message' => 'Buku Tamu Not Found'
-            ], 404);
-        }
-
-        return response()->json([
-            'message' => 'Success Get Data Buku Tamu by ID',
-            'data' => $bukuTamu
-        ], 200);
     }
 
     // hapus data dari id
@@ -98,23 +86,12 @@ class BukuTamuController extends Controller
     {
         $bukuTamus = BukuTamu::find($id);
 
-        if (is_null($bukuTamus)) {
+        if ($bukuTamus) {
+            $bukuTamus->delete();
+            return redirect()->back()->with('success', 'Data berhasil dihapus');
+        } else {
             return redirect()->back()->withErrors(['Data tidak ditemukan']);
         }
 
-        $bukuTamus->delete();
-
-        return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
-    // public function destroy($id)
-    // {
-    //     //get post by ID
-    //     $bukuTamus = BukuTamu::findOrFail($id);
-
-    //     //delete post
-    //     $bukuTamus->delete();
-
-    //     //redirect to index
-    //     return redirect()->route('Super-Admin.admin-bukuTamu.index')->with(['success' => 'Data Berhasil Dihapus!']);
-    // }
 }

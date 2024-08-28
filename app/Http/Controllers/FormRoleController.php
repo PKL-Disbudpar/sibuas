@@ -49,12 +49,11 @@ class FormRoleController extends Controller
     {
         $roles = Role::find($id);
 
-        if (is_null($roles)) {
+        if ($roles) {
+            $roles->delete();
             return redirect()->back()->withErrors(['Data tidak ditemukan']);
+        } else {
+            return redirect()->back()->with('success', 'Data berhasil dihapus');
         }
-
-        $roles->delete();
-
-        return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
 }

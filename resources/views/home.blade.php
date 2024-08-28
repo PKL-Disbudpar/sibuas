@@ -5,7 +5,7 @@
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/style_home.css') }}">
 @endpush
-    
+
 @section('content')
     <section class="hero">
         <div class="hero-text">
@@ -13,8 +13,8 @@
             <h2>SISTEM INFORMASI BUKU TAMU DAN SPT (SIBUAS)</h2>
             <p>Dinas Kebudayaan dan Pariwisata Provinsi Jawa Timur</p>
             <div class="buttons">
-                <a href="{{url('/buku-tamu')}}" class="btn">Buku Tamu</a>
-                <a href="{{url('/form-spt')}}" class="btn">SPT</a>
+                <a href="{{ url('/buku-tamu') }}" class="btn">Buku Tamu</a>
+                <a href="{{ url('/form-spt') }}" class="btn">SPT</a>
             </div>
         </div>
         <div class="hero-image">
@@ -60,8 +60,8 @@
         </div>
         <div class="services">
             <h3>Layanan</h3>
-            <a href="{{url('/buku-tamu')}}">Buku Tamu</a>
-            <a href="{{url('/form-spt')}}">SPT</a>
+            <a href="{{ url('/buku-tamu') }}">Buku Tamu</a>
+            <a href="{{ url('/form-spt') }}">SPT</a>
         </div>
     </div>
     <div class="footer-bottom">

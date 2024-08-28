@@ -18,6 +18,37 @@
   <link rel="stylesheet" href="{{ asset('css/style_form-spt.css') }}">
 @endpush
 
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo">
+                <div class="judul">
+                    <span>Sistem Informasi Buku Tamu dan SPT</span>
+                    <span>Dinas Kebudayaan dan Pariwisata Provinsi Jawa Timur</span>
+                </div>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="{{ url('/') }}">Home</a></li>
+                    <li><a href="{{ url('/BukuTamu') }}">Buku Tamu</a></li>
+                    <li class="dropdown-container">
+                        <a href="javascript:void(0);" class="dropbtn">SPT <i class="arrow-down"></i></a>
+                        <div class="dropdown">
+                            <a href="{{ url('/form-spt') }}">Buat SPT</a>
+                            <a href="{{ url('/riwayat-spt') }}">Riwayat SPT</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
 @section('content')
     <section id="subTitle">
       <h4>FORM DATA SPT</h4>
@@ -25,52 +56,54 @@
     </section>
 
     <section class="card">
-      <div class="card-header">
-          <h3 class="card-title">Form SPT</h3>
-      </div>
-      <form action="{{ route('form-spt.store') }}" method="POST">
-          @csrf
-          <div class="card-body">
-              <div class="form-group">
-                  <label for="InputTanggalSPT">Tanggal SPT</label>
-                  <input type="date" class="form-control" id="InputTanggalSPT" placeholder="Masukkan Tanggal SPT">
-              </div>
-              <div class="form-group">
-                  <div class="row">
-                      <table class="table table-hover text-nowrap">
-                          <thead>
-                              <th class="col md-6">Nama</th>              
-                              <th>
-                                <button type="button" class="btn btn-primary ml-3" id="add-nama">
-                                  <i class="fas fa-plus"></i>
-                                </button>
-                              </th>
-                          </thead>
-                          <tbody id="dataNama"></tbody>
-                      </table>
-                  </div>
-              </div>
-              <div class="form-group">
-                  <label for="InputTujuanSPT">Tujuan SPT</label>
-                  <textarea class="form-control" id="InputTujuanSPT" placeholder="Masukkan Tujuan SPT" rows="5"></textarea>
-              </div>
-              <div class="form-group">
-                  <label>TTD Oleh</label>
-                  <select class="form-control select2" style="width: 100%;">
-                      <option selected="selected">Kepala Dinas</option>
-                      <option>Kepala Bidang</option>
-                  </select>
-              </div>
-          </div>
-          <div id="buttons">
-              <div class="card-footer">
-                  <button type="submit" class="btn btn-danger">Batal</button>
-              </div>
-              <div class="card-footer">
-                  <button type="submit" class="btn btn-success">Proses</button>
-              </div>
-          </div>
-      </form>
+        <div class="card-header">
+            <h3 class="card-title">Form SPT</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="{{ route('form-spt.store') }}" method="POST">
+            @csrf
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="InputTanggalSPT">Tanggal SPT</label>
+                    <input type="date" class="form-control" id="InputTanggalSPT" name="tgl_spt"
+                        placeholder="Masukkan Tanggal SPT">
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <table class="table table-hover text-nowrap">
+                            <thead>
+                                <th class="col md-6">Nama</th>
+
+                                <th><button type="button" class="btn btn-primary ml-3" id="add-nama"><i
+                                            class="fas fa-plus"></i></button></th>
+                            </thead>
+                            <tbody id="dataNama">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputTujuanSPT">Tujuan SPT</label>
+                    <textarea class="form-control" id="InputTujuanSPT" name="tujuan_spt" placeholder="Masukkan Tujuan SPT" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>TTD Oleh</label>
+                    <select class="form-control select2" name="ttd" style="width: 100%;">
+                        <option selected="selected">Kepala Bidang</option>
+                        <option>Kepala Dinas</option>
+                    </select>
+                </div>
+            </div>
+            <div id="buttons">
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-danger">Batal</button>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-success">Proses</button>
+                </div>
+            </div>
+        </form>
     </section>
 @endsection
 
@@ -92,98 +125,111 @@
     <script src="../../plugins/select2/js/select2.full.min.js"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 
+    <script src="../../dist/js/adminlte.min.js"></script>
+    <script src="../../dist/js/demo.js"></script>
     <script>
-      $(function () {
-        $("#example1").DataTable({
-          "responsive": true, "lengthChange": false, "autoWidth": false,
-          "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false,
-          "responsive": true,
-        });
-      });
-
-      $(function () {
-        //Initialize Select2 Elements
-        $('.select2').select2()
-
-        //Initialize Select2 Elements
-        $('.select2bs4').select2({
-          theme: 'bootstrap4'
-        })
-
-        //Datemask dd/mm/yyyy
-        $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-        //Datemask2 mm/dd/yyyy
-        $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-        //Money Euro
-        $('[data-mask]').inputmask()
-        
-        //Date picker
-        $('#reservationdate').datetimepicker({
-            format: 'L'
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
         });
 
-        //Date and time picker
-        $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+        $(function() {
+            //Initialize Select2 Elements
+            $('.select2').select2()
 
-        //Date range picker
-        $('#reservation').daterangepicker()
-        //Date range picker with time picker
-        $('#reservationtime').daterangepicker({
-          timePicker: true,
-          timePickerIncrement: 30,
-          locale: {
-            format: 'MM/DD/YYYY hh:mm A'
-          }
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
+
+            //Datemask dd/mm/yyyy
+            $('#datemask').inputmask('dd/mm/yyyy', {
+                'placeholder': 'dd/mm/yyyy'
+            })
+            //Datemask2 mm/dd/yyyy
+            $('#datemask2').inputmask('mm/dd/yyyy', {
+                'placeholder': 'mm/dd/yyyy'
+            })
+            //Money Euro
+            $('[data-mask]').inputmask()
+
+            //Date picker
+            $('#reservationdate').datetimepicker({
+                format: 'L'
+            });
+
+            //Date and time picker
+            $('#reservationdatetime').datetimepicker({
+                icons: {
+                    time: 'far fa-clock'
+                }
+            });
+
+            //Date range picker
+            $('#reservation').daterangepicker()
+            //Date range picker with time picker
+            $('#reservationtime').daterangepicker({
+                timePicker: true,
+                timePickerIncrement: 30,
+                locale: {
+                    format: 'MM/DD/YYYY hh:mm A'
+                }
+            })
+            //Date range as a button
+            $('#daterange-btn').daterangepicker({
+                    ranges: {
+                        'Today': [moment(), moment()],
+                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                        'This Month': [moment().startOf('month'), moment().endOf('month')],
+                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1,
+                            'month').endOf('month')]
+                    },
+                    startDate: moment().subtract(29, 'days'),
+                    endDate: moment()
+                },
+                function(start, end) {
+                    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format(
+                        'MMMM D, YYYY'))
+                }
+            )
+
+            //Timepicker
+            $('#timepicker').datetimepicker({
+                format: 'LT'
+            })
+
+            //Bootstrap Duallistbox
+            $('.duallistbox').bootstrapDualListbox()
+
+            //Colorpicker
+            $('.my-colorpicker1').colorpicker()
+            //color picker with addon
+            $('.my-colorpicker2').on('colorpickerChange', function(event) {
+                $('.my-colorpicker2').colorpicker()
+                $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+
+            })
+
+            $("input[data-bootstrap-switch]").each(function() {
+                $(this).bootstrapSwitch('state', $(this).prop('checked'));
+            })
+
         })
-        //Date range as a button
-        $('#daterange-btn').daterangepicker(
-          {
-            ranges   : {
-              'Today'       : [moment(), moment()],
-              'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-              'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-              'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-              'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-              'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-            },
-            startDate: moment().subtract(29, 'days'),
-            endDate  : moment()
-          },
-          function (start, end) {
-            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-          }
-        )
-
-        //Timepicker
-        $('#timepicker').datetimepicker({
-          format: 'LT'
-        })
-
-        //Bootstrap Duallistbox
-        $('.duallistbox').bootstrapDualListbox()
-        
-        //Colorpicker
-        $('.my-colorpicker1').colorpicker()
-        //color picker with addon
-        $('.my-colorpicker2').on('colorpickerChange', function(event) {
-        $('.my-colorpicker2').colorpicker()
-          $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-
-        })
-
-        $("input[data-bootstrap-switch]").each(function(){
-          $(this).bootstrapSwitch('state', $(this).prop('checked'));
-        })
-
-      })
     </script>
 
     <script type="text/javascript">
@@ -463,49 +509,38 @@
     </script>
 
     <script type="text/javascript">
-      let dataRowDetail = 0;
-      $("#add-nama").click(() => {
-        dataRowDetail++;
-        inputRowDetail(dataRowDetail);
-      });
-      
-      inputRowDetail = (i) => {
+        let dataRowDetail = 0;
+        $("#add-nama").click(() => {
+            dataRowDetail++;
+            inputRowDetail(dataRowDetail);
+        });
 
-        
-      
-        let tr = `<tr id="input-tr-${i}">
+        inputRowDetail = (i) => {
+
+
+
+                let tr = `<tr id="input-tr-${i}">
                     <td class="form-group">
                         <select
                           class="form-control select2bs4"
                           style="width: 100%"
                           name="nama_spt"
                           required
-                        >` + 
-                        
-                        "@foreach($data as $item) <option value='{{ $item->nip_pegawai }}'>{{ $item->nama }} - {{ $item->bidang->nama_bidang ?? 'Bidang tidak ditemukan' }}</option> @endforeach"
+                        >` +
 
-                        // `@foreach($data as $item)
-                        //     <option value='{{ $item->nip_pegawai }}' data-nama="{{ $item->nama }}" data-bidang="{{ $item->bidang->nama_bidang ?? '' }}">
-                        //         {{ $item->nama }} - {{ $item->bidang->nama_bidang ?? 'Bidang tidak ditemukan'}}
-                        //     </option>
-                        //   @endforeach`
-                        
-                         + `
-                                             
-                    
-                        </select>
-                      </td>
-                    <td><a class="btn btn-sm btn-danger delete-obyek float-right" data-ido="${i}">Hapus</a></td>
-                  </tr>`;
-      
-        $("#dataNama").append(tr);
-      };
+                    "@foreach ($data as $item) <option value='{{ $item->nip_pegawai }}'>{{ $item->nama }} - {{ $item->bidang->nama_bidang ?? 'Bidang tidak ditemukan' }}</option> @endforeach"
 
-      $("#dataNama").on("click", ".delete-obyek", function () {
-            let id = $(this).attr("data-ido");
-            $("#input-tr-" + id).remove();
-          });
+                let tr = `<tr id="input-tr-${i}">
+                  <td><input type="string" value="{{ old('namaDetail') }}" name="nama_spt" class="form-control form-control-sm" required></td>
+                  <td><a class="btn btn-sm btn-danger delete-obyek float-right" data-ido="${i}">Hapus</a></td>
+                </tr>`;
+
+                $("#dataNama").on("click", ".delete-obyek", function() {
+                    let id = $(this).attr("data-ido");
+                    $("#input-tr-" + id).remove();
+                });
     </script>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 
 </html>
