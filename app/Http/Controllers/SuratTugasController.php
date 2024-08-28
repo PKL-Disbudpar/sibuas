@@ -9,13 +9,14 @@ use App\Models\MasterPegawai;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Console\View\Components\Alert;
+use Illuminate\Support\Facades\Auth;
 
 class SuratTugasController extends Controller
 {
     public function index()
     {
-        $data = MasterPegawai::with('Bidang')->orderBy('nama', 'ASC')->get();
         // return view('Super-Admin.admin-suratTugas', compact('data'));
+        $data = MasterPegawai::with('Bidang')->orderBy('nama', 'ASC')->get();
         return view('form-spt', compact('data'));
     }
 
@@ -27,8 +28,6 @@ class SuratTugasController extends Controller
             'nama_spt' => 'required|string|max:255',
             'ttd' => 'required|string',
         ]);
-
-
 
         try {
             DB::beginTransaction();
