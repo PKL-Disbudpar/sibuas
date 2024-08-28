@@ -112,33 +112,27 @@
     </aside>
 
     <section class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <div class="content-header bg-white">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="m-0">Dashboard SIBUAS</h1>
-                    </div><!-- /.col -->
+                    </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('/admin-dashboard') }}">Home</a></li>
                             <li class="breadcrumb-item active">Buku Tamu</li>
                         </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- /.content-header -->
 
         <section class="content">
-
-
-            <!-- Default box -->
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Daftar Buku Tamu</h3>
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body">
                     <table id="example1" class="table table-bordered table-striped dataTable dtr-inline">
                         <thead>
@@ -189,39 +183,27 @@
                                 </div>
                             @endif
                         </tbody>
-
                     </table>
                 </div>
-                <!-- /.card-body -->
             </div>
-            <!-- /.card -->
-            </div>
-            <!-- /.col -->
-            </div>
-            <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
         </section>
-        <!-- /.content -->
+        
         </div>
-        <!-- /.content-wrapper -->
+
         <footer class="main-footer fixed-bottom">
             <strong>Copyright &copy; 2024 <a href="https://adminlte.io">Disbudpar</a>.</strong>
             All rights reserved.
         </footer>
-        <!-- Control Sidebar -->
+
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
         </aside>
-        <!-- /.control-sidebar -->
-        </div>
-        <!-- ./wrapper -->
 
-        <!-- jQuery -->
+        </div>
+
+        
         <script src="../../plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap 4 -->
         <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- DataTables  & Plugins -->
         <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
         <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
         <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -234,9 +216,7 @@
         <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
         <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
         <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-        <!-- AdminLTE App -->
         <script src="../../dist/js/adminlte.min.js"></script>
-        <!-- Page specific script -->
         <script>
             $(function() {
                 $("#example1").DataTable({
