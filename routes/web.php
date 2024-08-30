@@ -144,11 +144,11 @@ Route::resource('/form-masterPegawai', FormPegawaiController::class)->except(['i
 
 Route::get('/form-masterPegawai', [FormPegawaiController::class, 'create'])->name('form-masterPegawai.create');
 
-Route::delete('/form-masterPegawai/{id}', [FormPegawaiController::class, 'destroy'])->name('masterPegawai.destroy');
+Route::delete('/form-masterPegawai/{id}', [FormPegawaiController::class, 'destroy'])->name('pegawai.destroy');
 
-Route::get('/form-masterPegawai/{id}/edit', [FormPegawaiController::class, 'edit'])->name('masterPegawai.edit');
+Route::get('/form-masterPegawai/{id}/edit', [FormPegawaiController::class, 'edit'])->name('pegawai.edit');
 
-Route::put('/form-masterPegawai/{id}', [FormPegawaiController::class, 'update'])->name('masterPegawai.update');
+Route::put('/form-masterPegawai/{id}', [FormPegawaiController::class, 'update'])->name('form-masterPegawai.update');
 
 
 //buku tamu
