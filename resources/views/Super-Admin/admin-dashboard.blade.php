@@ -1,4 +1,61 @@
-<!DOCTYPE html>
+@extends('layouts.admin')
+
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/style_admin-dashboard.css') }}">
+@endpush
+
+@section('content')
+    <section class="content-wrapper">
+        <div class="content-header bg-white">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Dashboard SIBUAS</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ url('/admin-dashboard') }}">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row m-3">
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>80</h3>
+                        <p>Tamu</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person"></i>
+                    </div>
+                    <a href="{{ url('/admin-bukuTamu') }}" class="small-box-footer">Info Lebih Lanjut <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>30</h3>
+                        <p>Surat Perintah Tugas</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-document-text"></i>
+                    </div>
+                    <a href="{{ url('/admin-suratTugas') }}" class="small-box-footer">Info Lebih Lanjut <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection
+
+
+{{-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -20,7 +77,6 @@
 </head>
 
 <body>
-    <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
@@ -160,6 +216,7 @@
             </div>
         </div>
     </section>
+
     <footer class="main-footer fixed-bottom">
         <strong>Copyright &copy; 2024 <a href="https://adminlte.io">Disbudpar</a>.</strong>
         All rights reserved.
@@ -206,4 +263,4 @@
     </script>
 </body>
 
-</html>
+</html> --}}
