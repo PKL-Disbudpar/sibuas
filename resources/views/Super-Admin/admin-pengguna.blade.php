@@ -155,6 +155,8 @@
                                 <th style="width: 10%">No</th>
                                 <th>Username</th>
                                 <th>Password</th>
+                                <th>Bidang</th>
+                                <th>Role</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -164,6 +166,8 @@
                                     <td style="width: 10%">{{ $loop->iteration }}</td>
                                     <td>{{ $item->username }}</td>
                                     <td>{{ $item->password }}</td>
+                                    <td>{{ $item->bidang->nama_bidang }}</td>
+                                    <td>{{ $item->role->nama_role }}</td>
                                     <td class="project-actions text-right" style="width: 20%">
                                         <form action="{{ route('pengguna.edit', $item->id) }}">
                                             <button type="submit" class="btn btn-info btn-sm">

@@ -21,12 +21,12 @@ class Pengguna extends Model
 
     public function role()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo(Role::class, 'id_role');
     }
 
     public function bidang()
     {
-        return $this->belongsTo(Bidang::class);
+        return $this->belongsTo(Bidang::class, 'id_bidang');
     }
 
     public function surat_tugas()
