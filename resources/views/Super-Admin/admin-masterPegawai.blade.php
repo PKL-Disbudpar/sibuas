@@ -162,7 +162,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($master_pegawais as $item)
+                            @foreach ($master_pegawais as $item)
                                 <tr>
                                     <td style="width: 10%">{{ $loop->iteration }}</td>
                                     <td>{{ $item->nip_pegawai }}</td>
@@ -187,11 +187,7 @@
                                         </form>
                                     </td>
                                 </tr>
-                            @empty
-                                <div class="alert alert-danger">
-                                    Data Pegawai Belum Tersedia
-                                </div>
-                            @endforelse
+                            @endforeach
 
                             @if (session('success'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
