@@ -26,7 +26,7 @@ class Pengguna extends Model
 
     public function bidang()
     {
-        return $this->belongsTo(Bidang::class);
+        return $this->belongsTo(Bidang::class, 'id_bidang');
     }
 
     public function surat_tugas()

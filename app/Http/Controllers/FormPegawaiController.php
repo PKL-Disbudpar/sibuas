@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MasterPegawai;
+use App\Models\Bidang;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,13 +15,15 @@ class FormPegawaiController extends Controller
     // menampilkan semua data
     public function index()
     {
-        $master_pegawais = MasterPegawai::all();
+        // $master_pegawais = MasterPegawai::all();
+        $master_pegawais = MasterPegawai::with('bidang')->get();
         return view('Super-Admin.admin-masterPegawai', compact('master_pegawais'));
     }
-
+    
     public function create()
     {
-        return view('Forms.form-masterPegawai');
+        $bidangs = Bidang::all();
+        return view('Forms.form-masterPegawai', compact('bidangs'));
     }
 
     // menyimpan data
@@ -31,6 +34,7 @@ class FormPegawaiController extends Controller
             'nama' => 'required|string',
             'jabatan' => 'required|string',
             'golongan' => 'required|string',
+            'id_bidang' => 'required|string',
         ]);
 
         try {
@@ -39,7 +43,8 @@ class FormPegawaiController extends Controller
             $pegawai->nama = $request->nama;
             $pegawai->jabatan = $request->jabatan;
             $pegawai->golongan = $request->golongan;
-            $pegawai->id_bidang = 2;
+            $pegawai->id_bidang = $request->id_bidang;
+            // $pegawai->id_bidang = 2;
             $pegawai->save();
             DB::commit();
 
@@ -53,7 +58,8 @@ class FormPegawaiController extends Controller
     public function edit($nip)
     {
         $pegawai = MasterPegawai::where('nip_pegawai','=',$nip)->first();
-        return view('Forms.form-masterPegawai', compact('pegawai'));
+        $bidangs = DB::table('bidangs')->get();
+        return view('Forms.form-masterPegawai', compact('pegawai','bidangs'));
     }
 
     public function update(Request $request, $id)
@@ -62,6 +68,7 @@ class FormPegawaiController extends Controller
             'nama' => 'required|string',
             'jabatan' => 'required|string',
             'golongan' => 'required|string',
+            'id_bidang' => 'required|string',
         ]);
 
        try {
@@ -69,6 +76,7 @@ class FormPegawaiController extends Controller
             'nama' => $request->nama,
             'jabatan' => $request->jabatan,
             'golongan' => $request->golongan,
+            'id_bidang' => $request->id_bidang,
         ]);
             
 

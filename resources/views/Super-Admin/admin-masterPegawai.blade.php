@@ -157,6 +157,7 @@
                                 <th>Nama</th>
                                 <th>Jabatan</th>
                                 <th>Golongan</th>
+                                <th>Bidang</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -168,13 +169,14 @@
                                     <td>{{ $item->nama }}</td>
                                     <td>{{ $item->jabatan }}</td>
                                     <td>{{ $item->golongan }}</td>
+                                    <td>{{ $item->bidang->nama_bidang }}</td>
                                     <td class="project-actions text-right">
-                                        <form action="{{ route('masterPegawai.edit', $item->nip_pegawai) }}">
+                                        <form action="{{ route('pegawai.edit', $item->nip_pegawai) }}">
                                             <button type="submit" class="btn btn-info btn-sm">
                                                 <i class="fas fa-pencil-alt"></i> Edit
                                             </button>
                                         </form>
-                                        <form action="{{ route('masterPegawai.destroy', $item->nip_pegawai) }}"
+                                        <form action="{{ route('pegawai.destroy', $item->nip_pegawai) }}"
                                             method="POST"
                                             onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                             @csrf

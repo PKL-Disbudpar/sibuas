@@ -191,6 +191,19 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="inputBidang">Bidang</label>
+                                    <select name="id_bidang" id="inputBidang" class="form-control select2"
+                                        style="width: 100%;">
+                                        <option value="" disabled selected>Pilih Bidang</option>
+                                        @foreach ($bidangs as $item)
+                                            <option value="{{ $item->id }}"
+                                                {{ old('id_bidang', isset($pegawai) ? $pegawai->id_bidang : '') == $item->id ? 'selected' : '' }}>
+                                                {{ $item->nama_bidang }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                             <!-- /.card-body -->
                         </div>

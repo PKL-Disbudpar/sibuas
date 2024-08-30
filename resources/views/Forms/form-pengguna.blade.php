@@ -177,39 +177,32 @@
                                     <input type="string" id="inputKode" name="password" class="form-control"
                                         value="{{ isset($pengguna) ? $pengguna->passsword : '' }}">
                                 </div>
-                                {{-- @foreach ($bidang as $item)
-                                <tr>
-                                    <td>{{ $item->nama_bidang }}</td>
-                                    <div class="form-group">
-                                        <label for="inputBidang">Bidang</label>
-                                        <select class="form-control select2" name="bidang" style="width: 100%;">
-                                            <option selected="selected" value="">Pilih Bidang</option>
-                                            @foreach ($bidang as $item)
-                                                <option value="{{ $item->id_bidang }}">{{ $item->nama_bidang }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </tr>
-                                 @endforeach --}}
-
-                                {{-- <div class="form-group">
+                                <div class="form-group">
                                     <label for="inputBidang">Bidang</label>
-                                    <select class="form-control select2" name="bidang" style="width: 100%;">
-                                        <option selected="selected" value="">Pilih Bidang</option>
-                                        @foreach ($bidang as $item)
-                                            <option value="{{ $item->id_bidang }}">{{ $item->nama_bidang }}</option>
+                                    <select name="id_bidang" id="inputBidang" class="form-control select2"
+                                        style="width: 100%;">
+                                        <option value="" disabled selected></option>
+                                        @foreach ($bidangs as $item)
+                                            <option value="{{ $item->id }}"
+                                                {{ old('id_bidang', isset($pengguna) ? $pengguna->id_bidang : '' == $item->id) ? 'selected' : '' }}>
+                                                {{ $item->nama_bidang }}
+                                            </option>
                                         @endforeach
                                     </select>
-                                </div> --}}
-
-                                {{-- <div class="form-group">
+                                </div>
+                                <div class="form-group">
                                     <label for="inputRole">Role</label>
-                                    <select class="form-control select2" name="role" style="width: 100%;">
-                                        <option selected="selected"></option>
-                                        <option></option>
+                                    <select name="id_role" id="inputRole" class="form-control select2"
+                                        style="width: 100%;">
+                                        <option value="" disabled selected></option>
+                                        @foreach ($roles as $item)
+                                            <option value="{{ $item->id }}"
+                                                {{ old('id_role', isset($pengguna) ? $pengguna->id_role : '' == $item->id) ? 'selected' : '' }}>
+                                                {{ $item->nama_role }}
+                                            </option>
+                                        @endforeach
                                     </select>
-                                </div> --}}
+                                </div>
                             </div>
                         </div>
                         <div class="row">
