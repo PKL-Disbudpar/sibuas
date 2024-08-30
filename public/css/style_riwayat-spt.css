@@ -111,7 +111,7 @@ header {
     z-index: -1;
 }
 
-footer {
+#footer {
     background-color: #226597;
     color: #ffffff;
     padding: 8px 0;
@@ -125,13 +125,13 @@ footer {
         padding: 18px 10px;
     }
 
-    .navbar .logo{
+    .navbar .logo {
         display: flex;
         flex-direction: row;
         width: 80%;
     }
 
-    .judul{
+    .judul {
         font-size: 10pt;
         width: 80%;
     }
