@@ -157,6 +157,7 @@
                                 <th>Nama</th>
                                 <th>Jabatan</th>
                                 <th>Golongan</th>
+                                <th>Bidang</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -168,20 +169,8 @@
                                 <td>{{$item->nama}}</td>
                                 <td>{{$item->jabatan}}</td>
                                 <td>{{$item->golongan}}</td>
+                                <td>{{$item->bidang->nama_bidang}}</td>
                                 <td class="project-actions text-right">
-                                    {{-- <form action="">
-                                        @csrf
-                                        <a class="btn btn-info btn-sm" href="#">
-                                            <i class="fas fa-edit">
-                                            </i>
-                                            Edit
-                                        </a>
-                                        <a class="btn btn-danger btn-sm" href="#">
-                                            <i class="fas fa-trash">
-                                            </i>
-                                            Delete
-                                        </a>
-                                    </form> --}}
                                     <form action="{{route('pegawai.edit', $item->nip_pegawai)}}">
                                         <button type="submit" class="btn btn-info btn-sm">
                                             <i class="fas fa-pencil-alt"></i> Edit

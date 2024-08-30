@@ -163,26 +163,37 @@
                               <div class="form-group">
                                 <label for="inputNip">NIP</label>
                                 <input type="string" id="inputNip" name="nip_pegawai" {{isset($pegawai) ? 'disabled' : ''}} class="form-control" value="{{ isset($pegawai) ? $pegawai->nip_pegawai : '' }}">
+                              </div>
+                              <div class="form-group">
+                                  <label for="inputName">Nama Pegawai</label>
+                                  <input type="string" id="inputName" name="nama" class="form-control" value="{{ isset($pegawai) ? $pegawai->nama : '' }}">
                                 </div>
-                              <div class="form-group">
-                                <label for="inputName">Nama Pegawai</label>
-                                <input type="string" id="inputName" name="nama" class="form-control" value="{{ isset($pegawai) ? $pegawai->nama : '' }}">
-                              </div>
-                              <div class="form-group">
-                                <label for="inputJabatan">Jabatan</label>
-                                <input type="string" id="inputJabatan" name="jabatan" class="form-control" value="{{ isset($pegawai) ? $pegawai->jabatan : '' }}">
-                              </div>
-                              <div class="form-group">
-                                <label for="inputGolongan">Golongan</label>
-                                <select name="golongan" class="form-control select2" style="width: 100%;">
-                                    <option value="" disabled selected>Pilih Golongan</option>
-                                    @foreach (['Ia', 'Ib', 'Ic', 'Id', 'IIa', 'IIb', 'IIc', 'IId', 'IIIa', 'IIIb', 'IIIc', 'IIId', 'IVa', 'IVb', 'IVc', 'IVd', 'IVe'] as $golongan)
+                                <div class="form-group">
+                                    <label for="inputJabatan">Jabatan</label>
+                                    <input type="string" id="inputJabatan" name="jabatan" class="form-control" value="{{ isset($pegawai) ? $pegawai->jabatan : '' }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputGolongan">Golongan</label>
+                                    <select name="golongan" class="form-control select2" style="width: 100%;">
+                                        <option value="" disabled selected>Pilih Golongan</option>
+                                        @foreach (['Ia', 'Ib', 'Ic', 'Id', 'IIa', 'IIb', 'IIc', 'IId', 'IIIa', 'IIIb', 'IIIc', 'IIId', 'IVa', 'IVb', 'IVc', 'IVd', 'IVe'] as $golongan)
                                         <option value="{{ $golongan }}" {{ (old('golongan', isset($pegawai) ? $pegawai->golongan : '') == $golongan) ? 'selected' : '' }}>
                                             {{ $golongan }}
                                         </option>
-                                    @endforeach
-                                </select>
-                              </div>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                  <label for="inputBidang">Bidang</label>
+                                  <select name="id_bidang" id="inputBidang" class="form-control select2" style="width: 100%;">
+                                      <option value="" disabled selected>Pilih Bidang</option>
+                                      @foreach ($bidangs as $item)
+                                          <option value="{{ $item->id }}" {{ (old('id_bidang', isset($pegawai) ? $pegawai->id_bidang : '') == $item->id) ? 'selected' : '' }}>
+                                              {{ $item->nama_bidang }}
+                                          </option>
+                                      @endforeach
+                                  </select>
+                                </div>
                             </div>
                             <!-- /.card-body -->
                           </div>
