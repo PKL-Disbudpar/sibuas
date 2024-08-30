@@ -33,14 +33,10 @@ class FormRoleController extends Controller
             $role->save();
             DB::commit();
 
-            if ($role->save()) {
-                echo ("Data berhasil dimasukkan");
-            } else {
-                echo ("Gagal");
-            }
+            return redirect('/admin-role')->with('success', 'Data berhasil ditambahkan');
         } catch (Exception $e) {
             DB::rollBack();
-            echo ("Gagal nihh");
+            return redirect('/admin-role')->with('error', 'Gagal !!');
         }
     }
 
