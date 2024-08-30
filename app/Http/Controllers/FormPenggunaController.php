@@ -37,18 +37,18 @@ class FormPenggunaController extends Controller
         try {
             DB::beginTransaction();
             $pengguna->username = $request->username;
-            $pengguna->password = $request->password;
-            $pengguna->id_role = 4;
-            $pengguna->id_bidang = 16;
+            $pengguna->password = Hash::make($request->password);
+            $pengguna->id_role = 9999;
+            $pengguna->id_bidang = 3;
             $pengguna->save();
             DB::commit();
 
-            
-        return redirect('/admin-pengguna')->with('success', 'Data pengguna berhasil dimasukkan');
-    } catch (Exception $e) {
-        DB::rollBack();
-        return redirect('/admin-pengguna')->withErrors(['msg' => 'Gagal memasukkan data']);
-    }
+
+            return redirect('/admin-pengguna')->with('success', 'Data pengguna berhasil dimasukkan');
+        } catch (Exception $e) {
+            DB::rollBack();
+            return redirect('/admin-pengguna')->withErrors(['msg' => 'Gagal memasukkan data']);
+        }
     }
     public function edit($id)
     {
@@ -66,11 +66,11 @@ class FormPenggunaController extends Controller
         return redirect('/admin-pengguna')->with('success', 'Data pengguna berhasil diperbarui!');
     }
 
-      // hapus data dari id
+    // hapus data dari id
     public function destroy($id)
     {
         $penggunas = Pengguna::find($id);
-  
+
         if ($penggunas) {
             $penggunas->delete();
             return redirect()->back()->with('success', 'Data berhasil dihapus');
