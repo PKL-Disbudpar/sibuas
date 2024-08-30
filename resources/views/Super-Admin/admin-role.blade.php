@@ -158,7 +158,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($roles as $item)
+                            @foreach ($roles as $item)
                             <tr>
                                 <td style="width: 10%">{{$loop->iteration}}</td>
                                 <td>{{$item->nama_role}}</td>
@@ -173,11 +173,7 @@
                                     </form>
                                 </td>
                             </tr>
-                            @empty
-                            <div class="alert alert-danger">
-                                Data Role Belum Tersedia
-                            </div>
-                            @endforelse
+                            @endforeach
                             
                             @if (session('success'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
