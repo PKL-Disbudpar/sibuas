@@ -30,7 +30,7 @@ class FormPegawaiController extends Controller
     public function store(Request $request, MasterPegawai $pegawai)
     {
         $request->validate([
-            'nip_pegawai' => 'required|string',
+            'nip_pegawai' => 'required|string|unique:master_pegawais',
             'nama' => 'required|string',
             'jabatan' => 'required|string',
             'golongan' => 'required|string',
