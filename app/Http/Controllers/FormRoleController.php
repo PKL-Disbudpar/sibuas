@@ -24,7 +24,7 @@ class FormRoleController extends Controller
     public function store(Request $request, Role $role)
     {
         $request->validate([
-            'nama_role' => 'required|string|unique:roles',
+            'nama_role' => 'required|string',
         ]);
 
         try {
