@@ -118,6 +118,15 @@ header {
     margin-bottom: 0;
 }
 
+.card .card-header {
+    background-color: #065fad;
+}
+
+.card .card-header h3 {
+    color: white;
+    font-weight: 500;
+}
+
 #buttons {
     display: flex;
     flex-direction: row;
