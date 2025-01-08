@@ -15,10 +15,27 @@
         <p>Silahkan isi buku tamu dibawah ini</p>
     </section>
 
-    <section class="card card-primary">
+    <section class="card">
         <div class="card-header">
             <h3 class="card-title">Form Buku Tamu</h3>
         </div>
+
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-alert" style="margin-top: 0.5cm">
+                {{ session('success') }}
+            </div>
+
+            <script>
+              setTimeout(function() {
+                  const alertElement = document.getElementById('success-alert');
+                  if (alertElement) {
+                      alertElement.classList.remove('show');
+                      alertElement.classList.add('fade');
+                      alertElement.addEventListener('transitionend', () => alertElement.remove());
+                  }
+              }, 2000);
+          </script>
+        @endif
 
         <form action="{{ route('buku-tamu.store') }}" method="POST">
             @csrf
@@ -26,12 +43,13 @@
                 <div class="form-group">
                     <label for="InputNamaPengunjung">Nama</label>
                     <input type="text" class="form-control" id="InputNamaPengunjung" name="nama_tamu"
-                        placeholder="Masukkan Nama Pengunjung">
+                        placeholder="Masukkan Nama Pengunjung" style="text-transform: capitalize">
                 </div>
                 <div class="form-group">
                     <label for="InputAsalInstansi">Asal Instansi</label>
                     <input type="text" class="form-control" id="InputAsalInstansi" name="asal_instansi"
                         placeholder="Masukkan Asal Instansi">
+                    <label style="font-size: 10px; font-style:italic">*Jika keperluan individu maka ditulis "Pribadi"</label>
                 </div>
                 <div class="form-group">
                     <label>Jenis Kelamin</label>
@@ -42,9 +60,37 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="InputNoHp">No.Hp</label>
-                    <input type="text" class="form-control" id="InputNoHp" name="no_hp"
-                        placeholder="Masukkan No.Hp">
+                    <label class="col-form-label" for="inputnoHP">
+                        </i> No. HP
+                    </label>
+                    <input type="text" class="form-control" id="inputnoHP" name="no_hp" placeholder="Masukkan nomor HP">
+
+                    <script>
+                        // Blokir input selain angka
+                        inputnoHP.addEventListener('keypress', function (e) {
+                            const charCode = e.charCode || e.keyCode;
+
+                            // Izinkan angka (0-9) saja
+                            if (charCode < 48 || charCode > 57) {
+                                e.preventDefault();
+                            }
+                        });
+
+                        // Untuk validasi angka yang diinputkan hanya 10-13 angka
+                        document.getElementById('inputnoHP').addEventListener('input', function () {
+                            const input = this;
+                            const value = input.value.trim();
+
+                            // Periksa apakah panjang nomor HP valid
+                            if (value.length >= 10 && value.length <= 13) {
+                                input.classList.add('is-valid');   // Tambahkan kelas sukses
+                                input.classList.remove('is-invalid'); // Hapus kelas error jika ada
+                            } else {
+                                input.classList.add('is-invalid'); // Tambahkan kelas error
+                                input.classList.remove('is-valid');   // Hapus kelas sukses jika ada
+                            }
+                        });
+                    </script>
                 </div>
                 <div class="form-group">
                     <label for="InputTanggalPengunjung">Tanggal Pengunjung</label>
@@ -61,7 +107,9 @@
                     <button type="submit" class="btn btn-danger">Batal</button>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-success">Simpan</button>
+                    <button type="submit" class="btn btn-success">
+                        Simpan
+                    </button>
                 </div>
             </div>
         </form>
@@ -104,6 +152,7 @@
             });
         });
     </script>
+
 @endpush
 
 {{-- <!DOCTYPE html>
