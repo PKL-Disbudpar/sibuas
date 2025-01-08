@@ -3,17 +3,6 @@
     $hideFooter = true;
 @endphp
 
-<script>
-    function showHide() {
-        var inputan = document.getElementById("password");
-        if (inputan.type === "password") {
-            inputan.type = "text";
-        } else {
-            inputan.type = "password";
-        }
-    }
-</script>
-
 @extends('layouts.app')
 
 @push('styles')
@@ -49,12 +38,18 @@
     </div>
 @endsection
 
-@section('footer')
-    
-@endsection
-
 @push('script')
     <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showHide() {
+            var inputan = document.getElementById("password");
+            if (inputan.type === "password") {
+                inputan.type = "text";
+            } else {
+                inputan.type = "password";
+            }
+        }
+    </script>
 @endpush
 
 {{-- <!DOCTYPE html>
@@ -74,7 +69,6 @@
                 <img src="{{ asset('images/logo.png') }}" alt="Logo">
                 <div class="judul">
                     <span>Sistem Informasi Buku Tamu dan SPT</span>
-                    <span>Dinas Kebudayaan dan Pariwisata Provinsi Jawa Timur</span>
                 </div>
             </div>
             <div class="menu-toggle" id="mobile-menu">
