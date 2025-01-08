@@ -26,7 +26,8 @@
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>80</h3>
+                        {{-- <h3>{{ $jumlahBukuTamu }}</h3> --}}
+                        <h3>6</h3>
                         <p>Tamu</p>
                     </div>
                     <div class="icon">
@@ -40,7 +41,8 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>30</h3>
+                        {{-- <h3>{{ $jumlahSPT }}</h3> --}}
+                        <h3>8</h3>
                         <p>Surat Perintah Tugas</p>
                     </div>
                     <div class="icon">
