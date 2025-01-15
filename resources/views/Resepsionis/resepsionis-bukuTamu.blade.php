@@ -1,3 +1,10 @@
+@php
+    if (!Session::has('username')) {
+        echo redirect('login')->send();
+        exit();
+    }
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 

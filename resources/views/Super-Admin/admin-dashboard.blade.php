@@ -1,71 +1,17 @@
-@extends('layouts.admin')
+@php
+    if (!Session::has('username')) {
+        echo redirect('login')->send();
+        exit();
+    }
+@endphp
 
-@push('styles')
-    <link rel="stylesheet" href="{{ asset('css/style_admin-dashboard.css') }}">
-@endpush
-
-@section('content')
-    <section class="content-wrapper">
-        <div class="content-header bg-white">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Dashboard SIBUAS</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ url('/admin-dashboard') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row m-3">
-            <div class="col-lg-3 col-6">
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        {{-- <h3>{{ $jumlahBukuTamu }}</h3> --}}
-                        <h3>6</h3>
-                        <p>Tamu</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-person"></i>
-                    </div>
-                    <a href="{{ url('/admin-bukuTamu') }}" class="small-box-footer">Info Lebih Lanjut <i
-                            class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        {{-- <h3>{{ $jumlahSPT }}</h3> --}}
-                        <h3>8</h3>
-                        <p>Surat Perintah Tugas</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-document-text"></i>
-                    </div>
-                    <a href="{{ url('/admin-suratTugas') }}" class="small-box-footer">Info Lebih Lanjut <i
-                            class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-@endsection
-
-
-{{-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SIBUAS</title>
-
     <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
@@ -74,7 +20,6 @@
     <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-
     <link rel="stylesheet" href="{{ asset('css/style_admin-dashboard.css') }}">
 </head>
 
@@ -169,30 +114,27 @@
     </aside>
 
     <section class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <div class="content-header bg-white">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="m-0">Dashboard SIBUAS</h1>
-                    </div><!-- /.col -->
+                    </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('/admin-dashboard') }}">Home</a></li>
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- /.content-header -->
-
         <div class="row m-3">
             <div class="col-lg-3 col-6">
-                <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>80</h3>
+                        {{-- <h3>{{ $jumlahBukuTamu }}</h3> --}}
+                        <h3>6</h3>
                         <p>Tamu</p>
                     </div>
                     <div class="icon">
@@ -206,7 +148,8 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>30</h3>
+                        {{-- <h3>{{ $jumlahSPT }}</h3> --}}
+                        <h3>8</h3>
                         <p>Surat Perintah Tugas</p>
                     </div>
                     <div class="icon">
@@ -224,19 +167,16 @@
         All rights reserved.
     </footer>
 
-    <!-- Control Sidebar -->
+    {{-- <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
     </aside>
     <!-- /.control-sidebar -->
     </div>
-    <!-- ./wrapper -->
+    <!-- ./wrapper --> --}}
 
-    <!-- jQuery -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
     <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- DataTables  & Plugins -->
     <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -249,9 +189,7 @@
     <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
-    <!-- Page specific script -->
     <script>
         $(function() {
             $("#example1").DataTable({
@@ -260,9 +198,63 @@
                 "autoWidth": false,
                 //  "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-
         });
     </script>
 </body>
+</html>
 
-</html> --}}
+{{-- @extends('layouts.admin')
+
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/style_admin-dashboard.css') }}">
+@endpush
+
+@section('content')
+    <section class="content-wrapper">
+        <div class="content-header bg-white">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Dashboard SIBUAS</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ url('/admin-dashboard') }}">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row m-3">
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>6</h3>
+                        <p>Tamu</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person"></i>
+                    </div>
+                    <a href="{{ url('/admin-bukuTamu') }}" class="small-box-footer">Info Lebih Lanjut <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>8</h3>
+                        <p>Surat Perintah Tugas</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-document-text"></i>
+                    </div>
+                    <a href="{{ url('/admin-suratTugas') }}" class="small-box-footer">Info Lebih Lanjut <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection --}}

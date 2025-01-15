@@ -1,3 +1,10 @@
+@php
+    if (!Session::has('username')) {
+        echo redirect('login')->send();
+        exit();
+    }
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -176,8 +183,7 @@
                                                 <i class="fas fa-pencil-alt"></i> Edit
                                             </button>
                                         </form>
-                                        <form action="{{ route('pegawai.destroy', $item->nip_pegawai) }}"
-                                            method="POST"
+                                        <form action="{{ route('pegawai.destroy', $item->nip_pegawai) }}" method="POST"
                                             onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                             @csrf
                                             @method('DELETE')
@@ -214,10 +220,10 @@
         <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <footer class="main-footer fixed-bottom">
+        {{-- <footer class="main-footer fixed-bottom">
             <strong>Copyright &copy; 2024 <a href="https://adminlte.io">Disbudpar</a>.</strong>
             All rights reserved.
-        </footer>
+        </footer> --}}
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->

@@ -1,3 +1,10 @@
+@php
+    if (!Session::has('username')) {
+        echo redirect('login')->send();
+        exit();
+    }
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -200,10 +207,10 @@
         <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <footer class="main-footer fixed-bottom">
+        {{-- <footer class="main-footer fixed-bottom">
             <strong>Copyright &copy; 2024 <a href="https://adminlte.io">Disbudpar</a>.</strong>
             All rights reserved.
-        </footer>
+        </footer> --}}
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->

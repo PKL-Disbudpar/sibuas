@@ -1,3 +1,10 @@
+@php
+    if (!Session::has('username')) {
+        echo redirect('login')->send();
+        exit();
+    }
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +38,7 @@
     </nav>
     <!-- /.navbar -->
 
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="position: fixed">
         <!-- Brand Logo -->
         <a href="{{ url('/admin-dashboard') }}" class="brand-link">
             <img src="{{ asset('images/logoJatim.svg') }}" alt="AdminLTE Logo" class="brand-image elevation-3">
@@ -168,11 +175,12 @@
                                     <input type="string" id="inputNip" name="nip_pegawai"
                                         {{ isset($pegawai) ? 'disabled' : '' }} class="form-control"
                                         value="{{ isset($pegawai) ? $pegawai->nip_pegawai : '' }}">
+                                        <label style="font-size: 10px; font-style:italic">*Penulisan NIP tanpa spasi</label>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Nama Pegawai</label>
                                     <input type="string" id="inputName" name="nama" class="form-control"
-                                        value="{{ isset($pegawai) ? $pegawai->nama : '' }}">
+                                        value="{{ isset($pegawai) ? $pegawai->nama : '' }}" style="text-transform: capitalize">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputJabatan">Jabatan</label>

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Exception;
-use App\Models\BukuTamu;
 use App\Models\Pengguna;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -31,18 +32,20 @@ class LoginController extends Controller
 
             $data = $user->username;
 
-            // $bukuTamus = BukuTamu::all();
+            $request->session()->put('username', 'tika');
 
-            if ($user->id_role === 2) {
-                // Jika pengguna adalah admin, kembalikan view admin
+            if ($user->id_role === 1) {
+                if (Auth::attempt($userLoginInfo)) {
+                    // $user = Auth::user(); // Ambil data pengguna
+                    // Session::put('user', $user); // Simpan data di sesi
+                    return redirect('/form-spt')->with(compact('data'));
+                }
+            } elseif ($user->id_role === 2) {
                 return view('Super-Admin.admin-dashboard');
             } elseif ($user->id_role === 3) {
-                // Jika pengguna adalah resepsionis, kembalikan view resepsionis
-                return view('Resepsionis.resepsionis-dashboard');
-            } elseif ($user->id_role === 4) {
                 return view('Bidang.bidang-dashboard');
-            } elseif ($data) {
-                return redirect('/form-spt')->with(compact('data'));
+            } elseif ($user->id_role === 4) {
+                return view('Resepsionis.resepsionis-dashboard');
             } else {
                 // Jika role tidak sesuai, redirect atau tampilkan pesan error
                 return redirect('/')->withErrors('Anda tidak memiliki akses ke halaman ini.');
@@ -52,5 +55,12 @@ class LoginController extends Controller
                 'error' => $error->getMessage()
             ], 401);
         }
+    }
+
+    public function destroy(Request $request)
+    {
+        $request->session()->forget('username');
+
+        return redirect('/');
     }
 }

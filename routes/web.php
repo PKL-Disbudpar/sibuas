@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BukuTamuController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FormRoleController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\FormBidangController;
@@ -29,14 +30,21 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::resource('/riwayat-spt', RiwayatSPTController::class);
+Route::get('/riwayat-spt', [RiwayatSPTController::class, 'index'])->name('riwayat-spt.index');
+Route::get('/admin-suratTugas', [RiwayatSPTController::class, 'adminSuratTugas'])->name('admin-suratTugas.index');
 
 Route::resource('/login', LoginController::class);
+Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 
 Route::resource('/form-spt', SuratTugasController::class);
+// Route::get('/form-spt', [SuratTugasController::class, 'create'])->name('form-spt.create');
+// Route::post('/form-spt', [SuratTugasController::class, 'create'])->name('form-spt.create');
+// Route::post('/form-spt', [SuratTugasController::class, 'store'])->name('suratTugas.store');
+
 
 // Route::resource('/buku-tamu', BukuTamuController::class);
 
+// Route::get('/admin-dashboard', [DashboardController::class, 'index']);
 
 // Super Admin
 Route::get('/admin-dashboard', function () {
@@ -49,9 +57,9 @@ Route::get('/admin-bukuTamu', function () {
 
 Route::resource('/admin-bukuTamu', BukuTamuController::class);
 
-Route::get('/admin-suratTugas', function () {
-    return view('Super-Admin.admin-suratTugas');
-});
+// Route::get('/admin-suratTugas', function () {
+//     return view('Super-Admin.admin-suratTugas');
+// });
 
 Route::resource('/admin-pengguna', FormPenggunaController::class);
 
@@ -124,6 +132,7 @@ Route::resource('/admin-pengguna', FormPenggunaController::class);
 
 Route::get('/form-pengguna', [FormPenggunaController::class, 'create'])->name('form-pengguna.create');
 
+Route::resource('/form-pengguna', FormPenggunaController::class)->except(['index']);
 
 Route::delete('/form-pengguna/{id}', [FormPenggunaController::class, 'destroy'])->name('pengguna.destroy');
 
@@ -140,18 +149,19 @@ Route::resource('/form-masterPegawai', FormPegawaiController::class)->except(['i
 
 Route::get('/form-masterPegawai', [FormPegawaiController::class, 'create'])->name('form-masterPegawai.create');
 
-Route::delete('/form-masterPegawai/{id}', [FormPegawaiController::class, 'destroy'])->name('pegawai.destroy');
+// Route::delete('/form-masterPegawai/{id}', [FormPegawaiController::class, 'destroy'])->name('pegawai.destroy');
+
 //Master Pegawai
-Route::resource('form-masterPegawai', FormPegawaiController::class)->except(['index']);
+// Route::resource('form-masterPegawai', FormPegawaiController::class)->except(['index']);
 
-Route::get('/form-masterPegawai', [FormPegawaiController::class, 'create'])->name('form-masterPegawai.create');
+// Route::get('/form-masterPegawai', [FormPegawaiController::class, 'create'])->name('form-masterPegawai.create');
 
-Route::delete('/form-masterPegawai/{nip}', [FormPegawaiController::class, 'destroy'])->name('pegawai.destroy');
+Route::delete('/form-masterPegawai/{nip_pegawai}', [FormPegawaiController::class, 'destroy'])->name('pegawai.destroy');
 
-Route::get('form-masterPegawai/{nip}/edit', [FormPegawaiController::class, 'edit'])->name('pegawai.edit');
+Route::get('form-masterPegawai/{id}/edit', [FormPegawaiController::class, 'edit'])->name('pegawai.edit');
 
-Route::put('/form-masterPegawai/{id}', [FormPegawaiController::class, 'update'])->name('form-masterPegawai.update');
-Route::put('form-masterPegawai/{nip}', [FormPegawaiController::class, 'update'])->name('form-masterPegawai.update');
+Route::put('/form-masterPegawai/{id}', [FormPegawaiController::class, 'update'])->name('masterPegawai.update');
+// Route::put('form-masterPegawai/{nip}', [FormPegawaiController::class, 'update'])->name('form-masterPegawai.update');
 
 // Route::get('form-masterPegawai/{nip}', [FormPegawaiController::class, 'show'])->name('form-masterPegawai.show');
 
@@ -161,4 +171,5 @@ Route::get('/buku-tamu', [BukuTamuController::class, 'create'])->name('bukutamu.
 Route::resource('/buku-tamu', BukuTamuController::class)->except(['index']);
 
 Route::delete('/buku-tamu/{id}', [BukuTamuController::class, 'destroy'])->name('bukuTamu.destroy');
-Route::delete('/bukuTamu/{id}', [BukuTamuController::class, 'destroy'])->name('bukuTamu.destroy');
+
+// Route::delete('/bukuTamu/{id}', [BukuTamuController::class, 'destroy'])->name('bukuTamu.destroy');

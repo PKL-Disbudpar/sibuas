@@ -19,7 +19,7 @@ class FormPegawaiController extends Controller
         $master_pegawais = MasterPegawai::with('bidang')->get();
         return view('Super-Admin.admin-masterPegawai', compact('master_pegawais'));
     }
-    
+
     public function create()
     {
         $bidangs = Bidang::all();
@@ -30,7 +30,7 @@ class FormPegawaiController extends Controller
     public function store(Request $request, MasterPegawai $pegawai)
     {
         $request->validate([
-            'nip_pegawai' => 'required|string|unique:master_pegawais',
+            'nip_pegawai' => 'required|string|regex:/^\d+(\s\d+)*$/|unique:master_pegawais',
             'nama' => 'required|string',
             'jabatan' => 'required|string',
             'golongan' => 'required|string',
@@ -57,9 +57,9 @@ class FormPegawaiController extends Controller
 
     public function edit($nip)
     {
-        $pegawai = MasterPegawai::where('nip_pegawai','=',$nip)->first();
+        $pegawai = MasterPegawai::where('nip_pegawai', '=', $nip)->first();
         $bidangs = DB::table('bidangs')->get();
-        return view('Forms.form-masterPegawai', compact('pegawai','bidangs'));
+        return view('Forms.form-masterPegawai', compact('pegawai', 'bidangs'));
     }
 
     public function update(Request $request, $id)
@@ -71,16 +71,16 @@ class FormPegawaiController extends Controller
             'id_bidang' => 'required|string',
         ]);
 
-       try {
-        MasterPegawai::findOrFail($id)->update([
-            'nama' => $request->nama,
-            'jabatan' => $request->jabatan,
-            'golongan' => $request->golongan,
-            'id_bidang' => $request->id_bidang,
-        ]);
-            
+        try {
+            MasterPegawai::findOrFail($id)->update([
+                'nama' => $request->nama,
+                'jabatan' => $request->jabatan,
+                'golongan' => $request->golongan,
+                'id_bidang' => $request->id_bidang,
+            ]);
 
-           return redirect('/admin-masterPegawai')->with('success', 'Data pegawai berhasil diperbarui');
+
+            return redirect('/admin-masterPegawai')->with('success', 'Data pegawai berhasil diperbarui');
         } catch (Exception $e) {
             DB::rollBack();
             Log::error('Kesalahan saat memperbarui data pegawai: ', ['error' => $e->getMessage()]);
@@ -95,15 +95,18 @@ class FormPegawaiController extends Controller
     //     return view('Forms.form-masterPegawai', compact('pegawai'));
     // }
 
-    public function destroy($nip)
+    public function destroy($nip_pegawai)
     {
-        $master_pegawais = MasterPegawai::where('nip_pegawai','=',$nip);
+        // $master_pegawais = MasterPegawai::where('nip_pegawai', '=', $nip)->first();
+        $master_pegawais = MasterPegawai::find($nip_pegawai);
+
+        // dd($master_pegawais);
 
         if ($master_pegawais) {
             $master_pegawais->delete();
             return redirect()->back()->with('success', 'Data berhasil dihapus');
         } else {
             return redirect()->back()->withErrors(['Data tidak ditemukan']);
-        }   
+        }
     }
 }

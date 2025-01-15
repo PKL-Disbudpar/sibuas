@@ -1,3 +1,10 @@
+@php
+    if (!Session::has('username')) {
+        echo redirect('login')->send();
+        exit();
+    }
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +35,7 @@
         </ul>
     </nav>
 
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="position: fixed">
         <a href="{{ url('/admin-dashboard') }}" class="brand-link">
             <img src="{{ asset('images/logoJatim.svg') }}" alt="AdminLTE Logo" class="brand-image elevation-3">
             <span class="brand-text font-weight-bold ml-2">SIBUAS</span>
@@ -174,10 +181,10 @@
             </div>
         </section>
 
-        <footer class="main-footer fixed-bottom">
+        {{-- <footer class="main-footer fixed-bottom">
             <strong>Copyright &copy; 2024 <a href="https://adminlte.io">Disbudpar</a>.</strong>
             All rights reserved.
-        </footer>
+        </footer> --}}
     </section>
  
     <script src="../../plugins/jquery/jquery.min.js"></script>

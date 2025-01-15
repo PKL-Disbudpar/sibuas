@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Pengguna extends Model
+class Pengguna extends Authenticatable
 {
     use HasFactory;
 
@@ -17,6 +18,7 @@ class Pengguna extends Model
     protected $fillable = [
         'username',
         'password',
+
     ];
 
     public function role()

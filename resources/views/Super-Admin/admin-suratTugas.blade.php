@@ -1,3 +1,10 @@
+@php
+    if (!Session::has('username')) {
+        echo redirect('login')->send();
+        exit();
+    }
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +38,7 @@
     </nav>
     <!-- /.navbar -->
 
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="position: fixed">
         <!-- Brand Logo -->
         <a href="{{ url('/admin-dashboard') }}" class="brand-link">
             <img src="{{ asset('images/logoJatim.svg') }}" alt="AdminLTE Logo" class="brand-image elevation-3">
@@ -144,49 +151,25 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nomor Surat</th>
                                 <th>Kode Bidang</th>
+                                {{-- <th>Nomor Surat</th> --}}
                                 <th>Nama Pegawai</th>
-                                <th>Tgl Input</th>
+                                <th>Tanggal Input</th>
                                 <th>Tujuan</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1.</td>
-                                <td>118.1</td>
-                                <td>25908</td>
-                                <td>Riedo</td>
-                                <td>18 Juli 2024</td>
-                                <td>Dinas ke  BPSDMP Kominfo Gedangan</td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-primary btn-sm" href="#">
-                                        <i class="fas fa-eye">
-                                        </i>
-                                        View
-                                    </a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>2.</td>
-                                <td>118.4</td>
-                                <td>-</td>
-                                <td>Malikin, Nugroho, Dani</td>
-                                <td>19 Juli 2024</td>
-                                <td>Kunjungan kerja Candi Sumberawan</td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-primary btn-sm" href="#">
-                                        <i class="fas fa-eye">
-                                        </i>
-                                        View
-                                    </a>
-                                </td>
-                            </tr>
-
+                            @foreach ($suratTugas as $item)
+                                <tr>
+                                    <td style="width: 10%">{{ $loop->iteration }}</td>
+                                    <td>{{ $item->bidang->kode_bidang }}</td>
+                                    {{-- <td>25908</td> --}}
+                                    <td>{{ $item->nama_spt }}</td>
+                                    <td>{{ $item->tgl_spt }}</td>
+                                    <td>{{ $item->tujuan_spt }}</td>
+                                </tr>    
+                            @endforeach
                         </tbody>
-
                     </table>
                 </div>
                 <!-- /.card-body -->
@@ -201,11 +184,7 @@
         </section>
         <!-- /.content -->
         </div>
-        <!-- /.content-wrapper -->
-        <footer class="main-footer fixed-bottom">
-            <strong>Copyright &copy; 2024 <a href="https://adminlte.io">Disbudpar</a>.</strong>
-            All rights reserved.
-        </footer>
+        
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->

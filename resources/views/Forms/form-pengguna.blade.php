@@ -1,3 +1,10 @@
+@php
+    if (!Session::has('username')) {
+        echo redirect('login')->send();
+        exit();
+    }
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -197,10 +204,11 @@
                                         <option value="" disabled selected></option>
                                         @foreach ($roles as $item)
                                             <option value="{{ $item->id }}"
-                                                {{ old('id_role', isset($pengguna) ? $pengguna->id_role : '' == $item->id) ? 'selected' : '' }}>
+                                                {{ old('id_role', isset($pengguna) && $pengguna->id_role == $item->id ? 'selected' : '') }}>
                                                 {{ $item->nama_role }}
                                             </option>
                                         @endforeach
+
                                     </select>
                                 </div>
                             </div>
